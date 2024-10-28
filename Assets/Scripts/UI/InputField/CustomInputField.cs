@@ -16,6 +16,20 @@ public class CustomInputField : TMP_InputField
 #endif
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        
+        onSelect.AddListener(ShowKeyboard);
+    }
+    
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        
+        onSelect.RemoveListener(ShowKeyboard);
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -46,5 +60,10 @@ public class CustomInputField : TMP_InputField
         DeactivateInputField();
 
         SendOnFocusLost();
+    }
+
+    private void ShowKeyboard(string _)
+    {
+        KeyboardController.Instance.Open(this);
     }
 }
