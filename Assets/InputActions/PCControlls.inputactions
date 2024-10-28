@@ -179,11 +179,33 @@
                 },
                 {
                     "name": "",
+                    "id": "57e10a1c-db60-4548-a5ed-e26f4a5a7723",
+                    "path": "<Mouse>/press",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9c70efb9-c071-481f-844f-5a0aa2726d32",
                     "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0042396-3fef-4ce6-9c16-7158fdf71fd7",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": false
