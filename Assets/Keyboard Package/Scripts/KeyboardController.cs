@@ -43,14 +43,15 @@ public class KeyboardController : MonoBehaviour
                 instance = Instantiate(Resources.Load<KeyboardController>("Prefabs/FullKeyboard"));
             
             DontDestroyOnLoad(instance);
-            
+
             return instance;
         }   
     }
     
     private void Awake()
     {
-        Close(0);
+        if (!instance)
+            InitialClose();
     }
 
     public void Open(CustomInputField currentText)
@@ -72,6 +73,13 @@ public class KeyboardController : MonoBehaviour
         _currentText = currentText;
     }
 
+    private void InitialClose()
+    {
+        keyboard.anchoredPosition = new Vector2(keyboard.anchoredPosition.x, -keyboard.sizeDelta.y);
+        
+        gameObject.SetActive(false);
+    }
+    
     public void Close(float time = 0.2f)
     {
         _currentText?.HideCaret();
