@@ -163,6 +163,8 @@ public class CharacterInputController : MonoBehaviour
 	public void StartMoving()
 	{
 		m_IsRunning = true;
+		
+		m_IsSwiping = false;
 	}
 
     public void StopMoving()
@@ -210,6 +212,19 @@ public class CharacterInputController : MonoBehaviour
 		// Use touch input on mobile
         if (touchAction.IsInProgress())
         {
+	        // Input check is AFTER the swipe test, that way if TouchPhase.Ended happen a single frame after the Began Phase
+	        // a swipe can still be registered (otherwise, m_IsSwiping will be set to false and the test wouldn't happen for that began-Ended pair)
+			
+	        if (touchAction.WasPerformedThisFrame())
+	        {
+		        m_StartingTouch = swipeAction.ReadValue<Vector2>();
+		        m_IsSwiping = true;
+	        }
+	        else if(touchAction.WasReleasedThisFrame())
+	        {
+		        m_IsSwiping = false;
+	        }
+	        
 			if(m_IsSwiping)
 			{
 				Vector2 diff = swipeAction.ReadValue<Vector2>() - m_StartingTouch;
@@ -246,20 +261,7 @@ public class CharacterInputController : MonoBehaviour
 					m_IsSwiping = false;
 				}
             }
-   
-        	// Input check is AFTER the swipe test, that way if TouchPhase.Ended happen a single frame after the Began Phase
-			// a swipe can still be registered (otherwise, m_IsSwiping will be set to false and the test wouldn't happen for that began-Ended pair)
-			
-			if (touchAction.WasPerformedThisFrame())
-			{
-				m_StartingTouch = swipeAction.ReadValue<Vector2>();
-				m_IsSwiping = true;
-			}
-			else if(touchAction.WasReleasedThisFrame())
-			{
-				m_IsSwiping = false;
-			}
-        }
+		}
 
         Vector3 verticalTargetPosition = m_TargetPosition;
 
