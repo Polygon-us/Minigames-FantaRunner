@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -19,8 +20,8 @@ public class ShopUI : MonoBehaviour
     public ShopThemeList themeList;
 
     [Header("UI")]
-    public Text coinCounter;
-    public Text premiumCounter;
+    public TMP_Text coinCounter;
+    public TMP_Text premiumCounter;
     public Button cheatButton;
 
     protected ShopList m_OpenList;
