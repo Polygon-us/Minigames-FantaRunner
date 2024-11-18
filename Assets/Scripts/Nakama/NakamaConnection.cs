@@ -21,7 +21,7 @@ public class NakamaConnection : MonoBehaviour
 
     private IClient Client;
     private ISession Session;
-    //private ISocket Socket;
+    private ISocket Socket;
 
     private static NakamaConnection _instance;
 
@@ -40,6 +40,8 @@ public class NakamaConnection : MonoBehaviour
         }
     }
 
+    public static Action<bool> OnLoginCompleted;
+    
     public bool HasRegistered()
     {
         return PlayerPrefs.HasKey(UsernamePrefName);
@@ -55,28 +57,35 @@ public class NakamaConnection : MonoBehaviour
         return PlayerPrefs.GetString(UsernamePrefName);
     }
 
-#if UNITY_EDITOR
     [ContextMenu("Delete Username")]
     public void DeleteUsername()
     {
         PlayerPrefs.DeleteKey(UsernamePrefName);
     }
-#endif
 
     public async UniTask Connect()
     {
         Debug.Log("Connect");
 
-        Client = new Client(new Uri(url), serverKey);
+        try
+        {
+            Client = new Client(new Uri(url), serverKey, UnityWebRequestAdapter.Instance);
+            await AuthenticateSessionIfNull();
+
+            Socket = Client.NewSocket();
+            // await Socket.ConnectAsync(Session, true);
+        }
+        catch (Exception e)
+        {
+            OnLoginCompleted?.Invoke(false);
+            return;
+        }
 
         //CacheSessionSearch(SessionPrefName);
-
-        await AuthenticateSessionIfNull();
-
-        // Socket = Client.NewSocket();
-        // await Socket.ConnectAsync(Session, true);
-
+        
         Debug.Log("Connect finish");
+        
+        OnLoginCompleted?.Invoke(true);
     }
 
     private async UniTask AuthenticateSessionIfNull()

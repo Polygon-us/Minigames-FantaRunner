@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
 #endif
@@ -26,8 +23,7 @@ public class StartButton : MonoBehaviour
 #if UNITY_PURCHASING
         var module = StandardPurchasingModule.Instance();
 #endif
+
         NakamaConnection.Instance.Connect().Forget();
-        
-        SceneManager.LoadScene("main");
     }
 }

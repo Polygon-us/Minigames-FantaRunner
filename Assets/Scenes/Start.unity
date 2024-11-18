@@ -2704,6 +2704,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeviceChecker
       objectReference: {fileID: 0}
+    - target: {fileID: 1550562519665434000, guid: bf898a8a1192bc949a73f04ca264f0f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2456350153256746414, guid: bf898a8a1192bc949a73f04ca264f0f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3306,8 +3311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0f4d5b2ddb74e4bae0bf84fca89573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usernamePanel: {fileID: 1605189342}
-  startButton: {fileID: 1886764179}
+  usernamePanel: {fileID: 1299394197}
+  startButton: {fileID: 1886764184}
   usernameInputField: {fileID: 1970102047}
   sendButton: {fileID: 1491219585}
 --- !u!114 &1605189345
