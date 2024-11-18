@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Nakama;
 using UnityEngine;
@@ -6,79 +7,54 @@ using UnityEngine;
 // Prefill the info on the player data, as they will be used to populate the leadboard.
 public class Leaderboard : MonoBehaviour
 {
-	public RectTransform entriesRoot;
-	public int entriesCount;
+    public RectTransform entriesRoot;
 
-	public HighscoreUI playerEntry;
-	
-	private List<IApiLeaderboardRecord> _records;
-	
-	public void Open()
-	{
-		gameObject.SetActive(true);
-		
-		Populate().Forget();
-	}
+    public HighscoreUI playerEntry;
 
-	public void Close()
-	{
-		gameObject.SetActive(false);
-	}
+    private List<IApiLeaderboardRecord> _records;
 
-	public async UniTaskVoid Populate()
-	{
-		_records = await NakamaConnection.Instance.GetLeaderboard();
-		
-		// Start by making all entries enabled & putting player entry last again.
-		playerEntry.transform.SetAsLastSibling();
-		for(int i = 0; i < entriesCount; ++i)
-		{
-			entriesRoot.GetChild(i).gameObject.SetActive(true);
-		}
+    public void Open()
+    {
+        gameObject.SetActive(true);
 
-		// Find all index in local page space.
-		int localStart = 0;
-		int place = -1;
-		int localPlace = -1;
+        Populate().Forget();
+    }
 
-		place = _records.FindIndex(record => record.OwnerId == NakamaConnection.GetDeviceIdentifier());
-		localPlace = place - localStart;
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
 
-		if (localPlace >= 0 && localPlace < entriesCount)
-		{
-			playerEntry.gameObject.SetActive(true);
-			playerEntry.transform.SetSiblingIndex(localPlace);
-		}
+    public async UniTaskVoid Populate()
+    {
+        for (int i = 0; i < entriesRoot.childCount; ++i)
+        {
+            entriesRoot.GetChild(i).gameObject.SetActive(false);
+        }
+        
+        _records = await NakamaConnection.Instance.GetLeaderboard();
+        IApiLeaderboardRecord playerRecord = await NakamaConnection.Instance.GetPlayerLeaderboard();
 
-		if (_records.Count < entriesCount)
-			entriesRoot.GetChild(entriesRoot.transform.childCount - 1).gameObject.SetActive(false);
+        if (playerRecord != null)
+        {
+            int playerPlace = int.Parse(playerRecord.Rank);
+            playerEntry.transform.SetSiblingIndex(Mathf.Min(entriesRoot.childCount, playerPlace) - 1);
+        }
 
-		int currentHighScore = localStart;
+        for (int i = 0; i < entriesRoot.childCount && i < _records.Count; ++i)
+        {
+            HighscoreUI hs = entriesRoot.GetChild(i).GetComponent<HighscoreUI>();
 
-		for (int i = 0; i < entriesCount; ++i)
-		{
-			HighscoreUI hs = entriesRoot.GetChild(i).GetComponent<HighscoreUI>();
+            IApiLeaderboardRecord usedRecord = hs == playerEntry ? playerRecord : _records[i];
 
-            if (hs == playerEntry || hs == null)
-			{
-				// We skip the player entry.
-				continue;
-			}
+            if (usedRecord == null)
+                continue;
 
-		    if (_records.Count > currentHighScore)
-		    {
-		        hs.gameObject.SetActive(true);
-		        
-		        hs.playerName.text = _records[i].Username;
-		        hs.number.text = (localStart + i + 1).ToString();
-		        hs.score.text = _records[i].Score;
-		        
-		        currentHighScore++;
-		    }
-		    else
-		        hs.gameObject.SetActive(false);
-		}
+            hs.gameObject.SetActive(true);
 
-		playerEntry.number.text = (place + 1).ToString();
-	}
+            hs.playerName.text = usedRecord.Username;
+            hs.number.text = usedRecord.Rank;
+            hs.score.text = usedRecord.Score;
+        }
+    }
 }

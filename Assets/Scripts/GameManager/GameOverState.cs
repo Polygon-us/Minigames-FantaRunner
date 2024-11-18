@@ -58,9 +58,6 @@ public class GameOverState : AState
 
 	public void OpenLeaderboard()
 	{
-		fullLeaderboard.playerEntry.playerName.text = miniLeaderboard.playerEntry.inputName.text;
-		fullLeaderboard.playerEntry.score.text = trackManager.score.ToString();
-
 		fullLeaderboard.Open();
     }
 
@@ -125,21 +122,11 @@ public class GameOverState : AState
 	{
 		await NakamaConnection.Instance.SendLeaderboard(trackManager.score);
 		
-		miniLeaderboard.playerEntry.inputName.text = NakamaConnection.GetUsername();
-		
-		miniLeaderboard.playerEntry.score.text = trackManager.score.ToString();
 		miniLeaderboard.Populate().Forget();
 	}
     
 	protected void FinishRun()
     {
-	    miniLeaderboard.playerEntry.inputName.readOnly = true;
-		
-	    miniLeaderboard.playerEntry.inputName.text = NakamaConnection.GetUsername();
-
-        // PlayerData.instance.InsertScore(trackManager.score, miniLeaderboard.playerEntry.inputName.text );
-
-        
         CharacterCollider.DeathEvent de = trackManager.characterController.characterCollider.deathData;
         //register data to analytics
 #if UNITY_ANALYTICS

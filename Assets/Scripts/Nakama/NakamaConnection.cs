@@ -3,6 +3,7 @@ using Nakama;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class NakamaConnection : MonoBehaviour
@@ -10,13 +11,10 @@ public class NakamaConnection : MonoBehaviour
     [SerializeField] private string url = "https://73c2-8-242-214-187.ngrok-free.app";
     [SerializeField] private string serverKey = "defaultkey";
 
-    [Space]
-    [SerializeField] private string leaderboardId = "4ec4f126-3f9d-11e7-84ef-b7c182b36521";
+    [Space] [SerializeField] private string leaderboardId = "trash_dash";
 
-    [Space]
-    [SerializeField]
-    private string storageValueJson = "{\"Progreso\":{\"monedas\":13,\"color\":\"FFFFFF\"}}"
-;
+    [Space] [SerializeField] private string storageValueJson = "{\"Progreso\":{\"monedas\":13,\"color\":\"FFFFFF\"}}";
+
     //private const string SessionPrefName = "nakama.Session";
     private const string DeviceIdentifierPrefName = "nakama.deviceUniqueIdentifier";
     private const string UsernamePrefName = "nakama.username";
@@ -33,30 +31,25 @@ public class NakamaConnection : MonoBehaviour
         {
             if (_instance)
                 return _instance;
-            
+
             _instance = FindFirstObjectByType<NakamaConnection>();
-            
+
             DontDestroyOnLoad(_instance.gameObject);
-            
+
             return _instance;
         }
-    }
-    
-    private void Start()
-    {
-        // Connect().Forget();
     }
 
     public bool HasRegistered()
     {
         return PlayerPrefs.HasKey(UsernamePrefName);
     }
-    
+
     public void SetUsername(string username)
     {
         PlayerPrefs.SetString(UsernamePrefName, username);
     }
-    
+
     public static string GetUsername()
     {
         return PlayerPrefs.GetString(UsernamePrefName);
@@ -69,7 +62,7 @@ public class NakamaConnection : MonoBehaviour
         PlayerPrefs.DeleteKey(UsernamePrefName);
     }
 #endif
-    
+
     public async UniTask Connect()
     {
         Debug.Log("Connect");
@@ -86,23 +79,6 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("Connect finish");
     }
 
-    //private void CacheSessionSearch(string sessionPrefName)
-    //{
-    //    Debug.Log("CacheSessionSearch");
-
-    //    if (PlayerPrefs.HasKey(sessionPrefName))
-    //    {
-    //        ISession session = Nakama.Session.Restore(PlayerPrefs.GetString(sessionPrefName));
-
-    //        if (!session.IsExpired)
-    //        {
-    //            Session = session;
-    //        }
-    //    }
-
-    //    Debug.Log("CacheSessionSearch finish");
-    //}
-
     private async UniTask AuthenticateSessionIfNull()
     {
         Debug.Log("AuthenticateSessionIfNull");
@@ -112,10 +88,15 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("AuthenticateSessionIfNull finish");
     }
 
-    public static string GetDeviceIdentifier()
+    private string GetUserID()
+    {
+        return Session.UserId;
+    }
+    
+    private static string GetDeviceIdentifier()
     {
         Debug.Log("GetDeviceIdentifier");
-
+        
         if (PlayerPrefs.HasKey(DeviceIdentifierPrefName))
         {
             return PlayerPrefs.GetString(DeviceIdentifierPrefName);
@@ -127,37 +108,41 @@ public class NakamaConnection : MonoBehaviour
         {
             deviceId = Guid.NewGuid().ToString();
         }
-        
+
         PlayerPrefs.SetString(DeviceIdentifierPrefName, deviceId);
 
         return deviceId;
     }
 
-    [ContextMenu("Test Send Leaderboard")]
     public async UniTask SendLeaderboard(int score)
     {
         Debug.Log("SendLeaderboard");
-        
+
         await Client.WriteLeaderboardRecordAsync(Session, leaderboardId, score);
 
         Debug.Log("SendLeaderboard finish");
     }
 
-    [ContextMenu("Test Get Leaderboard")]
     public async UniTask<List<IApiLeaderboardRecord>> GetLeaderboard()
     {
         Debug.Log("GetLeaderboard");
 
-        IApiLeaderboardRecordList leaderboardRecords = await Client.ListLeaderboardRecordsAsync(Session, leaderboardId);
-
-        foreach (IApiLeaderboardRecord record in leaderboardRecords.Records)
-        {
-            Debug.Log(record);
-        }
+        IApiLeaderboardRecordList leaderboardRecords = await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, limit: 10);
 
         Debug.Log("GetLeaderboard finish");
-        
+
         return leaderboardRecords.Records.ToList();
+    }
+
+    public async Task<IApiLeaderboardRecord> GetPlayerLeaderboard()
+    {
+        Debug.Log("GetPlayerLeaderboard");
+
+        IApiLeaderboardRecordList leaderboardRecords = await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, new[] { GetUserID() }, limit: 1);
+
+        Debug.Log("GetPlayerLeaderboard finish");
+
+        return leaderboardRecords.OwnerRecords.FirstOrDefault(record => record.OwnerId == GetUserID());
     }
 
     [ContextMenu("Test Send Storage")]
