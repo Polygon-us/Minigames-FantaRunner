@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
 #endif
-using System.Collections.Generic;
- 
+
 /// <summary>
 /// state pushed on top of the GameManager when the player dies.
 /// </summary>
@@ -25,11 +24,8 @@ public class GameOverState : AState
     {
         canvas.gameObject.SetActive(true);
 
-		miniLeaderboard.playerEntry.inputName.text = PlayerData.instance.previousName;
-		
-		miniLeaderboard.playerEntry.score.text = trackManager.score.ToString();
-		miniLeaderboard.Populate();
-
+        SendLeaderboard().Forget();
+        
         if (MissionManager.Instance.AnyMissionComplete())
             StartCoroutine(missionPopup.Open());
         else
@@ -62,11 +58,6 @@ public class GameOverState : AState
 
 	public void OpenLeaderboard()
 	{
-		fullLeaderboard.forcePlayerDisplay = false;
-		fullLeaderboard.displayPlayer = true;
-		fullLeaderboard.playerEntry.playerName.text = miniLeaderboard.playerEntry.inputName.text;
-		fullLeaderboard.playerEntry.score.text = trackManager.score.ToString();
-
 		fullLeaderboard.Open();
     }
 
@@ -74,7 +65,6 @@ public class GameOverState : AState
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("shop", UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
-
 
     public void GoToLoadout()
     {
@@ -128,19 +118,15 @@ public class GameOverState : AState
 #endif 
 	}
 
+	private async UniTaskVoid SendLeaderboard()
+	{
+		await NakamaConnection.Instance.SendLeaderboard(trackManager.score);
+		
+		miniLeaderboard.Populate().Forget();
+	}
+    
 	protected void FinishRun()
     {
-		if(miniLeaderboard.playerEntry.inputName.text == "")
-		{
-			miniLeaderboard.playerEntry.inputName.text = "Trash Cat";
-		}
-		else
-		{
-			PlayerData.instance.previousName = miniLeaderboard.playerEntry.inputName.text;
-		}
-
-        PlayerData.instance.InsertScore(trackManager.score, miniLeaderboard.playerEntry.inputName.text );
-
         CharacterCollider.DeathEvent de = trackManager.characterController.characterCollider.deathData;
         //register data to analytics
 #if UNITY_ANALYTICS
