@@ -58,19 +58,16 @@ public class GameOverState : AState
 
 	public void OpenLeaderboard()
 	{
-		fullLeaderboard.forcePlayerDisplay = false;
-		fullLeaderboard.displayPlayer = true;
 		fullLeaderboard.playerEntry.playerName.text = miniLeaderboard.playerEntry.inputName.text;
 		fullLeaderboard.playerEntry.score.text = trackManager.score.ToString();
 
-		fullLeaderboard.Open().Forget();
+		fullLeaderboard.Open();
     }
 
 	public void GoToStore()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("shop", UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
-
 
     public void GoToLoadout()
     {
@@ -131,7 +128,7 @@ public class GameOverState : AState
 		miniLeaderboard.playerEntry.inputName.text = NakamaConnection.GetUsername();
 		
 		miniLeaderboard.playerEntry.score.text = trackManager.score.ToString();
-		miniLeaderboard.Populate();
+		miniLeaderboard.Populate().Forget();
 	}
     
 	protected void FinishRun()

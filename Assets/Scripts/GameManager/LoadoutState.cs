@@ -407,8 +407,6 @@ public class LoadoutState : AState
 
 	public void Openleaderboard()
 	{
-		leaderboard.displayPlayer = false;
-		leaderboard.forcePlayerDisplay = false;
 		leaderboard.Open();
     }
 }

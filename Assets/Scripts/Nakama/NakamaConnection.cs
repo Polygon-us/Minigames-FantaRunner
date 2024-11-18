@@ -112,7 +112,7 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("AuthenticateSessionIfNull finish");
     }
 
-    private string GetDeviceIdentifier()
+    public static string GetDeviceIdentifier()
     {
         Debug.Log("GetDeviceIdentifier");
 
@@ -120,26 +120,24 @@ public class NakamaConnection : MonoBehaviour
         {
             return PlayerPrefs.GetString(DeviceIdentifierPrefName);
         }
-        else
+
+        string deviceId = SystemInfo.deviceUniqueIdentifier;
+
+        if (deviceId == SystemInfo.unsupportedIdentifier)
         {
-            string deviceId = SystemInfo.deviceUniqueIdentifier;
-
-            if (deviceId == SystemInfo.unsupportedIdentifier)
-            {
-                deviceId = Guid.NewGuid().ToString();
-            }
-
-            PlayerPrefs.SetString(DeviceIdentifierPrefName, deviceId);
-
-            return deviceId;
+            deviceId = Guid.NewGuid().ToString();
         }
+        
+        PlayerPrefs.SetString(DeviceIdentifierPrefName, deviceId);
+
+        return deviceId;
     }
 
     [ContextMenu("Test Send Leaderboard")]
     public async UniTask SendLeaderboard(int score)
     {
         Debug.Log("SendLeaderboard");
-
+        
         await Client.WriteLeaderboardRecordAsync(Session, leaderboardId, score);
 
         Debug.Log("SendLeaderboard finish");

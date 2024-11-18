@@ -10,18 +10,14 @@ public class Leaderboard : MonoBehaviour
 	public int entriesCount;
 
 	public HighscoreUI playerEntry;
-	public bool forcePlayerDisplay;
-	public bool displayPlayer = true;
-
+	
 	private List<IApiLeaderboardRecord> _records;
 	
-	public async UniTaskVoid Open()
+	public void Open()
 	{
 		gameObject.SetActive(true);
-
-		_records = await NakamaConnection.Instance.GetLeaderboard();
 		
-		Populate();
+		Populate().Forget();
 	}
 
 	public void Close()
@@ -29,8 +25,10 @@ public class Leaderboard : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 
-	public void Populate()
+	public async UniTaskVoid Populate()
 	{
+		_records = await NakamaConnection.Instance.GetLeaderboard();
+		
 		// Start by making all entries enabled & putting player entry last again.
 		playerEntry.transform.SetAsLastSibling();
 		for(int i = 0; i < entriesCount; ++i)
@@ -43,19 +41,16 @@ public class Leaderboard : MonoBehaviour
 		int place = -1;
 		int localPlace = -1;
 
-		if (displayPlayer)
-		{
-			place = _records.FindIndex(record => record.Username == NakamaConnection.GetUsername());
-			localPlace = place - localStart;
-		}
+		place = _records.FindIndex(record => record.OwnerId == NakamaConnection.GetDeviceIdentifier());
+		localPlace = place - localStart;
 
-		if (localPlace >= 0 && localPlace < entriesCount && displayPlayer)
+		if (localPlace >= 0 && localPlace < entriesCount)
 		{
 			playerEntry.gameObject.SetActive(true);
 			playerEntry.transform.SetSiblingIndex(localPlace);
 		}
 
-		if (!forcePlayerDisplay || _records.Count < entriesCount)
+		if (_records.Count < entriesCount)
 			entriesRoot.GetChild(entriesRoot.transform.childCount - 1).gameObject.SetActive(false);
 
 		int currentHighScore = localStart;
@@ -83,10 +78,6 @@ public class Leaderboard : MonoBehaviour
 		    else
 		        hs.gameObject.SetActive(false);
 		}
-
-		// If we force the player to be displayed, we enable it even if it was disabled from elsewhere
-		if (forcePlayerDisplay) 
-			playerEntry.gameObject.SetActive(true);
 
 		playerEntry.number.text = (place + 1).ToString();
 	}
