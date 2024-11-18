@@ -38,23 +38,23 @@ public class Leaderboard : MonoBehaviour
         if (playerRecord != null)
         {
             int playerPlace = int.Parse(playerRecord.Rank);
-            playerEntry.transform.SetSiblingIndex(Mathf.Min(entriesRoot.childCount, playerPlace) - 1);
+            int lastIndex = Mathf.Min(entriesRoot.childCount, playerPlace) - 1;
+            
+            playerEntry.transform.SetSiblingIndex(lastIndex);
+            
+            if (playerPlace >= entriesRoot.childCount)
+                _records.Insert(lastIndex, playerRecord);
         }
-
+        
         for (int i = 0; i < entriesRoot.childCount && i < _records.Count; ++i)
         {
             HighscoreUI hs = entriesRoot.GetChild(i).GetComponent<HighscoreUI>();
-
-            IApiLeaderboardRecord usedRecord = hs == playerEntry ? playerRecord : _records[i];
-
-            if (usedRecord == null)
-                continue;
-
+            
             hs.gameObject.SetActive(true);
 
-            hs.playerName.text = usedRecord.Username;
-            hs.number.text = usedRecord.Rank;
-            hs.score.text = usedRecord.Score;
+            hs.playerName.text = _records[i].Username;
+            hs.number.text = _records[i].Rank;
+            hs.score.text = _records[i].Score;
         }
     }
 }
