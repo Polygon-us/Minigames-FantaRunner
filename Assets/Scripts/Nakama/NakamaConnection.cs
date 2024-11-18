@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Nakama;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NakamaConnection : MonoBehaviour
@@ -24,20 +25,21 @@ public class NakamaConnection : MonoBehaviour
     private ISession Session;
     //private ISocket Socket;
 
-    public static NakamaConnection Instance { get; private set; }
+    private static NakamaConnection _instance;
 
-    private void Awake()
+    public static NakamaConnection Instance
     {
-        if (Instance)
+        get
         {
-            Destroy(gameObject);
+            if (_instance)
+                return _instance;
             
-            return;
+            _instance = FindFirstObjectByType<NakamaConnection>();
+            
+            DontDestroyOnLoad(_instance.gameObject);
+            
+            return _instance;
         }
-        
-        Instance = this;
-        
-        DontDestroyOnLoad(gameObject);
     }
     
     private void Start()
@@ -60,7 +62,15 @@ public class NakamaConnection : MonoBehaviour
         return PlayerPrefs.GetString(UsernamePrefName);
     }
 
-    private async UniTaskVoid Connect()
+#if UNITY_EDITOR
+    [ContextMenu("Delete Username")]
+    public void DeleteUsername()
+    {
+        PlayerPrefs.DeleteKey(UsernamePrefName);
+    }
+#endif
+    
+    public async UniTask Connect()
     {
         Debug.Log("Connect");
 
@@ -126,7 +136,7 @@ public class NakamaConnection : MonoBehaviour
     }
 
     [ContextMenu("Test Send Leaderboard")]
-    public async UniTaskVoid SendLeaderboard(int score)
+    public async UniTask SendLeaderboard(int score)
     {
         Debug.Log("SendLeaderboard");
 
@@ -136,7 +146,7 @@ public class NakamaConnection : MonoBehaviour
     }
 
     [ContextMenu("Test Get Leaderboard")]
-    public async UniTask<IEnumerable<IApiLeaderboardRecord>> GetLeaderboard()
+    public async UniTask<List<IApiLeaderboardRecord>> GetLeaderboard()
     {
         Debug.Log("GetLeaderboard");
 
@@ -149,7 +159,7 @@ public class NakamaConnection : MonoBehaviour
 
         Debug.Log("GetLeaderboard finish");
         
-        return leaderboardRecords.Records;
+        return leaderboardRecords.Records.ToList();
     }
 
     [ContextMenu("Test Send Storage")]

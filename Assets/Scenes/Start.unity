@@ -1969,7 +1969,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   url: http://54.152.23.106:7350/
   serverKey: defaultkey
-  leaderboardId: 4ec4f126-3f9d-11e7-84ef-b7c182b36521
+  leaderboardId: trash_dash
   storageValueJson: '{"Progreso":{"monedas":13,"color":"FFFFFF"}}'
 --- !u!4 &1088114835
 Transform:
@@ -3024,9 +3024,8 @@ GameObject:
   - component: {fileID: 1491219586}
   - component: {fileID: 1491219585}
   - component: {fileID: 1491219584}
-  - component: {fileID: 1491219583}
   m_Layer: 5
-  m_Name: SerndButton
+  m_Name: SendButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3052,18 +3051,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 225.8, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1491219583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491219581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 082578361b9f9b740aecdad9d973bbaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1491219584
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3206,7 +3193,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1491219583}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: StartGame
         m_Mode: 1
@@ -3319,8 +3306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0f4d5b2ddb74e4bae0bf84fca89573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usernamePanel: {fileID: 0}
-  startButton: {fileID: 0}
+  usernamePanel: {fileID: 1605189342}
+  startButton: {fileID: 1886764179}
+  usernameInputField: {fileID: 1970102047}
+  sendButton: {fileID: 1491219585}
 --- !u!114 &1605189345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,14 +4134,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0

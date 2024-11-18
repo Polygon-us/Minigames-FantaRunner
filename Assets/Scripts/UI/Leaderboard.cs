@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Nakama;
+using UnityEngine;
 
 // Prefill the info on the player data, as they will be used to populate the leadboard.
 public class Leaderboard : MonoBehaviour
@@ -10,10 +13,14 @@ public class Leaderboard : MonoBehaviour
 	public bool forcePlayerDisplay;
 	public bool displayPlayer = true;
 
-	public void Open()
+	private List<IApiLeaderboardRecord> _records;
+	
+	public async UniTaskVoid Open()
 	{
 		gameObject.SetActive(true);
 
+		_records = await NakamaConnection.Instance.GetLeaderboard();
+		
 		Populate();
 	}
 
@@ -38,7 +45,7 @@ public class Leaderboard : MonoBehaviour
 
 		if (displayPlayer)
 		{
-			place = PlayerData.instance.GetScorePlace(int.Parse(playerEntry.score.text));
+			place = _records.FindIndex(record => record.Username == NakamaConnection.GetUsername());
 			localPlace = place - localStart;
 		}
 
@@ -48,7 +55,7 @@ public class Leaderboard : MonoBehaviour
 			playerEntry.transform.SetSiblingIndex(localPlace);
 		}
 
-		if (!forcePlayerDisplay || PlayerData.instance.highscores.Count < entriesCount)
+		if (!forcePlayerDisplay || _records.Count < entriesCount)
 			entriesRoot.GetChild(entriesRoot.transform.childCount - 1).gameObject.SetActive(false);
 
 		int currentHighScore = localStart;
@@ -63,13 +70,14 @@ public class Leaderboard : MonoBehaviour
 				continue;
 			}
 
-		    if (PlayerData.instance.highscores.Count > currentHighScore)
+		    if (_records.Count > currentHighScore)
 		    {
 		        hs.gameObject.SetActive(true);
-		        hs.playerName.text = PlayerData.instance.highscores[currentHighScore].name;
+		        
+		        hs.playerName.text = _records[i].Username;
 		        hs.number.text = (localStart + i + 1).ToString();
-		        hs.score.text = PlayerData.instance.highscores[currentHighScore].score.ToString();
-
+		        hs.score.text = _records[i].Score;
+		        
 		        currentHighScore++;
 		    }
 		    else
