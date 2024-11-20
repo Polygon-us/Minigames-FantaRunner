@@ -3,16 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | EndlessRunner</title>
+    <title>Unity Web Player | Endless Runner JMC</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=405 height=720 tabindex="-1" style="width: 405px; height: 720px; background: #231F20"></canvas>
-    <script src="Build/WebGL.loader.js"></script>
+    <script src="Build/docs.loader.js"></script>
     <script>
-      let myUnityInstance = null;
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) 
-      {
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         meta.name = 'viewport';
@@ -27,38 +24,18 @@
         document.body.style.textAlign = "left";
       }
 
-      // JavaScript functions to detect device type and communicate with Unity
-      function isMobile() {
-        let userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        return (/android|iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream);
-      }
-
-      function CheckDevice() {
-        var deviceType = isMobile() ? 'Mobile' : 'PC';
-
-        if (typeof myUnityInstance !== 'undefined' && myUnityInstance !== null) {
-          myUnityInstance.SendMessage('DeviceChecker', 'OnDeviceCheck', deviceType);
-        } else {
-          console.error("unityInstance is not defined or null");
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', (event) => {
-        createUnityInstance(document.querySelector("#unity-canvas"), {
-          arguments: [],
-          dataUrl: "Build/WebGL.data",
-          frameworkUrl: "Build/WebGL.framework.js",
-          codeUrl: "Build/WebGL.wasm",
-          streamingAssetsUrl: "StreamingAssets",
-          companyName: "DefaultCompany",
-          productName: "EndlessRunner",
-          productVersion: "1.0",
-          // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-          // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-        }).then((unityInstance) => {
-          myUnityInstance = unityInstance;
-        });
-      }
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/docs.data",
+        frameworkUrl: "Build/docs.framework.js",
+        codeUrl: "Build/docs.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Endless Runner JMC",
+        productVersion: "0.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
     </script>
   </body>
 </html>
