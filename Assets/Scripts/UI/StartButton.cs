@@ -23,7 +23,5 @@ public class StartButton : MonoBehaviour
 #if UNITY_PURCHASING
         var module = StandardPurchasingModule.Instance();
 #endif
-
-        NakamaConnection.Instance.Connect().Forget();
     }
 }

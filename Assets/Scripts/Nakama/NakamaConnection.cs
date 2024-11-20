@@ -87,6 +87,17 @@ public class NakamaConnection : MonoBehaviour
         
         OnLoginCompleted?.Invoke(true);
     }
+    
+    public async UniTaskVoid Disconnect()
+    {
+        Debug.Log("Disconnect");
+        
+        await Client.SessionLogoutAsync(Session);
+        
+        Debug.Log("Disconnect finish");
+        
+        DeleteUsername();
+    }
 
     private async UniTask AuthenticateSessionIfNull()
     {

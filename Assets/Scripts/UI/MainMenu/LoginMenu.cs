@@ -1,4 +1,4 @@
-using System;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class LoginMenu : MonoBehaviour
 {
     [SerializeField] private GameObject usernamePanel;
-    [SerializeField] private StartButton startButton;
+    [SerializeField] private GameObject startPanel;
+    
+    [SerializeField] private Button sendButton;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button logoutButton;
 
     [SerializeField] private TMP_InputField usernameInputField;
-    [SerializeField] private Button sendButton;
 
     private void OnEnable()
     {
@@ -24,49 +27,63 @@ public class LoginMenu : MonoBehaviour
 
     private void Start()
     {
+        sendButton.onClick.AddListener(() => OnSendUsername().Forget());
+        logoutButton.onClick.AddListener(OnLogout);
+        startButton.onClick.AddListener(OnStartGame);
+        
         if (NakamaConnection.Instance.HasRegistered())
+            NakamaConnection.Instance.Connect().Forget();
+        else
+            ShowUsernamePanel();
+    }
+
+    private void OnLoginCompleted(bool wasSuccess)
+    {
+        if (wasSuccess)
         {
             HideUsernamePanel();
         }
         else
         {
+            NakamaConnection.Instance.DeleteUsername();
+
             ShowUsernamePanel();
         }
-        
-        sendButton.onClick.AddListener(OnSendUsername);
     }
     
-    private void OnLoginCompleted(bool wasSuccess)
-    {
-        if (wasSuccess)
-            SceneManager.LoadScene("Main");
-        else
-        {
-            NakamaConnection.Instance.DeleteUsername();
-            
-            ShowUsernamePanel();
-        }
-    }
-
-    private void OnSendUsername()
+    private async UniTaskVoid OnSendUsername()
     {
         if (usernameInputField.text.Length == 0)
             return;
         
         NakamaConnection.Instance.SetUsername(usernameInputField.text);
         
+        await NakamaConnection.Instance.Connect();
+        
         HideUsernamePanel();
+    }
+    
+    private void OnLogout()
+    {
+        NakamaConnection.Instance.Disconnect().Forget();
+        
+        ShowUsernamePanel();
+    }
+
+    private void OnStartGame()
+    {
+        SceneManager.LoadScene("Main");
     }
     
     private void ShowUsernamePanel()
     {
         usernamePanel.SetActive(true);
-        startButton.gameObject.SetActive(false);
+        startPanel.SetActive(false);
     }
     
     private void HideUsernamePanel()
     {
         usernamePanel.SetActive(false);
-        startButton.gameObject.SetActive(true);
+        startPanel.SetActive(true);
     }
 }
