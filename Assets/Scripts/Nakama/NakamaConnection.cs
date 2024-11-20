@@ -39,8 +39,6 @@ public class NakamaConnection : MonoBehaviour
             return _instance;
         }
     }
-
-    public static Action<bool> OnLoginCompleted;
     
     public bool HasRegistered()
     {
@@ -63,29 +61,25 @@ public class NakamaConnection : MonoBehaviour
         PlayerPrefs.DeleteKey(UsernamePrefName);
     }
 
-    public async UniTask Connect()
+    public async UniTask<bool> Connect()
     {
         Debug.Log("Connect");
 
         try
         {
             Client = new Client(new Uri(url), serverKey, UnityWebRequestAdapter.Instance);
+            Client.Logger = new UnityLogger();
+            
             await AuthenticateSessionIfNull();
-
-            Socket = Client.NewSocket();
-            // await Socket.ConnectAsync(Session, true);
         }
         catch (Exception e)
         {
-            OnLoginCompleted?.Invoke(false);
-            return;
+            return false;
         }
-
-        //CacheSessionSearch(SessionPrefName);
         
         Debug.Log("Connect finish");
-        
-        OnLoginCompleted?.Invoke(true);
+
+        return true;
     }
     
     public async UniTaskVoid Disconnect()
@@ -97,14 +91,21 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("Disconnect finish");
         
         DeleteUsername();
+        
+        Session = null;
+        Client = null;
     }
 
     private async UniTask AuthenticateSessionIfNull()
     {
         Debug.Log("AuthenticateSessionIfNull");
 
-        Session ??= await Client.AuthenticateDeviceAsync(GetDeviceIdentifier(), username: GetUsername());
+        string username = GetUsername();
+        string deviceId = GetDeviceIdentifier();
+        Session ??= await Client.AuthenticateDeviceAsync(deviceId, username);
 
+        Debug.Log($"Username: {Session.Username}");
+        
         Debug.Log("AuthenticateSessionIfNull finish");
     }
 
