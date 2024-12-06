@@ -188,10 +188,10 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("GetPlayerLeaderboard");
 
         IApiLeaderboardRecordList leaderboardRecords =
-            await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, new[] {GetUserID()}, limit: 1);
+            await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, limit: 1000);
 
         Debug.Log("GetPlayerLeaderboard finish");
 
-        return leaderboardRecords.OwnerRecords.FirstOrDefault(record => record.OwnerId == GetUserID());
+        return leaderboardRecords.Records.FirstOrDefault(record => record.OwnerId == GetUserID());
     }
 }
