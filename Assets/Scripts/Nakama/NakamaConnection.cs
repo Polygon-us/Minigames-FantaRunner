@@ -188,7 +188,7 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("GetPlayerLeaderboard");
 
         IApiLeaderboardRecordList leaderboardRecords =
-            await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, limit: 1000);
+            await Client.ListLeaderboardRecordsAroundOwnerAsync(Session, leaderboardId, GetUserID());
 
         Debug.Log("GetPlayerLeaderboard finish");
 
