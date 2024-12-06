@@ -16,15 +16,6 @@
       },
       "hash": "b9a9208218ab6c566cd4ba024ff2112a4ffc001c"
     },
-    "com.modernwestern.unity-rest": {
-      "version": "https://github.com/ModernWestern/unity.modernwestern.unity-rest-package.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
-      },
-      "hash": "d90922494ca97a46cf6066bd6da82bf47886ef94"
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -177,7 +168,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.1",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

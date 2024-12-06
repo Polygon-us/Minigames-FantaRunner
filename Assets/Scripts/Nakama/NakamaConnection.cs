@@ -8,12 +8,11 @@ using UnityEngine;
 
 public class NakamaConnection : MonoBehaviour
 {
-    [SerializeField] private string url = "https://73c2-8-242-214-187.ngrok-free.app";
+    [SerializeField] private GameEnvironment gameEnvironment;
+
     [SerializeField] private string serverKey = "defaultkey";
 
     [Space] [SerializeField] private string leaderboardId = "trash_dash";
-
-    [Space] [SerializeField] private string storageValueJson = "{\"Progreso\":{\"monedas\":13,\"color\":\"FFFFFF\"}}";
 
     //private const string SessionPrefName = "nakama.Session";
     private const string DeviceIdentifierPrefName = "nakama.deviceUniqueIdentifier";
@@ -21,7 +20,6 @@ public class NakamaConnection : MonoBehaviour
 
     private IClient Client;
     private ISession Session;
-    private ISocket Socket;
 
     private static NakamaConnection _instance;
 
@@ -39,7 +37,7 @@ public class NakamaConnection : MonoBehaviour
             return _instance;
         }
     }
-    
+
     public bool HasRegistered()
     {
         return PlayerPrefs.HasKey(UsernamePrefName);
@@ -67,31 +65,43 @@ public class NakamaConnection : MonoBehaviour
 
         try
         {
-            Client = new Client(new Uri(url), serverKey, UnityWebRequestAdapter.Instance);
+            string domain = gameEnvironment.GetPathByType();
+            string key = gameEnvironment.GetKey();
+
+            Client = new Client(new Uri(domain), key, UnityWebRequestAdapter.Instance);
             Client.Logger = new UnityLogger();
-            
+
             await AuthenticateSessionIfNull();
         }
-        catch (Exception e)
+        catch (ApiResponseException e)
         {
+            Debug.LogException(e);
             return false;
         }
-        
+
         Debug.Log("Connect finish");
 
         return true;
     }
-    
+
     public async UniTaskVoid Disconnect()
     {
         Debug.Log("Disconnect");
-        
-        await Client.SessionLogoutAsync(Session);
-        
+
+        try
+        {
+            await Client.SessionLogoutAsync(Session);
+        }
+        catch (ApiResponseException e)
+        {
+            Debug.LogException(e);
+            throw;
+        }
+
         Debug.Log("Disconnect finish");
-        
+
         DeleteUsername();
-        
+
         Session = null;
         Client = null;
     }
@@ -101,11 +111,20 @@ public class NakamaConnection : MonoBehaviour
         Debug.Log("AuthenticateSessionIfNull");
 
         string username = GetUsername();
-        string deviceId = GetDeviceIdentifier();
-        Session ??= await Client.AuthenticateDeviceAsync(deviceId, username);
+        Debug.Log($"new Username: {username}");
+
+        try
+        {
+            Session = await Client.AuthenticateDeviceAsync(GetDeviceIdentifier(), username);
+        }
+        catch (ApiResponseException e)
+        {
+            Debug.LogException(e);
+            throw;
+        }
 
         Debug.Log($"Username: {Session.Username}");
-        
+
         Debug.Log("AuthenticateSessionIfNull finish");
     }
 
@@ -113,17 +132,23 @@ public class NakamaConnection : MonoBehaviour
     {
         return Session.UserId;
     }
-    
+
     private static string GetDeviceIdentifier()
     {
         Debug.Log("GetDeviceIdentifier");
-        
+
+        string deviceId;
+
         if (PlayerPrefs.HasKey(DeviceIdentifierPrefName))
         {
-            return PlayerPrefs.GetString(DeviceIdentifierPrefName);
+            deviceId = PlayerPrefs.GetString(DeviceIdentifierPrefName);
+
+            print($"Device ID: {deviceId}");
+
+            return deviceId;
         }
 
-        string deviceId = SystemInfo.deviceUniqueIdentifier;
+        deviceId = SystemInfo.deviceUniqueIdentifier;
 
         if (deviceId == SystemInfo.unsupportedIdentifier)
         {
@@ -131,6 +156,8 @@ public class NakamaConnection : MonoBehaviour
         }
 
         PlayerPrefs.SetString(DeviceIdentifierPrefName, deviceId);
+
+        print($"Device ID: {deviceId}");
 
         return deviceId;
     }
@@ -148,7 +175,8 @@ public class NakamaConnection : MonoBehaviour
     {
         Debug.Log("GetLeaderboard");
 
-        IApiLeaderboardRecordList leaderboardRecords = await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, limit: 10);
+        IApiLeaderboardRecordList leaderboardRecords =
+            await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, limit: 10);
 
         Debug.Log("GetLeaderboard finish");
 
@@ -159,40 +187,11 @@ public class NakamaConnection : MonoBehaviour
     {
         Debug.Log("GetPlayerLeaderboard");
 
-        IApiLeaderboardRecordList leaderboardRecords = await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, new[] { GetUserID() }, limit: 1);
+        IApiLeaderboardRecordList leaderboardRecords =
+            await Client.ListLeaderboardRecordsAsync(Session, leaderboardId, new[] {GetUserID()}, limit: 1);
 
         Debug.Log("GetPlayerLeaderboard finish");
 
         return leaderboardRecords.OwnerRecords.FirstOrDefault(record => record.OwnerId == GetUserID());
-    }
-
-    [ContextMenu("Test Send Storage")]
-    public async UniTaskVoid SendStorage()
-    {
-        Debug.Log("SendStorage");
-
-        WriteStorageObject[] objects = new[]
-        {
-            new WriteStorageObject
-            {
-                Collection = "test_progress",
-                Key = "test_data",
-                Value = "Test data",
-                PermissionRead = 2, // 2 = Public (others can read if needed)
-                PermissionWrite = 1 // 1 = Private (only the owner can write)
-            },
-            new WriteStorageObject
-            {
-                Collection = "player_progress",
-                Key = "progress_data",
-                Value = storageValueJson,
-                PermissionRead = 2, // 2 = Public (others can read if needed)
-                PermissionWrite = 1 // 1 = Private (only the owner can write)
-            }
-        };
-
-        await Client.WriteStorageObjectsAsync(Session, objects);
-
-        Debug.Log("SendStorage finish");
     }
 }

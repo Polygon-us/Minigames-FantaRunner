@@ -10,10 +10,8 @@ public class CustomInputField : TMP_InputField
     
     public override void OnDeselect(BaseEventData eventData)
     {
-#if !UNITY_EDITOR
-        if (DeviceChecker.DeviceType != DeviceType.Mobile)
+        if (!UnityEngine.Device.Application.isMobilePlatform)
             base.OnDeselect(eventData);
-#endif
     }
 
     protected override void OnEnable()

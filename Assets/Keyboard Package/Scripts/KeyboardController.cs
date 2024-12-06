@@ -56,10 +56,8 @@ public class KeyboardController : MonoBehaviour
 
     public void Open(CustomInputField currentText)
     {
-#if !UNITY_EDITOR
-        if (DeviceChecker.DeviceType != DeviceType.Mobile)
+        if (!UnityEngine.Device.Application.isMobilePlatform)
             return;
-#endif
         
         gameObject.SetActive(true);
         
