@@ -1,3 +1,4 @@
+using Core.Functions.Authentication.Handler;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -15,17 +16,22 @@ public class LoginMenu : MonoBehaviour
 
     [SerializeField] private TMP_InputField usernameInputField;
 
+    private AuthenticationHandler _authenticationHandler;
+    
     private void Start()
     {
         sendButton.onClick.AddListener(OnSendUsername);
         logoutButton.onClick.AddListener(OnLogout);
         startButton.onClick.AddListener(OnStartGame);
 
+        _authenticationHandler = new AuthenticationHandler();
+        
         Connect().Forget();
     }
 
     private async UniTaskVoid Connect()
     {
+        // _authenticationHandler.AuthenticationEmail()
         if (!NakamaConnection.Instance.HasRegistered())
         {
             ShowUsernamePanel();
