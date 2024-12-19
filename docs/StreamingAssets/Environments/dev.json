@@ -1,0 +1,6 @@
+﻿{
+  "serverUrl": "https://trash-dash-server-dev.avanto.link:7350",
+  "serverKey": "dev_server_key_121314@dev",
+  "httpKey": "dev_http_key_1234@dev",
+  "timeout": 5
+}

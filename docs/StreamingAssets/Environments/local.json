@@ -1,0 +1,6 @@
+{
+  "serverUrl": "https://8c98-8-242-214-187.ngrok-free.app",
+  "serverKey": "server_key",
+  "httpKey": "http_key",
+  "timeout": 5
+}
