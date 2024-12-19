@@ -23,7 +23,7 @@
       "dependencies": {
         "com.heroiclabs.nakama-unity": "3.14.0"
       },
-      "hash": "70c6963542dd6f198800e779e133181d7a78f496"
+      "hash": "4b4a6b73fd3bb02ea751c4bf8183d3203fe81224"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

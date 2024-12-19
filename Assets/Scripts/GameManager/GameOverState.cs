@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Core.Functions.Leaderboard.Handler;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
@@ -19,6 +21,13 @@ public class GameOverState : AState
 	public Leaderboard fullLeaderboard;
 
     public GameObject addButton;
+    
+    private LeaderboardHandler _leaderboardHandler;
+
+    private void Awake()
+    {
+        _leaderboardHandler = new LeaderboardHandler();
+    }
 
     public override void Enter(AState from)
     {
@@ -120,7 +129,7 @@ public class GameOverState : AState
 
 	private async UniTaskVoid SendLeaderboard()
 	{
-		await NakamaConnection.Instance.SendLeaderboard(trackManager.score);
+        await _leaderboardHandler.WriteLeaderboard(trackManager.score);
 		
 		miniLeaderboard.Populate().Forget();
 	}
