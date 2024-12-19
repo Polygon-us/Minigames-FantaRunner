@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System;
+using Core.Functions.Leaderboard.Domain.DTOs;
+using Core.Functions.Leaderboard.Handler;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Nakama;
+using Core.Utils.Responses;
+using System.Linq;
 using UnityEngine;
 
 // Prefill the info on the player data, as they will be used to populate the leadboard.
@@ -11,7 +14,14 @@ public class Leaderboard : MonoBehaviour
 
     public HighscoreUI playerEntry;
 
-    private List<IApiLeaderboardRecord> _records;
+    private List<LeaderboardRecordDto> _records;
+
+    private LeaderboardHandler _leaderboardHandler;
+    
+    private void Awake()
+    {
+        _leaderboardHandler = new LeaderboardHandler();
+    }
 
     public void Open()
     {
@@ -31,13 +41,16 @@ public class Leaderboard : MonoBehaviour
         {
             entriesRoot.GetChild(i).gameObject.SetActive(false);
         }
+
+        ResultResponse<LeaderboardListRecordsDto> response = await _leaderboardHandler.ListLeaderboard(10);
         
-        _records = await NakamaConnection.Instance.GetLeaderboard();
-        IApiLeaderboardRecord playerRecord = await NakamaConnection.Instance.GetPlayerLeaderboard();
+        _records = response.Data.Records.ToList();
+        
+        ResultResponse<LeaderboardRecordDto> playerRecord = await  _leaderboardHandler.ListPlayerLeaderboard();
 
         if (playerRecord != null)
         {
-            int playerPlace = int.Parse(playerRecord.Rank);
+            int playerPlace = playerRecord.Data.Rank;
             int lastIndex = Mathf.Min(entriesRoot.childCount, playerPlace) - 1;
             
             playerEntry.transform.SetSiblingIndex(lastIndex);
@@ -53,8 +66,8 @@ public class Leaderboard : MonoBehaviour
             hs.gameObject.SetActive(true);
 
             hs.playerName.text = _records[i].Username;
-            hs.number.text = _records[i].Rank;
-            hs.score.text = _records[i].Score;
+            hs.number.text = _records[i].Rank.ToString();
+            hs.score.text = _records[i].Score.ToString();
         }
     }
 }

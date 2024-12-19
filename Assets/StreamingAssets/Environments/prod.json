@@ -1,0 +1,6 @@
+﻿{
+  "serverUrl": "https://prod.nakama-server.com",
+  "serverKey": "prod_server_key_91011@prod",
+  "httpKey": "prod_http_key",
+  "timeout": 5000
+}

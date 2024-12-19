@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f9fd769be7c634610f2a61aa914a1a55f34740e1"
+      "hash": "bdf102f145383dc6f64479183571a1a59e031bfb"
     },
     "com.heroiclabs.nakama-unity": {
       "version": "https://github.com/heroiclabs/nakama-unity.git?path=/Packages/Nakama",
@@ -15,6 +15,15 @@
         "com.unity.modules.unitywebrequest": "1.0.0"
       },
       "hash": "b9a9208218ab6c566cd4ba024ff2112a4ffc001c"
+    },
+    "com.polygonus.nakama": {
+      "version": "https://github.com/Polygon-us/Unity-Multiplayer-Nakama.git?path=/Packages/com.polygonus.nakama#dev",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.heroiclabs.nakama-unity": "3.14.0"
+      },
+      "hash": "4b4a6b73fd3bb02ea751c4bf8183d3203fe81224"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
