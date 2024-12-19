@@ -1,5 +1,6 @@
 using Samples.ScriptableObject.Common.Environment;
 using Core.Functions.Environment.Handler;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class EnvironmentInitializer : MonoBehaviour
@@ -7,13 +8,15 @@ public class EnvironmentInitializer : MonoBehaviour
     [SerializeField] private EnvironmentScriptable environmentScriptable;
 
     private EnvironmentHandler _environmentHandler;
-
-    private void Awake()
+    
+    private async void Start()
     {
         _environmentHandler = new EnvironmentHandler();
         
         string environment = environmentScriptable.GetSelectedEnvironment();
         
-        _environmentHandler.EnvironmentConfig(environment);
+        await _environmentHandler.EnvironmentConfig(environment);
+        
+        SceneManager.LoadScene(1);
     }
 }
