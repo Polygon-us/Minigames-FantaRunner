@@ -1,11 +1,11 @@
 using Core.Functions.Authentication.Handler;
 using Core.Functions.Register.Domain.DTOs;
-using Core.Functions.Register.Handler;
 using Core.Functions.Session.Domain.DTOs;
+using Core.Functions.Register.Handler;
 using Core.Functions.Session.Handler;
-using Core.Utils.Responses;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
+using Core.Utils.Responses;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -35,7 +35,10 @@ public class LoginMenu : MonoBehaviour
         _registerHandler = new RegisterHandler();
         _sessionHandler = new SessionHandler();
         
-        Connect().Forget();
+        if (!EnvironmentInitializer.IsInitialized)
+            EnvironmentInitializer.EnsureInitialized();
+        else
+            Connect().Forget();
     }
 
     private async UniTaskVoid Connect()

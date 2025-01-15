@@ -9,6 +9,8 @@ public class EnvironmentInitializer : MonoBehaviour
 
     private EnvironmentHandler _environmentHandler;
     
+    public static bool IsInitialized { get; private set; }
+    
     private async void Start()
     {
         _environmentHandler = new EnvironmentHandler();
@@ -17,6 +19,16 @@ public class EnvironmentInitializer : MonoBehaviour
         
         await _environmentHandler.EnvironmentConfig(environment);
         
+        IsInitialized = true;
+        
         SceneManager.LoadScene(1);
+    }
+
+    public static void EnsureInitialized()
+    {
+        if (IsInitialized)
+            return;
+        
+        SceneManager.LoadScene(0);
     }
 }
