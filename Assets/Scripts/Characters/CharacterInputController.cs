@@ -187,25 +187,35 @@ public class CharacterInputController : MonoBehaviour
     {
         // Disabled if it's tutorial and not thec urrent right tutorial level (see func TutorialMoveCheck)
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
-       
+        
         if (moveAction.WasPressedThisFrame())
         {
-	        if (moveValue.x < 0 && TutorialMoveCheck(0))
+	        if (Mathf.Abs(moveValue.x) > Mathf.Abs(moveValue.y))
 	        {
-		        ChangeLane(-1);
+		        switch (moveValue.x)
+		        {
+			        case < 0 when TutorialMoveCheck(0):
+				        ChangeLane(-1);
+				        break;
+			        case > 0 when TutorialMoveCheck(0):
+				        ChangeLane(1);
+				        break;
+		        }
 	        }
-	        else if (moveValue.x > 0 && TutorialMoveCheck(0))
+	        else
 	        {
-		        ChangeLane(1);
-	        }
-	        else if (moveValue.y > 0 && TutorialMoveCheck(1))
-	        {
-		        Jump();
-	        }
-	        else if (moveValue.y < 0 && TutorialMoveCheck(2))
-	        {
-		        if (!m_Sliding)
-			        Slide();
+		        switch (moveValue.y)
+		        {
+			        case > 0 when TutorialMoveCheck(1):
+				        Jump();
+				        break;
+			        case < 0 when TutorialMoveCheck(2):
+			        {
+				        if (!m_Sliding)
+					        Slide();
+				        break;
+			        }
+		        }
 	        }
         }
 

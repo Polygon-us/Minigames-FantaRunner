@@ -1,8 +1,14 @@
-using Cysharp.Threading.Tasks;
-using TMPro;
-using UnityEngine;
+using Core.Functions.Authentication.Handler;
+using Core.Functions.Register.Domain.DTOs;
+using Core.Functions.Session.Domain.DTOs;
+using Core.Functions.Register.Handler;
+using Core.Functions.Session.Handler;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
+using Core.Utils.Responses;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class LoginMenu : MonoBehaviour
 {
@@ -15,50 +21,57 @@ public class LoginMenu : MonoBehaviour
 
     [SerializeField] private TMP_InputField usernameInputField;
 
+    private AuthenticationHandler _authenticationHandler;
+    private RegisterHandler _registerHandler;
+    private SessionHandler _sessionHandler;
+    
     private void Start()
     {
         sendButton.onClick.AddListener(OnSendUsername);
         logoutButton.onClick.AddListener(OnLogout);
         startButton.onClick.AddListener(OnStartGame);
 
-        Connect().Forget();
+        _authenticationHandler = new AuthenticationHandler();
+        _registerHandler = new RegisterHandler();
+        _sessionHandler = new SessionHandler();
+        
+        if (!EnvironmentInitializer.IsInitialized)
+            EnvironmentInitializer.EnsureInitialized();
+        else
+            Connect().Forget();
     }
 
     private async UniTaskVoid Connect()
     {
-        if (!NakamaConnection.Instance.HasRegistered())
+        ResultResponse<SessionDto> response = await _authenticationHandler.AuthenticationDevice();
+        
+        if (!response.IsSuccess)
         {
             ShowUsernamePanel();
             return;
         }
 
-        bool wasSuccess = await NakamaConnection.Instance.Connect();
-
-        if (wasSuccess)
-        {
-            HideUsernamePanel();
-        }
-        else
-        {
-            NakamaConnection.Instance.DeleteUsername();
-
-            ShowUsernamePanel();
-        }
+        HideUsernamePanel();
     }
 
-    private void OnSendUsername()
+    private async void OnSendUsername()
     {
         if (usernameInputField.text.Length == 0)
             return;
 
-        NakamaConnection.Instance.SetUsername(usernameInputField.text);
+        RegisterByDeviceDto dto = new RegisterByDeviceDto()
+        {
+            username = usernameInputField.text,
+        };
 
+        await _registerHandler.RegisterByDevice(dto);
+        
         Connect().Forget();
     }
 
-    private void OnLogout()
+    private async void OnLogout()
     {
-        NakamaConnection.Instance.Disconnect().Forget();
+        await _sessionHandler.SessionLogout();
 
         ShowUsernamePanel();
     }

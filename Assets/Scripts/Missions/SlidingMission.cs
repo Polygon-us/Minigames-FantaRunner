@@ -17,7 +17,7 @@ public class SlidingMission : MissionBase
 
     public override void UpdateMission(TrackManager manager)
     {
-        if(manager.characterController.isSliding)
+        if (manager.characterController.isSliding)
         {
             float dist = manager.worldDistance - m_PreviousWorldDist;
             missionObjectives.AdvanceObjective((int)dist);
