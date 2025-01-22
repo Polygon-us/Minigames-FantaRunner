@@ -165,7 +165,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.unity.trashdash
-    Standalone: com.DefaultCompany.Endless-Runner-JMC
+    Standalone: com.Polygonus.Endless-Runner-JMC
     Tizen: 
     iPhone: 
     tvOS: 
