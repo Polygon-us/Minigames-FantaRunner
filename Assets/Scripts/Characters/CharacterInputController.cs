@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
+using FirebaseCore;
+using FirebaseCore.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 
@@ -64,9 +67,6 @@ public class CharacterInputController : MonoBehaviour
 	protected float m_SlideStart;
 
 	protected AudioSource m_Audio;
-	private InputAction moveAction;
-	private InputAction touchAction;
-	private InputAction swipeAction;
 
     protected int m_CurrentLane = k_StartingLane;
     protected Vector3 m_TargetPosition = Vector3.zero;
@@ -90,10 +90,11 @@ public class CharacterInputController : MonoBehaviour
         m_Sliding = false;
         m_SlideStart = 0.0f;
 	    m_IsRunning = false;
-	    
-	    moveAction = InputSystem.actions.FindAction("Move");
-	    touchAction = InputSystem.actions.FindAction("Touch");
-	    swipeAction = InputSystem.actions.FindAction("Swipe");
+    }
+
+    private void OnDisable()
+    {
+	    FirebaseConnection.OnUserInput -= OnUserInput;
     }
 
     // Cheating functions, use for testing
@@ -128,13 +129,17 @@ public class CharacterInputController : MonoBehaviour
 		m_IsRunning = false;
         character.animator.SetBool(s_DeadHash, false);
 
-		characterCollider.Init ();
+		characterCollider.Init();
 
 		m_ActiveConsumables.Clear();
+	    
+		FirebaseConnection.OnUserInput += OnUserInput;
 	}
 
 	public void End()
 	{
+		FirebaseConnection.OnUserInput -= OnUserInput;
+		
         CleanConsumable();
     }
 
@@ -182,97 +187,34 @@ public class CharacterInputController : MonoBehaviour
 
         return !TrackManager.instance.isTutorial || currentTutorialLevel >= tutorialLevel;
     }
-    
-	protected void Update ()
+
+    private void OnUserInput(UserInputDto input)
     {
-        // Disabled if it's tutorial and not thec urrent right tutorial level (see func TutorialMoveCheck)
-        Vector2 moveValue = moveAction.ReadValue<Vector2>();
-        
-        if (moveAction.WasPressedThisFrame())
-        {
-	        if (Mathf.Abs(moveValue.x) > Mathf.Abs(moveValue.y))
-	        {
-		        switch (moveValue.x)
-		        {
-			        case < 0 when TutorialMoveCheck(0):
-				        ChangeLane(-1);
-				        break;
-			        case > 0 when TutorialMoveCheck(0):
-				        ChangeLane(1);
-				        break;
-		        }
-	        }
-	        else
-	        {
-		        switch (moveValue.y)
-		        {
-			        case > 0 when TutorialMoveCheck(1):
-				        Jump();
-				        break;
-			        case < 0 when TutorialMoveCheck(2):
-			        {
-				        if (!m_Sliding)
-					        Slide();
-				        break;
-			        }
-		        }
-	        }
-        }
+	    // 1 -> jump
+	    // 2 -> slide
+	    // 3 -> left
+	    // 4 -> right
+	    
+	    switch (input.direction)
+	    {
+		    case 1 when TutorialMoveCheck(1):
+			    Jump();
+			    break;
+		    case 2 when TutorialMoveCheck(2):
+			    if (!m_Sliding)
+				    Slide();
+			    break;
+		    case 3 when TutorialMoveCheck(0):
+			    ChangeLane(-1);
+			    break;
+		    case 4 when TutorialMoveCheck(0):
+			    ChangeLane(1);
+			    break;
+	    }
+    }
 
-		// Use touch input on mobile
-        if (touchAction.IsInProgress())
-        {
-	        // Input check is AFTER the swipe test, that way if TouchPhase.Ended happen a single frame after the Began Phase
-	        // a swipe can still be registered (otherwise, m_IsSwiping will be set to false and the test wouldn't happen for that began-Ended pair)
-			
-	        if (touchAction.WasPerformedThisFrame())
-	        {
-		        m_StartingTouch = swipeAction.ReadValue<Vector2>();
-		        m_IsSwiping = true;
-	        }
-	        else if(touchAction.WasReleasedThisFrame())
-	        {
-		        m_IsSwiping = false;
-	        }
-	        
-			if(m_IsSwiping)
-			{
-				Vector2 diff = swipeAction.ReadValue<Vector2>() - m_StartingTouch;
-   
-				// Put difference in Screen ratio, but using only width, so the ratio is the same on both
-                // axes (otherwise we would have to swipe more vertically...)
-				diff = new Vector2(diff.x/Screen.width, diff.y/Screen.width);
-   
-				if(diff.magnitude > 0.05f) //we set the swip distance to trigger movement to 5% of the screen width
-				{
-					if(Mathf.Abs(diff.y) > Mathf.Abs(diff.x))
-					{
-						if(TutorialMoveCheck(2) && diff.y < 0)
-						{
-							Slide();
-						}
-						else if(TutorialMoveCheck(1))
-						{
-							Jump();
-						}
-					}
-					else if(TutorialMoveCheck(0))
-					{
-						if(diff.x < 0)
-						{
-							ChangeLane(-1);
-						}
-						else
-						{
-							ChangeLane(1);
-						}
-					}
-						
-					m_IsSwiping = false;
-				}
-            }
-		}
-
+    protected void Update ()
+    {
         Vector3 verticalTargetPosition = m_TargetPosition;
 
 		UpdateSliding();

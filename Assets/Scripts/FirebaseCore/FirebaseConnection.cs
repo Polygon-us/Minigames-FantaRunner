@@ -1,28 +1,27 @@
-using System;
 using FirebaseWebGL.Scripts.FirebaseBridge;
-using System.Collections.Generic;
 using FirebaseCore.DTOs;
 using Newtonsoft.Json;
 using UnityEngine;
+using System;
 
 namespace FirebaseCore
 {
     public class FirebaseConnection : MonoBehaviour
     {
-        private string room = "A1B1";
+        private const string Room = "A1B1";
+
+        public static Action<UserInputDto> OnUserInput;
         
         public void ListenToDatabaseChanges()
         {
-            FirebaseDatabase.ListenForValueChanged(room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
-            print($"Started ListenToDatabaseChanges to {room}");
+            FirebaseDatabase.ListenForValueChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
         }
 
         private void HandleValueChanged(string newValue)
         {
             UserInputDto inputDto = ConvertTo<UserInputDto>(newValue);
 
-            print($"count: {inputDto.count}\n" +
-                  $"direction: {inputDto.direction}");
+            OnUserInput?.Invoke(inputDto);
         }
         
         private void HandleError(string error)
@@ -32,17 +31,12 @@ namespace FirebaseCore
 
         private void OnDisable()
         {
-            FirebaseDatabase.StopListeningForValueChanged(room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
+            FirebaseDatabase.StopListeningForValueChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
         }
         
-        private static T ConvertTo<T>(Dictionary<string, object> dictionary) where T : class
+        private static T ConvertTo<T>(string obj) where T : class
         {
-            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(dictionary));
-        }
-        
-        private static T ConvertTo<T>(object obj) where T : class
-        {
-            return ConvertTo<T>((Dictionary<string, object>)obj);
+            return JsonConvert.DeserializeObject<T>(obj);
         }
     }
 }
