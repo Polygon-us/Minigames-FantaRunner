@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Endless Runner JMC</title>
+    <title>Fanta Endless Runner</title>
   </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;", class="dark">
     <canvas id="unity-canvas" width=405 height=720 tabindex="-1" style="width: 405px; height: 720px; background: #231F20"></canvas>
     <script src="Build/docs.loader.js"></script>
     <script>
@@ -23,19 +23,34 @@
 
         document.body.style.textAlign = "left";
       }
-
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        arguments: [],
-        dataUrl: "Build/docs.data",
-        frameworkUrl: "Build/docs.framework.js",
-        codeUrl: "Build/docs.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Polygonus",
-        productName: "Endless Runner JMC",
-        productVersion: "0.4.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      document.addEventListener('DOMContentLoaded', (event) => {
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+          arguments: [],
+          dataUrl: "Build/docs.data",
+          frameworkUrl: "Build/docs.framework.js",
+          codeUrl: "Build/docs.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "Polygonus",
+          productName: "Fanta Endless Runner",
+          productVersion: "0.4.0",
+          // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+          // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+        }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
+        });
       });
     </script>
-  </body>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-database-compat.js"></script>  </body>
+    <script>
+      const firebaseApp = firebase.initializeApp({
+        apiKey: "AIzaSyBBs0Fyx51ef1xmFhn_9ifMzo7zr_J4Zuo",
+        authDomain: "polygonus-fantarunner.firebaseapp.com",
+        databaseURL: "https://polygonus-fantarunner-default-rtdb.firebaseio.com",
+        projectId: "polygonus-fantarunner",
+        storageBucket: "polygonus-fantarunner.firebasestorage.app",
+        messagingSenderId: "181429508314",
+        appId: "1:181429508314:web:1c9d7fb549f39fedcfade3"
+      });
+    </script>
 </html>

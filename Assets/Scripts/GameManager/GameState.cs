@@ -279,15 +279,15 @@ public class GameState : AState
         }
     }
 
-	void OnApplicationPause(bool pauseStatus)
-	{
-		if (pauseStatus) Pause();
-	}
-
-    void OnApplicationFocus(bool focusStatus)
-    {
-        if (!focusStatus) Pause();
-    }
+	// void OnApplicationPause(bool pauseStatus)
+	// {
+    //     if (pauseStatus) Pause();
+	// }
+    //
+    // void OnApplicationFocus(bool focusStatus)
+    // {
+    //     if (!focusStatus) Pause();
+    // }
 
     public void Pause(bool displayMenu = true)
 	{
