@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000012383427076}
-  - component: {fileID: 137000010249369434}
+  - component: {fileID: 3359179370479327061}
   m_Layer: 0
   m_Name: CatMesh
   m_TagString: Untagged
@@ -437,7 +437,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 465740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &137000010249369434
+--- !u!137 &3359179370479327061
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,7 +460,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb89294923508294fa35d858834725f7, type: 2}
+  - {fileID: 2100000, guid: 5fd28ebc8306c144aafdbf2a2fa52170, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -490,8 +490,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.0000333637, y: 0.5705161, z: -0.09493807}
-    m_Extent: {x: 0.46297145, y: 0.61328936, z: 0.35190415}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 0
 --- !u!1 &1000012411482616
 GameObject:
