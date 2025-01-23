@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1210969133945871540}
   - component: {fileID: 2285505006774483083}
+  - component: {fileID: 7194537141815462847}
   m_Layer: 0
   m_Name: EnvironmentInitializer
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   environmentScriptable: {fileID: 11400000, guid: 174fd09e80770414ba45a040a9d48ced,
     type: 2}
+  firebaseConnection: {fileID: 7194537141815462847}
+--- !u!114 &7194537141815462847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739404254102733640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06effddc657472747b240f8573e4c276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 22dea4bbe8d69d645845ff1e00ce1f9e, type: 2}
