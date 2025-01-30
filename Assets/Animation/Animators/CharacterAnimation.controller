@@ -611,7 +611,7 @@ AnimatorStateMachine:
     m_Position: {x: 120, y: -384, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107285076081101268}
-    m_Position: {x: 396, y: 168, z: 0}
+    m_Position: {x: 400, y: 170, z: 0}
   m_AnyStateTransitions:
   - {fileID: 110146878}
   m_EntryTransitions: []
@@ -620,7 +620,7 @@ AnimatorStateMachine:
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 36, y: -144, z: 0}
-  m_EntryPosition: {x: 120, y: 192, z: 0}
+  m_EntryPosition: {x: 120, y: 190, z: 0}
   m_ExitPosition: {x: 636, y: -12, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102301022450862276}
@@ -972,7 +972,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0c122afc4ce1dbf4891452b6c09e6f9d, type: 3}
+  m_Motion: {fileID: 1677552186604145796, guid: f6dc0c59f92b14642981a19d14422d0a,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -986,7 +987,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Start
-  m_Speed: 1
+  m_Speed: 0.54
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -998,7 +999,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5055643819770716813, guid: 4397383c2a950794e85c633b5f79926d,
+  m_Motion: {fileID: 6279588090445236870, guid: e58eca67184866a4ba47a60fb1601ab2,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -1025,7 +1026,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 88b2e8e5e041b074c87388a900d4d60d, type: 3}
+  m_Motion: {fileID: -4654579764495666567, guid: ea4bc7dc1bab1464caca21ac6b29058c,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1039,7 +1041,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sliding
-  m_Speed: 1
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101000014190310320}
@@ -1269,7 +1271,7 @@ AnimatorStateMachine:
     m_Position: {x: 396, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000010451022200}
-    m_Position: {x: 420, y: 180, z: 0}
+    m_Position: {x: 400, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102404664770431708}
     m_Position: {x: 120, y: 96, z: 0}
