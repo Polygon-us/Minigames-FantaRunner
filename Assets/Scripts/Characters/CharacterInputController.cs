@@ -1,8 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
-using FirebaseCore;
-using FirebaseCore.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 
@@ -99,11 +97,6 @@ public class CharacterInputController : MonoBehaviour
 	    swipeAction = InputSystem.actions.FindAction("Swipe");
     }
 
-    private void OnDisable()
-    {
-	    FirebaseConnection.OnUserInput -= OnUserInput;
-    }
-
     // Cheating functions, use for testing
 	public void CheatInvincible(bool invincible)
 	{
@@ -139,14 +132,10 @@ public class CharacterInputController : MonoBehaviour
 		characterCollider.Init();
 
 		m_ActiveConsumables.Clear();
-	    
-		FirebaseConnection.OnUserInput += OnUserInput;
 	}
 
 	public void End()
 	{
-		FirebaseConnection.OnUserInput -= OnUserInput;
-		
         CleanConsumable();
     }
 
@@ -194,33 +183,7 @@ public class CharacterInputController : MonoBehaviour
 
         return !TrackManager.instance.isTutorial || currentTutorialLevel >= tutorialLevel;
     }
-
-    private void OnUserInput(UserInputDto input)
-    {
-	    // 1 -> jump
-	    // 2 -> slide
-	    // 3 -> left
-	    // 4 -> right
-	    
-	    switch (input.direction)
-	    {
-		    case 1 when TutorialMoveCheck(1):
-			    Jump();
-			    break;
-		    case 2 when TutorialMoveCheck(2):
-			    if (!m_Sliding)
-				    Slide();
-			    break;
-		    case 3 when TutorialMoveCheck(0):
-			    ChangeLane(-1);
-			    break;
-		    case 4 when TutorialMoveCheck(0):
-			    ChangeLane(1);
-			    break;
-	    }
-    }
     
-#if UNITY_EDITOR
 	protected void Update()
 	{
 		// Disabled if it's tutorial and not thec urrent right tutorial level (see func TutorialMoveCheck)
@@ -321,20 +284,6 @@ public class CharacterInputController : MonoBehaviour
 		SetBlobShadow();
 	}
 	
-#elif UNITY_WEBGL
-    protected void Update ()
-    {
-        Vector3 verticalTargetPosition = m_TargetPosition;
-
-		UpdateSliding();
-		UpdateJump(ref verticalTargetPosition);
-		
-        characterCollider.transform.localPosition = Vector3.MoveTowards(characterCollider.transform.localPosition, verticalTargetPosition, laneChangeSpeed * Time.deltaTime);
-
-		SetBlobShadow();
-	}
-#endif
-	    
 	private void UpdateSliding()
 	{
 		if (!m_Sliding)

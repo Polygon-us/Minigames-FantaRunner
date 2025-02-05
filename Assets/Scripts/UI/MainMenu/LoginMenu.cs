@@ -1,11 +1,5 @@
-using Core.Functions.Authentication.Handler;
-using Core.Functions.Register.Domain.DTOs;
-using Core.Functions.Session.Domain.DTOs;
-using Core.Functions.Register.Handler;
-using Core.Functions.Session.Handler;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
-using Core.Utils.Responses;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;

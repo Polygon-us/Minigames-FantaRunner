@@ -1,11 +1,7 @@
-﻿using System;
-using Core.Functions.Leaderboard.Domain.DTOs;
-using Core.Functions.Leaderboard.Handler;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Core.Utils.Responses;
-using System.Linq;
 using UnityEngine;
+using UnityREST;
 
 // Prefill the info on the player data, as they will be used to populate the leadboard.
 public class Leaderboard : MonoBehaviour
@@ -16,11 +12,11 @@ public class Leaderboard : MonoBehaviour
 
     private List<LeaderboardRecordDto> _records;
 
-    private LeaderboardHandler _leaderboardHandler;
+    private RankingHandler _leaderboardHandler;
     
     private void Awake()
     {
-        _leaderboardHandler = new LeaderboardHandler();
+        _leaderboardHandler = new RankingHandler();
     }
 
     public void Open()
@@ -42,7 +38,7 @@ public class Leaderboard : MonoBehaviour
             entriesRoot.GetChild(i).gameObject.SetActive(false);
         }
 
-        ResultResponse<LeaderboardListRecordsDto> response = await _leaderboardHandler.ListLeaderboard(10);
+        WebResult<RankingListResponse> response = await _leaderboardHandler.GetRanking();
         
         _records = response.Data.Records.ToList();
         
