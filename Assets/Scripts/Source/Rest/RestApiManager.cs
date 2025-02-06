@@ -42,8 +42,6 @@ public class RestApiManager : APIManager
             return;
         }
 
-        apiPaths = gameConfig.GetPathByType();
-
         base.Awake();
 
         _erWebTransport = new ERWebTransport(apiConfig as ERAPIConfig, gameConfig);

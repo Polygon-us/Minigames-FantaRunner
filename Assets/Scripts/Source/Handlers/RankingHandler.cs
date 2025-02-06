@@ -1,21 +1,15 @@
-using System;
 using UnityREST;
+using System;
 
 public class RankingHandler : BaseHandler
 {
-    private readonly UserModel _userModel;
-    
     private const int Limit = 5;
     private const int Offset = 0;
     
-    public RankingHandler(UserModel userModel)
-    {
-        _userModel = userModel;
-    }
 
     public void GetRanking(Action<WebResult<RankingListResponse>> onRanking = null)
     {
-        string[] args = Args($"gameType={GameType}", $"limit={Limit}", $"offset={Offset}", $"username={_userModel.userInfo.username}");
+        string[] args = Args($"gameType={GameType}", $"limit={Limit}", $"offset={Offset}", $"username={UserModel.userInfo.username}");
         
         RestApiManager.Instance.GetRequest("listLeaderboard", onRanking ,args);
     }

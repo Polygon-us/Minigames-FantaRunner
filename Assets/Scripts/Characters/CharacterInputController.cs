@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine.AddressableAssets;
 using System.Collections.Generic;
-using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine;
 
 /// <summary>
 /// Handle everything related to controlling the character. Interact with both the Character (visual, animation) and CharacterCollider

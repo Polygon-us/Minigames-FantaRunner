@@ -1,12 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Analytics;
-using UnityEngine.ResourceManagement;
-using UnityEngine.ResourceManagement.AsyncOperations;
+﻿using UnityEngine.ResourceManagement.AsyncOperations;
 using GameObject = UnityEngine.GameObject;
+using UnityEngine.AddressableAssets;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;

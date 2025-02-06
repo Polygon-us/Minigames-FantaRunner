@@ -1,6 +1,4 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
 #endif
@@ -32,7 +30,7 @@ public class GameOverState : AState
     {
         canvas.gameObject.SetActive(true);
 
-        SendLeaderboard().Forget();
+        SendLeaderboard();
         
         if (MissionManager.Instance.AnyMissionComplete())
             StartCoroutine(missionPopup.Open());
@@ -126,11 +124,14 @@ public class GameOverState : AState
 #endif 
 	}
 
-	private async UniTaskVoid SendLeaderboard()
+	private void SendLeaderboard()
 	{
-        await _leaderboardHandler.PostRanking(trackManager.score);
-		
-		miniLeaderboard.Populate().Forget();
+        _leaderboardHandler.PostRanking(trackManager.score, trackManager.score,
+            _ =>
+            {
+                miniLeaderboard.Populate();
+            }
+        );
 	}
     
 	protected void FinishRun()

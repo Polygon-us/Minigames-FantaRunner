@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// Obstacle that starts moving forward in its lane when the player is close enough.

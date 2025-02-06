@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using System.Linq;
 using UnityEngine;
 using UnityREST;
 
@@ -10,7 +10,7 @@ public class Leaderboard : MonoBehaviour
 
     public HighscoreUI playerEntry;
 
-    private List<LeaderboardRecordDto> _records;
+    private List<PlayerRanking> _records;
 
     private RankingHandler _leaderboardHandler;
     
@@ -23,7 +23,7 @@ public class Leaderboard : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        Populate().Forget();
+        Populate();
     }
 
     public void Close()
@@ -31,22 +31,24 @@ public class Leaderboard : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public async UniTaskVoid Populate()
+    public void Populate()
     {
         for (int i = 0; i < entriesRoot.childCount; ++i)
         {
             entriesRoot.GetChild(i).gameObject.SetActive(false);
         }
 
-        WebResult<RankingListResponse> response = await _leaderboardHandler.GetRanking();
-        
-        _records = response.Data.Records.ToList();
-        
-        ResultResponse<LeaderboardRecordDto> playerRecord = await  _leaderboardHandler.ListPlayerLeaderboard();
+        _leaderboardHandler.GetRanking(OnRankingReceived);
+    }
 
+    private void OnRankingReceived(WebResult<RankingListResponse> response)
+    {
+        _records = response.data.data.global.ToList();
+        PlayerRanking playerRecord = response.data.data.player;
+        
         if (playerRecord != null)
         {
-            int playerPlace = playerRecord.Data.Rank;
+            int playerPlace = playerRecord.rank;
             int lastIndex = Mathf.Min(entriesRoot.childCount, playerPlace) - 1;
             
             playerEntry.transform.SetSiblingIndex(lastIndex);
@@ -61,9 +63,9 @@ public class Leaderboard : MonoBehaviour
             
             hs.gameObject.SetActive(true);
 
-            hs.playerName.text = _records[i].Username;
-            hs.number.text = _records[i].Rank.ToString();
-            hs.score.text = _records[i].Score.ToString();
+            hs.playerName.text = _records[i].username;
+            hs.number.text = _records[i].rank.ToString();
+            hs.score.text = _records[i].distance.ToString();
         }
     }
 }

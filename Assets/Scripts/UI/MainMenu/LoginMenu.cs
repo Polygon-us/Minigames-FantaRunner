@@ -1,7 +1,7 @@
 using UnityEngine.SceneManagement;
-using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityREST;
 using TMPro;
 
 public class LoginMenu : MonoBehaviour
@@ -15,31 +15,22 @@ public class LoginMenu : MonoBehaviour
 
     [SerializeField] private TMP_InputField usernameInputField;
 
-    private AuthenticationHandler _authenticationHandler;
     private RegisterHandler _registerHandler;
-    private SessionHandler _sessionHandler;
+    // private SessionHandler _sessionHandler;
     
     private void Start()
     {
         sendButton.onClick.AddListener(OnSendUsername);
-        logoutButton.onClick.AddListener(OnLogout);
+        // logoutButton.onClick.AddListener(OnLogout);
         startButton.onClick.AddListener(OnStartGame);
 
-        _authenticationHandler = new AuthenticationHandler();
         _registerHandler = new RegisterHandler();
-        _sessionHandler = new SessionHandler();
-        
-        if (!EnvironmentInitializer.IsInitialized)
-            EnvironmentInitializer.EnsureInitialized();
-        else
-            Connect().Forget();
+        // _sessionHandler = new SessionHandler();
     }
 
-    private async UniTaskVoid Connect()
+    private void OnLoggedIn(WebResult<LoginResponse> response)
     {
-        ResultResponse<SessionDto> response = await _authenticationHandler.AuthenticationDevice();
-        
-        if (!response.IsSuccess)
+        if (response.result.HasError())
         {
             ShowUsernamePanel();
             return;
@@ -47,28 +38,21 @@ public class LoginMenu : MonoBehaviour
 
         HideUsernamePanel();
     }
-
-    private async void OnSendUsername()
+    
+    private void OnSendUsername()
     {
         if (usernameInputField.text.Length == 0)
             return;
-
-        RegisterByDeviceDto dto = new RegisterByDeviceDto()
-        {
-            username = usernameInputField.text,
-        };
-
-        await _registerHandler.RegisterByDevice(dto);
         
-        Connect().Forget();
+        LoginHandler.Login(usernameInputField.text, OnLoggedIn);
     }
 
-    private async void OnLogout()
-    {
-        await _sessionHandler.SessionLogout();
-
-        ShowUsernamePanel();
-    }
+    // private void OnLogout()
+    // {
+    //     _sessionHandler.SessionLogout();
+    //
+    //     ShowUsernamePanel();
+    // }
 
     private void OnStartGame()
     {
