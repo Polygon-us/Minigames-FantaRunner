@@ -8,8 +8,6 @@ public class RestApiManager : APIManager
 {
     [SerializeField] private GameConfiguration gameConfig;
 
-    private ERWebTransport _erWebTransport;
-
     private static RestApiManager _instance;
 
     public static RestApiManager Instance
@@ -43,28 +41,26 @@ public class RestApiManager : APIManager
         }
 
         base.Awake();
-
-        _erWebTransport = new ERWebTransport(apiConfig as ERAPIConfig, gameConfig);
     }
 
     public void SetAuthToken(string token)
     {
-        _erWebTransport.SetAuthToken(token);
+        SetAuth(token);
     }
 
     public void GetRequest<T>(string endpoint, Action<WebResult<T>> callback = null, string[] args = null)
     {
-        StartRequest(endpoint, path => _erWebTransport.GET(PathWithArgs(path, args), callback));
+        StartRequest(endpoint, path => Transport.GET(PathWithArgs(path, args), callback));
     }
 
     public void PostRequest<T>(string endpoint, object data, Action<WebResult<T>> callback = null, string[] args = null)
     {
-        StartRequest(endpoint, path => _erWebTransport.POST(PathWithArgs(path, args), JsonConvert.SerializeObject(data), callback));
+        StartRequest(endpoint, path => Transport.POST(PathWithArgs(path, args), JsonConvert.SerializeObject(data), callback));
     }
 
     public void PatchRequest<T>(string endpoint, object data, Action<WebResult<T>> callback)
     {
-        StartRequest(endpoint, path => _erWebTransport.PATCH(path, JsonConvert.SerializeObject(data), callback));
+        StartRequest(endpoint, path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback));
     }
 
     public static string GetErrorResponse(string json)
@@ -74,7 +70,7 @@ public class RestApiManager : APIManager
 
     private void OnDestroy()
     {
-        _erWebTransport?.SignOut();
+        Transport?.SignOut();
     }
 
     private string PathWithArgs(string path, string[] args)

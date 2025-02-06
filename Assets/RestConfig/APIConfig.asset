@@ -9,14 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a53b872ff53c2c44fa4ec28d14d20546, type: 3}
-  m_Name: ERAPIConfig
+  m_Script: {fileID: 11500000, guid: 4c434ed4a30841c7be2577f58c140689, type: 3}
+  m_Name: APIConfig
   m_EditorClassIdentifier: 
+  currentEnvironment: 1
   settings:
     timeout: 10
     maxRetryAttempts: 3
     retryDelay: 0.25
     jsonContentType: application/json
   bearerToken: 
-  xApiKeyDev: etT3TMhFteahfLKSILVKZ8uWH83WWPE85P1QCyle
-  xApiKeyProd: WZ3Wt2Ii5y71lHhGF6tQz8rdSwtqakKd2zdOlynd
+  environments:
+  - environment: {fileID: 11400000, guid: eb5d62109c7c6314ab4244a500123dee, type: 2}
+  - environment: {fileID: 11400000, guid: 52aa7dfe860d224459dea63b23118358, type: 2}
