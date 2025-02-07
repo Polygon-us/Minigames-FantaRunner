@@ -6,8 +6,6 @@ using UnityREST;
 [DefaultExecutionOrder(-200)]
 public class RestApiManager : APIManager
 {
-    [SerializeField] private GameConfiguration gameConfig;
-
     private static RestApiManager _instance;
 
     public static RestApiManager Instance

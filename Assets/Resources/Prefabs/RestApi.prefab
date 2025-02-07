@@ -44,6 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3dc18dca2283a4e863a4f458e8b685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiPaths: {fileID: 11400000, guid: 84e59ac36354bc64fbc52059e8526bf6, type: 2}
-  apiConfig: {fileID: 11400000, guid: d7df674de9cf03745a2c7cb2ba1b13d8, type: 2}
-  gameConfig: {fileID: 11400000, guid: f4461376cbdfbfe4a8946d35a6ecc8e9, type: 2}
+  apiConfig: {fileID: 11400000, guid: e22b7d7d1c57d184a9c25e879336fd3f, type: 2}

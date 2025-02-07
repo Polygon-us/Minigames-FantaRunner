@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UserModelSO", menuName = "Models/UserModelSO")]
 public class UserModel : ScriptableObject
 {
+    public GameType gameType;
     public UserInfo userInfo;
 
     public int distance = 0;
@@ -28,13 +29,18 @@ public class UserModel : ScriptableObject
             city = data.city
         };
 
-        var leaderboard = data.leaderboard.FirstOrDefault(entry => GameConfiguration.GameType.ToString() == entry.gameType);
+        var leaderboard = data.leaderboard.FirstOrDefault(entry => gameType.ToString() == entry.gameType);
 
         if (leaderboard == null)
             return;
 
         distance = leaderboard.distance;
     }
+}
+
+public enum GameType
+{
+    endless_runner
 }
 
 [Serializable]
