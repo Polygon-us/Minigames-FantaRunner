@@ -15,18 +15,8 @@ MonoBehaviour:
   m_GroupName: Characters
   m_GUID: 0ee8914add8bf184eb2669a5f9b6f538
   m_SerializeEntries:
-  - m_GUID: 14cf9c4f0d7c6a647946d931a9e91955
-    m_Address: Assets/Prefabs/Fanta/Module09.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c8b4e674120cad47a3fc249308e5af3
     m_Address: Assets/Prefabs/UI/AddMissionButton.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 28e65b6174692734bb99b6561b1f05ac
-    m_Address: Assets/Prefabs/Fanta/Module02.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -41,18 +31,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2de6c1b5f8b0d95489cbea9dfd408243
-    m_Address: Assets/Prefabs/Fanta/Module08.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4397383c2a950794e85c633b5f79926d
     m_Address: Assets/Models/Usagi/SK_Usagi.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 467089cd06a7b704faded36479753714
-    m_Address: Assets/Prefabs/Fanta/Module03.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -72,11 +52,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 91afb2042cca4864597fa76b557b1386
-    m_Address: Assets/Prefabs/Fanta/Module04.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94cb557246c11d14388842cc08be79a8
     m_Address: Assets/Prefabs/UI/PowerupIcon.prefab
     m_ReadOnly: 0
@@ -84,11 +59,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a1da5a75d83b2b64d9684707d810f8c7
     m_Address: Assets/Materials/VCOL.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a447c5369776ed54d93d2ebb321fc539
-    m_Address: Assets/Prefabs/Fanta/Module05.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -107,18 +77,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: af9c256b422be224dbc4f02c0a9713f6
-    m_Address: Assets/Prefabs/Fanta/Module01.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1a536f74c7ef384a8d7132148ace0c8
     m_Address: Assets/UI/UISpritesheet.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fdc2d7e43c319e64cafed2b26a7b65a0
-    m_Address: Assets/Prefabs/Fanta/Module07.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
