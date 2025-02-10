@@ -1,11 +1,7 @@
-﻿using System;
-using Core.Functions.Leaderboard.Domain.DTOs;
-using Core.Functions.Leaderboard.Handler;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
-using Core.Utils.Responses;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityREST;
 
 // Prefill the info on the player data, as they will be used to populate the leadboard.
 public class Leaderboard : MonoBehaviour
@@ -14,20 +10,20 @@ public class Leaderboard : MonoBehaviour
 
     public HighscoreUI playerEntry;
 
-    private List<LeaderboardRecordDto> _records;
+    private List<PlayerRanking> _records;
 
-    private LeaderboardHandler _leaderboardHandler;
+    private RankingHandler _rankingHandler;
     
     private void Awake()
     {
-        _leaderboardHandler = new LeaderboardHandler();
+        _rankingHandler = new RankingHandler();
     }
 
     public void Open()
     {
         gameObject.SetActive(true);
 
-        Populate().Forget();
+        Populate();
     }
 
     public void Close()
@@ -35,22 +31,25 @@ public class Leaderboard : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public async UniTaskVoid Populate()
+    public void Populate()
     {
         for (int i = 0; i < entriesRoot.childCount; ++i)
         {
             entriesRoot.GetChild(i).gameObject.SetActive(false);
         }
 
-        ResultResponse<LeaderboardListRecordsDto> response = await _leaderboardHandler.ListLeaderboard(10);
-        
-        _records = response.Data.Records.ToList();
-        
-        ResultResponse<LeaderboardRecordDto> playerRecord = await  _leaderboardHandler.ListPlayerLeaderboard();
+        _rankingHandler.GetRanking(OnLeaderboardResponse);
+    }
+    
+    private void OnLeaderboardResponse(WebResult<RankingListResponse> response)
+    {
+        _records = response.data.data.global.ToList();
+
+        PlayerRanking playerRecord = response.data.data.player;
 
         if (playerRecord != null)
         {
-            int playerPlace = playerRecord.Data.Rank;
+            int playerPlace = playerRecord.rank;
             int lastIndex = Mathf.Min(entriesRoot.childCount, playerPlace) - 1;
             
             playerEntry.transform.SetSiblingIndex(lastIndex);
@@ -65,9 +64,9 @@ public class Leaderboard : MonoBehaviour
             
             hs.gameObject.SetActive(true);
 
-            hs.playerName.text = _records[i].Username;
-            hs.number.text = _records[i].Rank.ToString();
-            hs.score.text = _records[i].Score.ToString();
+            hs.playerName.text = _records[i].username;
+            hs.number.text = _records[i].rank.ToString();
+            hs.score.text = _records[i].distance.ToString();
         }
     }
 }

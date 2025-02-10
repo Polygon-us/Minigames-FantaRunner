@@ -1,11 +1,5 @@
-using Core.Functions.Authentication.Handler;
-using Core.Functions.Register.Domain.DTOs;
-using Core.Functions.Session.Domain.DTOs;
-using Core.Functions.Register.Handler;
-using Core.Functions.Session.Handler;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
-using Core.Utils.Responses;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -21,9 +15,9 @@ public class LoginMenu : MonoBehaviour
 
     [SerializeField] private TMP_InputField usernameInputField;
 
-    private AuthenticationHandler _authenticationHandler;
+    private LoginHandler _loginHandler;
     private RegisterHandler _registerHandler;
-    private SessionHandler _sessionHandler;
+    // private SessionHandler _sessionHandler;
     
     private void Start()
     {
@@ -31,42 +25,19 @@ public class LoginMenu : MonoBehaviour
         logoutButton.onClick.AddListener(OnLogout);
         startButton.onClick.AddListener(OnStartGame);
 
-        _authenticationHandler = new AuthenticationHandler();
+        _loginHandler = new LoginHandler();
         _registerHandler = new RegisterHandler();
-        _sessionHandler = new SessionHandler();
+        // _sessionHandler = new SessionHandler();
         
-        if (!EnvironmentInitializer.IsInitialized)
-            EnvironmentInitializer.EnsureInitialized();
-        else
-            Connect().Forget();
+        ShowUsernamePanel();
     }
-
-    private async UniTaskVoid Connect()
-    {
-        ResultResponse<SessionDto> response = await _authenticationHandler.AuthenticationDevice();
-        
-        if (!response.IsSuccess)
-        {
-            ShowUsernamePanel();
-            return;
-        }
-
-        HideUsernamePanel();
-    }
-
-    private async void OnSendUsername()
+    
+    private void OnSendUsername()
     {
         if (usernameInputField.text.Length == 0)
             return;
-
-        RegisterByDeviceDto dto = new RegisterByDeviceDto()
-        {
-            username = usernameInputField.text,
-        };
-
-        await _registerHandler.RegisterByDevice(dto);
         
-        Connect().Forget();
+        RegisterHandler.Register(usernameInputField.text);
     }
 
     private async void OnLogout()
