@@ -1,66 +1,42 @@
-using UnityEngine.SceneManagement;
-using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class LoginMenu : MonoBehaviour
+namespace UI.Views
 {
-    [SerializeField] private GameObject usernamePanel;
-    [SerializeField] private GameObject startPanel;
-
-    [SerializeField] private Button sendButton;
-    [SerializeField] private Button startButton;
-    [SerializeField] private Button logoutButton;
-
-    [SerializeField] private TMP_InputField usernameInputField;
-
-    private LoginHandler _loginHandler;
-    private RegisterHandler _registerHandler;
-    // private SessionHandler _sessionHandler;
-    
-    private void Start()
+    public class LoginMenu : MonoBehaviour
     {
-        sendButton.onClick.AddListener(OnSendUsername);
-        logoutButton.onClick.AddListener(OnLogout);
-        startButton.onClick.AddListener(OnStartGame);
+        [SerializeField] private Button sendButton;
+        [SerializeField] private Button logoutButton;
 
-        _loginHandler = new LoginHandler();
-        _registerHandler = new RegisterHandler();
-        // _sessionHandler = new SessionHandler();
-        
-        ShowUsernamePanel();
-    }
-    
-    private void OnSendUsername()
-    {
-        if (usernameInputField.text.Length == 0)
-            return;
-        
-        RegisterHandler.Register(usernameInputField.text);
-    }
+        [SerializeField] private TMP_InputField usernameInputField;
 
-    private async void OnLogout()
-    {
-        await _sessionHandler.SessionLogout();
+        private LoginHandler _loginHandler;
+        private RegisterHandler _registerHandler;
+        // private SessionHandler _sessionHandler;
 
-        ShowUsernamePanel();
-    }
+        private void Start()
+        {
+            sendButton.onClick.AddListener(OnSendUsername);
+            logoutButton.onClick.AddListener(OnLogout);
 
-    private void OnStartGame()
-    {
-        SceneManager.LoadScene("Main");
-    }
 
-    private void ShowUsernamePanel()
-    {
-        usernamePanel.SetActive(true);
-        startPanel.SetActive(false);
-    }
+            _loginHandler = new LoginHandler();
+            _registerHandler = new RegisterHandler();
+            // _sessionHandler = new SessionHandler();
+        }
 
-    private void HideUsernamePanel()
-    {
-        usernamePanel.SetActive(false);
-        startPanel.SetActive(true);
+        private void OnSendUsername()
+        {
+            if (usernameInputField.text.Length == 0)
+                return;
+
+            // RegisterHandler.Register(usernameInputField.text);
+        }
+
+        private void OnLogout()
+        {
+            // await _sessionHandler.SessionLogout();
+        }
     }
 }
