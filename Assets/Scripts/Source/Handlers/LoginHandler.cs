@@ -1,16 +1,15 @@
 using UnityREST;
 using System;
+using Source.DTOs.Request;
+using Source.DTOs.Response;
 
-public class LoginHandler : BaseHandler
+namespace Source.Handlers
 {
-    public static void Login(string email, Action<WebResult<LoginResponse>> onLogin = null)
+    public class LoginHandler : BaseHandler
     {
-        var loginData = new LoginPayload
+        public static void Login(LoginDto loginDto, Action<WebResult<LoginResponseDto>> onLogin = null)
         {
-            email = email,
-        };
-        
-        RestApiManager.Instance.PostRequest("login", loginData, onLogin);
+            RestApiManager.Instance.PostRequest("login", loginDto, onLogin);
+        }
     }
 }
-

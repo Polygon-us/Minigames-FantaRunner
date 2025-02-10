@@ -1,44 +1,46 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Rendering.Universal;
 using UnityREST;
 
-public class CheckpointsHandler : BaseHandler
+namespace Source.Handlers
 {
-    public static void StartRun(Action<WebResult<StartGameResponse>> onRunStart)
+    public class CheckpointsHandler : BaseHandler
     {
-        string[] args = Args($"gameType={GameType}");
+        public static void StartRun(Action<WebResult<StartGameResponse>> onRunStart)
+        {
+            string[] args = Args($"gameType={GameType}");
 
-        RestApiManager.Instance.PostRequest("startRun", null, onRunStart, args);
+            RestApiManager.Instance.PostRequest("startRun", null, onRunStart, args);
+        }
+
+        public static void SendCheckpoints(CheckpointTimeline checkpointTimeline)
+        {
+            string[] args = Args($"gameType={GameType}");
+
+            RestApiManager.Instance.PostRequest<object>("endRun", checkpointTimeline, args: args);
+        }
     }
 
-    public static void SendCheckpoints(CheckpointTimeline checkpointTimeline)
+    [Serializable]
+    public class CheckpointTimeline
     {
-        string[] args = Args($"gameType={GameType}");
-
-        RestApiManager.Instance.PostRequest<object>("endRun", checkpointTimeline, args: args);
+        public List<CheckpointData> checkpoints = new();
     }
-}
 
-[Serializable]
-public class CheckpointTimeline
-{
-    public List<CheckpointData> checkpoints = new();
-}
+    [Serializable]
+    public class CheckpointData
+    {
+        public int distance;
+        public DateTime date;
+    }
 
-[Serializable]
-public class CheckpointData
-{
-    public int distance;
-    public DateTime date;
-}
+    public class StartGameResponse
+    {
+        public StartDetails data;
+    }
 
-public class StartGameResponse
-{
-    public StartDetails data;
-}
-
-public class StartDetails
-{
-    public DateTime startDate;
+    public class StartDetails
+    {
+        public DateTime startDate;
+    }
 }

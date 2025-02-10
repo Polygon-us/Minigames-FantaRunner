@@ -1,5 +1,12 @@
+using Source.Utils.Validations;
+using Source.Utils.Responses;
+using Source.DTOs.Response;
+using Source.DTOs.Request;
+using Source.Handlers;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityREST;
+using System;
 using TMPro;
 
 namespace UI.Views
@@ -10,33 +17,51 @@ namespace UI.Views
         [SerializeField] private Button logoutButton;
 
         [SerializeField] private TMP_InputField usernameInputField;
+        [SerializeField] private TMP_InputField passwordInputField;
 
-        private LoginHandler _loginHandler;
-        private RegisterHandler _registerHandler;
-        // private SessionHandler _sessionHandler;
-
+        public Action OnLoginSuccess;
+        
         private void Start()
         {
-            sendButton.onClick.AddListener(OnSendUsername);
+            sendButton.onClick.AddListener(OnSendLogin);
             logoutButton.onClick.AddListener(OnLogout);
-
-
-            _loginHandler = new LoginHandler();
-            _registerHandler = new RegisterHandler();
-            // _sessionHandler = new SessionHandler();
         }
 
-        private void OnSendUsername()
+        private void OnSendLogin()
         {
-            if (usernameInputField.text.Length == 0)
-                return;
+            LoginDto loginDto = new LoginDto
+            {
+                email = usernameInputField.text,
+                password = passwordInputField.text
+            };
+            
+            ResultResponse<LoginDto> validate = LoginValidation.Validate(loginDto);
 
-            // RegisterHandler.Register(usernameInputField.text);
+            if (!validate.IsSuccess)
+            {
+                // TODO: Show error
+                Debug.Log(validate.ErrorMessage);
+                return;
+            }
+
+            LoginHandler.Login(validate.Data, OnLoginResponse);
         }
 
         private void OnLogout()
         {
             // await _sessionHandler.SessionLogout();
+        }
+
+        private void OnLoginResponse(WebResult<LoginResponseDto> response)
+        {
+            if (response.result.HasError())
+            {
+                // TODO: Show error
+                Debug.Log(response.result.ResponseText);
+                return;
+            }
+
+            OnLoginSuccess?.Invoke();
         }
     }
 }

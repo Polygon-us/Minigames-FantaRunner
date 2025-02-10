@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Source.DTOs.Request;
+using Source.Handlers;
+using UnityEngine;
 using UnityREST;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
@@ -127,7 +129,13 @@ public class GameOverState : AState
 
     private void SendLeaderboard()
     {
-        _rankingHandler.PostRanking(trackManager.score, trackManager.score, OnRankingPosted);
+        RankingDto rankingDto = new RankingDto
+        {
+            coins = trackManager.score,
+            distance = trackManager.score
+        };
+        
+        _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
     }
 
     private void OnRankingPosted(WebResult<object> _)

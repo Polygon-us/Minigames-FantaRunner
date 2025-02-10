@@ -1,31 +1,58 @@
+using Source.DTOs.Request;
+using Source.Utils.Responses;
+
 namespace Source.Utils.Validations
 {
     public static class RegisterValidation
     {
-        public static bool Validate(AuthenticationByEmailDto authenticationByEmailDto)
+        public static ResultResponse<RegisterDto> Validate(RegisterDto registerDto)
         {
-            if (authenticationByEmailDto == null)
+            if (registerDto == null)
             {
-                return ResultResponse<AuthenticationByEmailDto>.Failure("DTO cannot be null.", "DTO_NULL");
+                return ResultResponse<RegisterDto>.Failure("DTO cannot be null.", "DTO_NULL");
             }
 
-            if (!InputValidator.IsValidEmail(authenticationByEmailDto.Email))
+            if (!InputValidator.IsValidEmail(registerDto.email))
             {
-                return ResultResponse<AuthenticationByEmailDto>.Failure(
+                return ResultResponse<RegisterDto>.Failure(
                     "Invalid email format or email is too long.",
                     "EMAIL_INVALID"
                 );
             }
 
-            if (!InputValidator.IsValidPassword(authenticationByEmailDto.Password))
+            if (!InputValidator.IsValidPassword(registerDto.password))
             {
-                return ResultResponse<AuthenticationByEmailDto>.Failure(
+                return ResultResponse<RegisterDto>.Failure(
                     "password must be at least 6 characters long.",
                     "PASSWORD_TOO_SHORT"
                 );
             }
 
-            return ResultResponse<AuthenticationByEmailDto>.Success(authenticationByEmailDto, "Validation successful.");
+            if (!InputValidator.IsValidName(registerDto.name))
+            {
+                return ResultResponse<RegisterDto>.Failure(
+                    "name must be at least 3 characters long.",
+                    "NAME_TOO_SHORT"
+                );
+            }
+            
+            if (!InputValidator.IsValidName(registerDto.lastName))
+            {
+                return ResultResponse<RegisterDto>.Failure(
+                    "name must be at least 3 characters long.",
+                    "NAME_TOO_SHORT"
+                );
+            }
+            
+            if (!InputValidator.IsValidPhoneNumber(registerDto.phone))
+            {
+                return ResultResponse<RegisterDto>.Failure(
+                    "phone number must be a valid phone number.",
+                    "PHONE_INVALID"
+                );
+            }
+
+            return ResultResponse<RegisterDto>.Success(registerDto, "Validation successful.");
         }
     }
 }

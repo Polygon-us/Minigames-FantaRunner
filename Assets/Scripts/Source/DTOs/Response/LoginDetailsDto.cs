@@ -10,6 +10,6 @@
         public string email;
         public string phone;
         public string city;
-        public MyLeaderboard[] leaderboard;
+        public LeaderboardResponseDto[] leaderboard;
     }
 }

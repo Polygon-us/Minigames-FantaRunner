@@ -13,6 +13,10 @@ namespace UI.Controllers
 
         private void Start()
         {
+            loginPanel.gameObject.SetActive(false);
+            registerPanel.gameObject.SetActive(false);
+            mainMenuPanel.gameObject.SetActive(false);
+            
             ShowLogin();
         }
 

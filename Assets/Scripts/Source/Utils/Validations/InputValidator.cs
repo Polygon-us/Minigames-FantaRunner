@@ -19,5 +19,10 @@ namespace Source.Utils.Validations
         {
             return password.Length >= 6;
         }
+        
+        public static bool IsValidPhoneNumber(string phoneNumber)
+        {
+            return phoneNumber.Length >= 10 && Regex.IsMatch(phoneNumber, "^\\d{10}$");
+        }
     }
 }

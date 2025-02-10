@@ -1,6 +1,6 @@
-﻿namespace Source.DTOs.Response
+namespace Source.DTOs.Response
 {
-    public class LoginResponseDto
+    public class RegisterResponseDto
     {
         public int statusCode;
         public string success;

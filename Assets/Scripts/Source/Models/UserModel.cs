@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Source.DTOs.Response;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UserModelSO", menuName = "Models/UserModelSO")]
@@ -16,7 +17,7 @@ public class UserModel : ScriptableObject
         distance = 0;
     }
 
-    public void SetData(LoginDetails data)
+    public void SetData(LoginDetailsDto data)
     {
         userInfo = new UserInfo
         {

@@ -1,54 +1,33 @@
-using System;
+using Source.DTOs.Request;
 using UnityREST;
+using System;
 
-public class RegisterHandler : BaseHandler
+namespace Source.Handlers
 {
-    public static void Register(string fullName, string email, string phone, string username, string id, string address, string city, bool acceptedTerms,
-        Action<WebResult<object>> onRegister = null)
+    public class RegisterHandler : BaseHandler
     {
-        var payload = new RegisterPayload
+        public static void Register(RegisterDto registerDto, Action<WebResult<object>> onRegister = null)
         {
-            acceptedTerms = acceptedTerms,
-            fullName = fullName,
-            username = username,
-            address = address,
-            idCard = id,
-            email = email,
-            phone = phone,
-            city = city
-        };
+            RestApiManager.Instance.PostRequest("register", registerDto, onRegister);
+        }
 
-        RestApiManager.Instance.PostRequest("register", payload, onRegister);
+        public static void UpdateUser(string city, string address, string id, Action<WebResult<object>> onUpdate = null)
+        {
+            var payload = new UpdatePayload
+            {
+                address = address,
+                idCard = id,
+                city = city
+            };
+
+            RestApiManager.Instance.PatchRequest("update", payload, onUpdate);
+        }
     }
-
-    public static void UpdateUser(string city, string address, string id, Action<WebResult<object>> onUpdate = null)
+    
+    public class UpdatePayload
     {
-        var payload = new UpdatePayload
-        {
-            address = address,
-            idCard = id,
-            city = city
-        };
-        
-        RestApiManager.Instance.PatchRequest("update", payload, onUpdate);
+        public string address;
+        public string idCard;
+        public string city;
     }
-}
-
-public class RegisterPayload
-{
-    public string fullName;
-    public string username;
-    public string address;
-    public string idCard;
-    public string email;
-    public string phone;
-    public string city;
-    public bool acceptedTerms;
-}
-
-public class UpdatePayload
-{
-    public string address;
-    public string idCard;
-    public string city;
 }

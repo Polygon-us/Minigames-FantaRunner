@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Source.DTOs.Response;
+using Source.Handlers;
 using System.Linq;
 using UnityEngine;
 using UnityREST;
@@ -10,7 +12,7 @@ public class Leaderboard : MonoBehaviour
 
     public HighscoreUI playerEntry;
 
-    private List<PlayerRanking> _records;
+    private List<PlayerRankingResponseDto> _records;
 
     private RankingHandler _rankingHandler;
     
@@ -41,11 +43,11 @@ public class Leaderboard : MonoBehaviour
         _rankingHandler.GetRanking(OnLeaderboardResponse);
     }
     
-    private void OnLeaderboardResponse(WebResult<RankingListResponse> response)
+    private void OnLeaderboardResponse(WebResult<RankingResponseDto> response)
     {
         _records = response.data.data.global.ToList();
 
-        PlayerRanking playerRecord = response.data.data.player;
+        PlayerRankingResponseDto playerRecord = response.data.data.player;
 
         if (playerRecord != null)
         {
