@@ -47,8 +47,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cd3cc97c4b84d348bae11076600e6fd
+    m_Address: Assets/Models/Fanta Modules/Module2.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94cb557246c11d14388842cc08be79a8
     m_Address: Assets/Prefabs/UI/PowerupIcon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1da5a75d83b2b64d9684707d810f8c7
+    m_Address: Assets/Materials/VCOL.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
