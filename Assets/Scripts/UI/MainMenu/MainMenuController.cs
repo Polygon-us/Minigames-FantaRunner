@@ -15,6 +15,9 @@ namespace UI.Controllers
 
         private void Start()
         {
+            loginPanel.GoToRegister += ShowRegister;
+            registerPanel.GoToLogin += ShowLogin;
+            
             // loginPanel.gameObject.SetActive(false);
             registerPanel.gameObject.SetActive(false);
             mainMenuPanel.gameObject.SetActive(false);
