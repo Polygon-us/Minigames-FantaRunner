@@ -9,7 +9,7 @@ using TMPro;
 
 namespace UI.Views
 {
-    public class RegisterMenu : MonoBehaviour
+    public class RegisterMenu : ViewBase
     {
         [SerializeField] private Button sendButton;
 

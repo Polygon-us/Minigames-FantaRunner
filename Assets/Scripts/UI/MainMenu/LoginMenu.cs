@@ -11,7 +11,7 @@ using TMPro;
 
 namespace UI.Views
 {
-    public class LoginMenu : MonoBehaviour
+    public class LoginMenu : ViewBase
     {
         [SerializeField] private Button sendButton;
         [SerializeField] private Button logoutButton;
