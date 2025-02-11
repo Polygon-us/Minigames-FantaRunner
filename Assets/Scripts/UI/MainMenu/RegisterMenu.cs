@@ -16,9 +16,9 @@ namespace UI.Views
         [SerializeField] private TMP_InputField nameInputField;
         [SerializeField] private TMP_InputField lastNameInputField;
         [SerializeField] private TMP_InputField idCardInputField;
-        [SerializeField] private TMP_InputField usernameInputField;
-        [SerializeField] private TMP_InputField passwordInputField;
         [SerializeField] private TMP_InputField phoneInputField;
+        [SerializeField] private TMP_InputField emailInputField;
+        [SerializeField] private TMP_InputField passwordInputField;
 
         private void Start()
         {
@@ -32,9 +32,9 @@ namespace UI.Views
                 name = nameInputField.text,
                 lastName = lastNameInputField.text,
                 idCard = idCardInputField.text,
-                email = usernameInputField.text,
-                password = passwordInputField.text,
-                phone = phoneInputField.text
+                phone = phoneInputField.text,
+                email = emailInputField.text,
+                password = passwordInputField.text
             };
             
             ResultResponse<RegisterDto> validate = RegisterValidation.Validate(registerDto);
