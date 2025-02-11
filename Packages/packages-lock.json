@@ -7,23 +7,15 @@
       "dependencies": {},
       "hash": "8042b29ff87dd5506d7aad72bd6d8d7405985f27"
     },
-    "com.heroiclabs.nakama-unity": {
-      "version": "https://github.com/heroiclabs/nakama-unity.git?path=/Packages/Nakama",
+    "com.modernwestern.unity-rest": {
+      "version": "https://github.com/ModernWestern/unity.modernwestern.unity-rest-package.git",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0"
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.cysharp.unitask": "2.5.10"
       },
-      "hash": "b9a9208218ab6c566cd4ba024ff2112a4ffc001c"
-    },
-    "com.polygonus.nakama": {
-      "version": "https://github.com/Polygon-us/Unity-Multiplayer-Nakama.git?path=/Packages/com.polygonus.nakama#dev",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.heroiclabs.nakama-unity": "3.14.0"
-      },
-      "hash": "ef282d38afcc2553240df73fb46398f83e78a8cd"
+      "hash": "713c2af78595d0abdcf9cbb98d6762280a56ca78"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -177,7 +169,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

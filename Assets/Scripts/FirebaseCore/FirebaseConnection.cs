@@ -14,7 +14,9 @@ namespace FirebaseCore
         
         public void ListenToDatabaseChanges()
         {
+#if !UNITY_EDITOR
             FirebaseDatabase.ListenForValueChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
+#endif
         }
 
         private void HandleValueChanged(string newValue)
@@ -31,7 +33,9 @@ namespace FirebaseCore
 
         private void OnDisable()
         {
+#if !UNITY_EDITOR
             FirebaseDatabase.StopListeningForValueChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
+#endif
         }
         
         private static T ConvertTo<T>(string obj) where T : class
