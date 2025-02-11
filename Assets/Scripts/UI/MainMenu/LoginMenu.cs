@@ -1,95 +1,67 @@
-using Core.Functions.Authentication.Handler;
-using Core.Functions.Register.Domain.DTOs;
-using Core.Functions.Session.Domain.DTOs;
-using Core.Functions.Register.Handler;
-using Core.Functions.Session.Handler;
-using UnityEngine.SceneManagement;
-using Cysharp.Threading.Tasks;
-using Core.Utils.Responses;
+using Source.Utils.Validations;
+using Source.Utils.Responses;
+using Source.DTOs.Response;
+using Source.DTOs.Request;
+using Source.Handlers;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityREST;
+using System;
 using TMPro;
 
-public class LoginMenu : MonoBehaviour
+namespace UI.Views
 {
-    [SerializeField] private GameObject usernamePanel;
-    [SerializeField] private GameObject startPanel;
-
-    [SerializeField] private Button sendButton;
-    [SerializeField] private Button startButton;
-    [SerializeField] private Button logoutButton;
-
-    [SerializeField] private TMP_InputField usernameInputField;
-
-    private AuthenticationHandler _authenticationHandler;
-    private RegisterHandler _registerHandler;
-    private SessionHandler _sessionHandler;
-    
-    private void Start()
+    public class LoginMenu : MonoBehaviour
     {
-        sendButton.onClick.AddListener(OnSendUsername);
-        logoutButton.onClick.AddListener(OnLogout);
-        startButton.onClick.AddListener(OnStartGame);
+        [SerializeField] private Button sendButton;
+        [SerializeField] private Button logoutButton;
 
-        _authenticationHandler = new AuthenticationHandler();
-        _registerHandler = new RegisterHandler();
-        _sessionHandler = new SessionHandler();
-        
-        if (!EnvironmentInitializer.IsInitialized)
-            EnvironmentInitializer.EnsureInitialized();
-        else
-            Connect().Forget();
-    }
+        [SerializeField] private TMP_InputField usernameInputField;
+        [SerializeField] private TMP_InputField passwordInputField;
 
-    private async UniTaskVoid Connect()
-    {
-        ResultResponse<SessionDto> response = await _authenticationHandler.AuthenticationDevice();
+        public Action OnLoginSuccess;
         
-        if (!response.IsSuccess)
+        private void Start()
         {
-            ShowUsernamePanel();
-            return;
+            sendButton.onClick.AddListener(OnSendLogin);
+            logoutButton.onClick.AddListener(OnLogout);
         }
 
-        HideUsernamePanel();
-    }
-
-    private async void OnSendUsername()
-    {
-        if (usernameInputField.text.Length == 0)
-            return;
-
-        RegisterByDeviceDto dto = new RegisterByDeviceDto()
+        private void OnSendLogin()
         {
-            username = usernameInputField.text,
-        };
+            LoginDto loginDto = new LoginDto
+            {
+                email = usernameInputField.text,
+                password = passwordInputField.text
+            };
+            
+            ResultResponse<LoginDto> validate = LoginValidation.Validate(loginDto);
 
-        await _registerHandler.RegisterByDevice(dto);
-        
-        Connect().Forget();
-    }
+            if (!validate.IsSuccess)
+            {
+                // TODO: Show error
+                Debug.Log(validate.ErrorMessage);
+                return;
+            }
 
-    private async void OnLogout()
-    {
-        await _sessionHandler.SessionLogout();
+            LoginHandler.Login(validate.Data, OnLoginResponse);
+        }
 
-        ShowUsernamePanel();
-    }
+        private void OnLogout()
+        {
+            // await _sessionHandler.SessionLogout();
+        }
 
-    private void OnStartGame()
-    {
-        SceneManager.LoadScene("Main");
-    }
+        private void OnLoginResponse(WebResult<LoginResponseDto> response)
+        {
+            if (response.result.HasError())
+            {
+                // TODO: Show error
+                Debug.Log(response.result.ResponseText);
+                return;
+            }
 
-    private void ShowUsernamePanel()
-    {
-        usernamePanel.SetActive(true);
-        startPanel.SetActive(false);
-    }
-
-    private void HideUsernamePanel()
-    {
-        usernamePanel.SetActive(false);
-        startPanel.SetActive(true);
+            OnLoginSuccess?.Invoke();
+        }
     }
 }

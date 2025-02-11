@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e690ea995a24ceba29324fa20eba7f0, type: 3}
-  m_Name: EnvironmentConfig
+  m_Script: {fileID: 11500000, guid: 824f48a42385439eb1ffbdb2f6b5b9cc, type: 3}
+  m_Name: EnvDev
   m_EditorClassIdentifier: 
-  selectedEnvironment: 1
-  serverUrl: 
-  httpKey: 
-  timeout: 0
+  scheme: 1
+  environment: 1
+  domain: 
+  apiKey: 
+  apiPaths: {fileID: 11400000, guid: 84e59ac36354bc64fbc52059e8526bf6, type: 2}

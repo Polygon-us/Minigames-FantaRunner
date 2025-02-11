@@ -1,7 +1,7 @@
-﻿using System;
-using Core.Functions.Leaderboard.Handler;
-using Cysharp.Threading.Tasks;
+﻿using Source.DTOs.Request;
+using Source.Handlers;
 using UnityEngine;
+using UnityREST;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
 #endif
@@ -22,18 +22,18 @@ public class GameOverState : AState
 
     public GameObject addButton;
     
-    private LeaderboardHandler _leaderboardHandler;
+    private RankingHandler _rankingHandler;
 
     private void Awake()
     {
-        _leaderboardHandler = new LeaderboardHandler();
+        _rankingHandler = new RankingHandler();
     }
 
     public override void Enter(AState from)
     {
         canvas.gameObject.SetActive(true);
 
-        SendLeaderboard().Forget();
+        SendLeaderboard();
         
         if (MissionManager.Instance.AnyMissionComplete())
             StartCoroutine(missionPopup.Open());
@@ -127,12 +127,21 @@ public class GameOverState : AState
 #endif 
 	}
 
-	private async UniTaskVoid SendLeaderboard()
-	{
-        await _leaderboardHandler.WriteLeaderboard(trackManager.score);
-		
-		miniLeaderboard.Populate().Forget();
-	}
+    private void SendLeaderboard()
+    {
+        RankingDto rankingDto = new RankingDto
+        {
+            coins = trackManager.score,
+            distance = trackManager.score
+        };
+        
+        _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
+    }
+
+    private void OnRankingPosted(WebResult<object> _)
+    {
+        miniLeaderboard.Populate();
+    }
     
 	protected void FinishRun()
     {
