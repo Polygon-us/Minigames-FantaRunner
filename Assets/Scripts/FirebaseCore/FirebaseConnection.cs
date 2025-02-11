@@ -11,7 +11,12 @@ namespace FirebaseCore
         private const string Room = "A1B1";
 
         public static Action<UserInputDto> OnUserInput;
-        
+
+        private void Start()
+        {
+            ListenToDatabaseChanges();
+        }
+
         public void ListenToDatabaseChanges()
         {
 #if !UNITY_EDITOR
