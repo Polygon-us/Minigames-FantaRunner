@@ -160,7 +160,7 @@ mergeInto(LibraryManager.library, {
 
             firebase.database().ref(parsedPath).on('child_changed', function(snapshot) {
                 var data = {
-                    key: snapshot.key(),
+                    key: snapshot.key,
                     value: snapshot.val()
                 }
                 window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(data));
