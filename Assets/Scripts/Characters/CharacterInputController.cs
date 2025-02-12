@@ -101,7 +101,7 @@ public class CharacterInputController : MonoBehaviour
 
     private void OnDisable()
     {
-	    FirebaseConnection.OnUserInput -= OnUserInput;
+	    FirebaseConnection.OnMovementInput -= OnMovementInput;
     }
 
     // Cheating functions, use for testing
@@ -140,12 +140,12 @@ public class CharacterInputController : MonoBehaviour
 
 		m_ActiveConsumables.Clear();
 	    
-		FirebaseConnection.OnUserInput += OnUserInput;
+		FirebaseConnection.OnMovementInput += OnMovementInput;
 	}
 
 	public void End()
 	{
-		FirebaseConnection.OnUserInput -= OnUserInput;
+		FirebaseConnection.OnMovementInput -= OnMovementInput;
 		
         CleanConsumable();
     }
@@ -195,14 +195,14 @@ public class CharacterInputController : MonoBehaviour
         return !TrackManager.instance.isTutorial || currentTutorialLevel >= tutorialLevel;
     }
 
-    private void OnUserInput(UserInputDto input)
+    private void OnMovementInput(int direction)
     {
 	    // 1 -> jump
 	    // 2 -> slide
 	    // 3 -> left
 	    // 4 -> right
 	    
-	    switch (input.direction)
+	    switch (direction)
 	    {
 		    case 1 when TutorialMoveCheck(1):
 			    Jump();

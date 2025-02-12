@@ -17,7 +17,8 @@ namespace FirebaseCore
     {
         private const string Room = "A1B1";
 
-        public static Action<UserInputDto> OnUserInput;
+        public static Action<int> OnMovementInput;
+        public static Action OnSubmitInput;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         private void Start()
@@ -30,13 +31,20 @@ namespace FirebaseCore
             FirebaseDatabase.ListenForChildChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
         }
 
-        private void HandleValueChanged(string newValue)
+        private void HandleValueChanged(string data)
         {
-            print($"child changed, value: {newValue}");
+            ChangedDataDto dataDto = ConvertTo<ChangedDataDto>(data);
+            
+            switch (dataDto.key)
+            {
+                case nameof(UserInputDto.direction):
+                    OnMovementInput?.Invoke(int.Parse(dataDto.value));
+                    break;
+                case nameof(UserInputDto.submit):
+                    OnSubmitInput?.Invoke();
+                    break;
+            }
 
-            // UserInputDto inputDto = ConvertTo<UserInputDto>(newValue);
-
-            // OnUserInput?.Invoke(inputDto);
         }
 
         private void HandleError(string error)
