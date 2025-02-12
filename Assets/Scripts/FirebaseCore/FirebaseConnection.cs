@@ -1,10 +1,15 @@
-using Firebase.Extensions;
 using FirebaseCore.DTOs;
-using Firebase.Database;
 using Newtonsoft.Json;
 using UnityEngine;
-using Firebase;
 using System;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+using FirebaseWebGL.Scripts.FirebaseBridge;
+#else
+using Firebase.Extensions;
+using Firebase.Database;
+using Firebase;
+#endif
 
 namespace FirebaseCore
 {
@@ -14,7 +19,7 @@ namespace FirebaseCore
 
         public static Action<UserInputDto> OnUserInput;
 
-#if !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         private void Start()
         {
             ListenToDatabaseChanges();
@@ -22,16 +27,16 @@ namespace FirebaseCore
 
         public void ListenToDatabaseChanges()
         {
-#if !UNITY_EDITOR
             FirebaseDatabase.ListenForChildChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
-#endif
         }
 
         private void HandleValueChanged(string newValue)
         {
-            UserInputDto inputDto = ConvertTo<UserInputDto>(newValue);
+            print($"child changed, value: {newValue}");
 
-            OnUserInput?.Invoke(inputDto);
+            // UserInputDto inputDto = ConvertTo<UserInputDto>(newValue);
+
+            // OnUserInput?.Invoke(inputDto);
         }
 
         private void HandleError(string error)
@@ -41,10 +46,8 @@ namespace FirebaseCore
 
         private void OnDisable()
         {
-#if UNITY_EDITOR
             FirebaseDatabase.StopListeningForChildChanged(Room, gameObject.name, nameof(HandleValueChanged),
                 nameof(HandleError));
-#endif
         }
 
         private static T ConvertTo<T>(string obj) where T : class
@@ -82,7 +85,6 @@ namespace FirebaseCore
         {
             reference.ChildChanged -= HandleChildChanged;
         }
-    }
-
 #endif
     }
+}
