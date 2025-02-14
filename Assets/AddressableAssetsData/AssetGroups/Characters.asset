@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: Characters
   m_GUID: 0ee8914add8bf184eb2669a5f9b6f538
   m_SerializeEntries:
+  - m_GUID: 09f217c1bd58892499d378e3048b9d42
+    m_Address: Assets/Prefabs/Fanta/Module08.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c89e7cedccb52c4ea820247a7f753b6
+    m_Address: Assets/Prefabs/Fanta/Module06 Mirror.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 10409ef829cc6fe4bad5539420c2cf62
     m_Address: Assets/Prefabs/Fanta/Module05 Mirror.prefab
     m_ReadOnly: 0
@@ -57,6 +67,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68dc40cad51e45448a0da4d9e4fd8711
+    m_Address: Assets/Prefabs/Fanta/Module07.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71514012df4dcd146957cb145cec8287
     m_Address: Assets/Prefabs/UI/MissionEntry.prefab
     m_ReadOnly: 0
@@ -92,6 +107,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ace808f9dda27b549adc09cc8bd9abce
+    m_Address: Assets/Prefabs/Fanta/Module06.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b25dbe4a2518632489e68e75bc72891f
+    m_Address: Assets/Prefabs/Particles/Fanta/FantaMagnetParticles.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b718c14c1e836cc4a8ca91d61382c504
     m_Address: Assets/Bundles/Themes/Default/Obstacles/ObstacleDog.prefab
     m_ReadOnly: 0
@@ -114,6 +139,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f87a4afd4c383c34dbd8ced438e06974
     m_Address: Assets/Prefabs/Fanta/Module02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fec7d33b1730e284d96c6443f81ff037
+    m_Address: Assets/Prefabs/Fanta/Module07 Mirror.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
