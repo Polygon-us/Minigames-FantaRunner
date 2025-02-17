@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Unlit/UnlitBlinking"
+﻿Shader "Unlit/UnlitBlinking"
 {
 	Properties
 	{
@@ -53,7 +51,7 @@ Shader "Unlit/UnlitBlinking"
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv);
 				
-				col = saturate(lerp(col, float4(1, 0.294, 0, 1), _BlinkingValue));
+				col = saturate(lerp(col, float4(1, 0.714, 0, 1), _BlinkingValue));
 
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
