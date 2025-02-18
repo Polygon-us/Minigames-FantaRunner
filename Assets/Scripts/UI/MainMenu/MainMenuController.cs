@@ -11,7 +11,7 @@ namespace UI.Controllers
         [SerializeField] private LoginMenu loginPanel;
         [SerializeField] private RegisterMenu registerPanel;
         [SerializeField] private MainMenu mainMenuPanel;
-
+        
         private ViewBase _currentMenu;
 
         private void Start()
@@ -52,7 +52,7 @@ namespace UI.Controllers
         {
             ShowPanel(mainMenuPanel);
         }
-
+        
         private void StartGame()
         {
             loginPanel.GoToRegister -= ShowRegister;

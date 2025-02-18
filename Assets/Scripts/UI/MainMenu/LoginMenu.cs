@@ -5,12 +5,12 @@ using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
 using Source.Popups;
-using Med.SafeValue;
 using UnityEngine;
 using Source.DTOs;
 using UnityREST;
 using UI.DTOs;
 using System;
+using Source.Utils.JWT;
 using TMPro;
 
 namespace UI.Views
@@ -20,20 +20,20 @@ namespace UI.Views
         [SerializeField] private Button registerButton;
         [SerializeField] private Button sendButton;
 
-        [SerializeField] private TMP_InputField usernameInputField;
+        [SerializeField] private TMP_InputField emailInputField;
         [SerializeField] private TMP_InputField passwordInputField;
 
         public Action OnLoginSuccess;
         public Action GoToRegister;
-        
+
         protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnSendLogin);
             registerButton.onClick.AddListener(() => GoToRegister?.Invoke());
 
-            ToggableButtons.Add(registerButton);
-            ToggableButtons.Add(sendButton);
-            
+            Buttons.Add(registerButton);
+            Buttons.Add(sendButton);
+
             SetPrefills();
         }
 
@@ -48,10 +48,10 @@ namespace UI.Views
         private void OnSendLogin()
         {
             ToggleButtons(false);
-            
+
             LoginDto loginDto = new LoginDto
             {
-                email = usernameInputField.text,
+                email = emailInputField.text,
                 password = passwordInputField.text
             };
 
@@ -75,34 +75,30 @@ namespace UI.Views
                 ToggleButtons(true);
                 return;
             }
-             
-            SaveInfoToPrefs();
+ 
+            JWTPayloadDto payloadDto = JsonWebToken.DecodeToObject<JWTPayloadDto>
+            (
+                response.data.data.authorization, 
+                string.Empty, 
+                false
+            );
+
+            BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email, passwordInputField.text);
             
             RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
-            
+
             OnLoginSuccess?.Invoke();
         }
 
         private void SetPrefills()
         {
-            UserInfoDto userInfoDto = PlayerSaves.DecryptClass<UserInfoDto>(UserInfoKey);
-            
-            if (userInfoDto == null)
-                return;
-            
-            usernameInputField.text = userInfoDto.username;
-            passwordInputField.text = userInfoDto.password;
-        }
-        
-        private void SaveInfoToPrefs()
-        {
-            UserInfoDto userInfoDto = new UserInfoDto
-            {
-                username = usernameInputField.text,
-                password = passwordInputField.text
-            };
+            SaveUserInfoDto saveUserInfoDto = BaseHandler.SaveUserInfo;
 
-            PlayerSaves.EncryptClass(userInfoDto, UserInfoKey);
+            if (saveUserInfoDto == null)
+                return;
+
+            emailInputField.text = saveUserInfoDto.email;
+            passwordInputField.text = saveUserInfoDto.password;
         }
     }
 }

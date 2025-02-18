@@ -311,6 +311,7 @@ MonoBehaviour:
   loginPanel: {fileID: 6302259306596953349}
   registerPanel: {fileID: 9114549346471483665}
   mainMenuPanel: {fileID: 1081932286466123148}
+  userModel: {fileID: 11400000, guid: b25688c35f2de7a41b4b3d6439c1de9d, type: 2}
 --- !u!1 &837094904512191342
 GameObject:
   m_ObjectHideFlags: 0

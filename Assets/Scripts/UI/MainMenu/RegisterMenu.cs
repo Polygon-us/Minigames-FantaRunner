@@ -5,11 +5,9 @@ using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
 using Source.Popups;
-using Med.SafeValue;
 using UnityEngine;
 using Source.DTOs;
 using UnityREST;
-using UI.DTOs;
 using System;
 using TMPro;
 
@@ -37,8 +35,8 @@ namespace UI.Views
             sendButton.onClick.AddListener(OnRegister);
             loginButton.onClick.AddListener(() => GoToLogin?.Invoke());
             
-            ToggableButtons.Add(sendButton);
-            ToggableButtons.Add(loginButton);
+            Buttons.Add(sendButton);
+            Buttons.Add(loginButton);
         }
 
         public override void OnShow()
@@ -87,23 +85,12 @@ namespace UI.Views
             }
             else
             {
-                SaveInfoToPrefs();
+                BaseHandler.SaveInfoToPrefs(usernameInputField.text, emailInputField.text, passwordInputField.text);
                 
                 RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
 
                 ConfirmationPopUp.Instance.Open(SuccessMessage, OnRegisterSuccess);
             }
-        }
-
-        private void SaveInfoToPrefs()
-        {
-            UserInfoDto userInfoDto = new UserInfoDto
-            {
-                username = usernameInputField.text,
-                password = passwordInputField.text
-            };
-
-            PlayerSaves.EncryptClass(userInfoDto, UserInfoKey);
         }
     }
 }
