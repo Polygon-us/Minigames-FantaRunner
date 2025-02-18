@@ -1,5 +1,6 @@
 using Source.DTOs.Response;
 using Source.DTOs.Request;
+using Source.DTOs;
 using UnityREST;
 using System;
 
@@ -10,7 +11,7 @@ namespace Source.Handlers
         private const int Limit = 5;
         private const int Offset = 0;
 
-        public void GetRanking(Action<WebResult<RankingResponseDto>> onRanking = null)
+        public void GetRanking(Action<WebResult<ResponseDto<RankingResponseDto>>> onRanking = null)
         {
             string[] args = Args($"gameType={GameType}", $"limit={Limit}", $"offset={Offset}",
                 $"username={UserModel.userInfo.username}");

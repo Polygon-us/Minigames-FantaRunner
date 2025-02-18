@@ -17,7 +17,7 @@ namespace Source.Popups
                 if (instance)
                     return instance;
 
-                instance = Instantiate(Resources.Load<GameObject>("Prefabs/Popups/Confirmation Popup"))
+                instance = Instantiate(Resources.Load<GameObject>("Prefabs/Popups/ConfirmationPopup"))
                     .GetComponent<ConfirmationPopUp>();
 
                 instance._panel = instance.gameObject.transform.GetChild(1).GetComponent<RectTransform>();
@@ -32,7 +32,7 @@ namespace Source.Popups
         #region Information
 
         [SerializeField] private Canvas canvas;
-        [SerializeField] private GameObject tittleText, msgText;
+        [SerializeField] private GameObject msgText;
         [SerializeField] private GameObject confirmBtn;
         [SerializeField] private AnimationCurve openCurve;
         [SerializeField] private AnimationCurve closeCurve;
@@ -55,39 +55,19 @@ namespace Source.Popups
         #endregion
 
 
-        public void Open(string tittleText = "", string msgText = "", string confirmText = "", Action onConfirm = null)
+        public void Open(string msgText, Action onConfirm = null)
         {
-            this.tittleText.GetComponent<TMP_Text>().text = tittleText;
             this.msgText.GetComponent<TMP_Text>().text = msgText;
-
-            confirmBtn.GetComponentInChildren<TMP_Text>().text = confirmText;
 
             OnConfirm = onConfirm;
 
             OpenTween();
         }
 
-        public void SetCanvasType(Camera canvasCamera)
-        {
-            if (canvasCamera == null)
-            {
-                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                canvas.sortingOrder = Int16.MaxValue - 10;
-            }
-            else
-            {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.worldCamera = canvasCamera;
-                canvas.sortingOrder = 30;
-                canvas.planeDistance = 90;
-            }
-        }
-
         private void OpenTween()
         {
             IsOpen = true;
 
-            tittleText.SetActive(false);
             msgText.SetActive(false);
 
             confirmBtn.SetActive(false);
@@ -102,7 +82,6 @@ namespace Source.Popups
 
             LeanTween.scale(_panel, Vector3.one, 0.2f).setEase(openCurve).setIgnoreTimeScale(true).setOnComplete(() =>
             {
-                tittleText.SetActive(true);
                 msgText.SetActive(true);
 
                 confirmBtn.SetActive(true);
@@ -125,7 +104,6 @@ namespace Source.Popups
         {
             IsOpen = false;
 
-            tittleText.SetActive(false);
             msgText.SetActive(false);
 
             confirmBtn.SetActive(false);

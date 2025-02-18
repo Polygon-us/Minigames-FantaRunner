@@ -2,6 +2,7 @@
 using Source.DTOs.Response;
 using Source.Handlers;
 using System.Linq;
+using Source.DTOs;
 using UnityEngine;
 using UnityREST;
 
@@ -43,7 +44,7 @@ public class Leaderboard : MonoBehaviour
         _rankingHandler.GetRanking(OnLeaderboardResponse);
     }
     
-    private void OnLeaderboardResponse(WebResult<RankingResponseDto> response)
+    private void OnLeaderboardResponse(WebResult<ResponseDto<RankingResponseDto>> response)
     {
         _records = response.data.data.global.ToList();
 

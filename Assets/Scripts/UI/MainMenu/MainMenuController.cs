@@ -19,6 +19,7 @@ namespace UI.Controllers
             loginPanel.GoToRegister += ShowRegister;
             loginPanel.OnLoginSuccess += StartGame;
             registerPanel.GoToLogin += ShowLogin;
+            registerPanel.OnRegisterSuccess += StartGame;
             
             registerPanel.gameObject.SetActive(false);
             mainMenuPanel.gameObject.SetActive(false);
@@ -57,8 +58,9 @@ namespace UI.Controllers
             loginPanel.GoToRegister -= ShowRegister;
             loginPanel.OnLoginSuccess -= StartGame;
             registerPanel.GoToLogin -= ShowLogin;
+            registerPanel.OnRegisterSuccess -= StartGame;
 
-            SceneManager.LoadScene("Start");
+            SceneManager.LoadScene("Main");
         }
     }
 }

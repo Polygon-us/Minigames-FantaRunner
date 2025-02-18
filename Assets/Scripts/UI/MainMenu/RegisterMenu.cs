@@ -1,5 +1,6 @@
 using Source.Utils.Validations;
 using Source.Utils.Responses;
+using Source.DTOs.Response;
 using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
@@ -29,11 +30,15 @@ namespace UI.Views
         [SerializeField] private TMP_InputField phoneInputField;
 
         public Action GoToLogin;
+        public Action OnRegisterSuccess;
 
         protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnRegister);
             loginButton.onClick.AddListener(() => GoToLogin?.Invoke());
+            
+            ToggableButtons.Add(sendButton);
+            ToggableButtons.Add(loginButton);
         }
 
         public override void OnShow()
@@ -46,7 +51,7 @@ namespace UI.Views
 
         private void OnRegister()
         {
-            sendButton.interactable = false;
+            ToggleButtons(false);
 
             RegisterDto registerDto = new RegisterDto
             {
@@ -63,27 +68,30 @@ namespace UI.Views
 
             if (!validate.IsSuccess)
             {
-                ConfirmationPopUp.Instance.Open("", validate.ErrorMessage);
-                sendButton.interactable = true;
+                ConfirmationPopUp.Instance.Open(validate.ErrorMessage);
+                ToggleButtons(true);
                 return;
             }
 
             RegisterHandler.Register(validate.Data, OnRegisterResponse);
         }
 
-        private void OnRegisterResponse(WebResult<ResponseDto<object>> response)
+        private void OnRegisterResponse(WebResult<ResponseDto<RegisterResponseDto>> response)
         {
             sendButton.interactable = true;
 
             if (response.result.HasError())
             {
-                ConfirmationPopUp.Instance.Open("", response.result.ResponseText);
+                ConfirmationPopUp.Instance.Open(response.data.error);
+                ToggleButtons(true);
             }
             else
             {
-                ConfirmationPopUp.Instance.Open("", SuccessMessage);
-
                 SaveInfoToPrefs();
+                
+                RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
+
+                ConfirmationPopUp.Instance.Open(SuccessMessage, OnRegisterSuccess);
             }
         }
 

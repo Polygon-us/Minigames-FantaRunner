@@ -25,12 +25,15 @@ namespace UI.Views
 
         public Action OnLoginSuccess;
         public Action GoToRegister;
-
+        
         protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnSendLogin);
             registerButton.onClick.AddListener(() => GoToRegister?.Invoke());
 
+            ToggableButtons.Add(registerButton);
+            ToggableButtons.Add(sendButton);
+            
             SetPrefills();
         }
 
@@ -44,6 +47,8 @@ namespace UI.Views
 
         private void OnSendLogin()
         {
+            ToggleButtons(false);
+            
             LoginDto loginDto = new LoginDto
             {
                 email = usernameInputField.text,
@@ -54,7 +59,8 @@ namespace UI.Views
 
             if (!validate.IsSuccess)
             {
-                ConfirmationPopUp.Instance.Open("", validate.ErrorMessage);
+                ConfirmationPopUp.Instance.Open(validate.ErrorMessage);
+                ToggleButtons(true);
                 return;
             }
 
@@ -65,10 +71,11 @@ namespace UI.Views
         {
             if (response.result.HasError())
             {
-                ConfirmationPopUp.Instance.Open("", response.result.ResponseText);
+                ConfirmationPopUp.Instance.Open(response.data.error);
+                ToggleButtons(true);
                 return;
             }
-
+             
             SaveInfoToPrefs();
             
             RestApiManager.Instance.SetAuthToken(response.data.data.authorization);

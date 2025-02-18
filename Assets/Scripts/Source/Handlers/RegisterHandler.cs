@@ -1,13 +1,14 @@
+using Source.DTOs.Response;
 using Source.DTOs.Request;
+using Source.DTOs;
 using UnityREST;
 using System;
-using Source.DTOs;
 
 namespace Source.Handlers
 {
     public class RegisterHandler : BaseHandler
     {
-        public static void Register(RegisterDto registerDto, Action<WebResult<ResponseDto<object>>> onRegister = null)
+        public static void Register(RegisterDto registerDto, Action<WebResult<ResponseDto<RegisterResponseDto>>> onRegister = null)
         {
             RestApiManager.Instance.PostRequest("register", registerDto, onRegister);
         }

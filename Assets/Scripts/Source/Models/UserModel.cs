@@ -17,7 +17,7 @@ public class UserModel : ScriptableObject
         distance = 0;
     }
 
-    public void SetData(LoginDetailsDto data)
+    public void SetData(LoginResponseDto data)
     {
         userInfo = new UserInfo
         {
