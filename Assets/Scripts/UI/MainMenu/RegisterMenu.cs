@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Source.Popups;
 using Med.SafeValue;
 using UnityEngine;
+using Source.DTOs;
 using UnityREST;
 using UI.DTOs;
 using System;
@@ -70,7 +71,7 @@ namespace UI.Views
             RegisterHandler.Register(validate.Data, OnRegisterResponse);
         }
 
-        private void OnRegisterResponse(WebResult<object> response)
+        private void OnRegisterResponse(WebResult<ResponseDto<object>> response)
         {
             sendButton.interactable = true;
 

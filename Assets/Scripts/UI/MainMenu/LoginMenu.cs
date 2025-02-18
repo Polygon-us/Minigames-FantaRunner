@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using Source.Popups;
 using Med.SafeValue;
 using UnityEngine;
+using Source.DTOs;
 using UnityREST;
 using UI.DTOs;
 using System;
@@ -60,7 +61,7 @@ namespace UI.Views
             LoginHandler.Login(validate.Data, OnLoginResponse);
         }
 
-        private void OnLoginResponse(WebResult<LoginResponseDto> response)
+        private void OnLoginResponse(WebResult<ResponseDto<LoginResponseDto>> response)
         {
             if (response.result.HasError())
             {
@@ -69,6 +70,8 @@ namespace UI.Views
             }
 
             SaveInfoToPrefs();
+            
+            RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
             
             OnLoginSuccess?.Invoke();
         }

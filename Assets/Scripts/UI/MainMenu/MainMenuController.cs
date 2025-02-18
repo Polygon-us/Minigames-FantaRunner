@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UI.Views;
@@ -16,6 +17,7 @@ namespace UI.Controllers
         private void Start()
         {
             loginPanel.GoToRegister += ShowRegister;
+            loginPanel.OnLoginSuccess += StartGame;
             registerPanel.GoToLogin += ShowLogin;
             
             registerPanel.gameObject.SetActive(false);
@@ -48,6 +50,15 @@ namespace UI.Controllers
         private void ShowMainMenu()
         {
             ShowPanel(mainMenuPanel);
+        }
+
+        private void StartGame()
+        {
+            loginPanel.GoToRegister -= ShowRegister;
+            loginPanel.OnLoginSuccess -= StartGame;
+            registerPanel.GoToLogin -= ShowLogin;
+
+            SceneManager.LoadScene("Start");
         }
     }
 }
