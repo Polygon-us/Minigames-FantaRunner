@@ -311,7 +311,6 @@ MonoBehaviour:
   loginPanel: {fileID: 6302259306596953349}
   registerPanel: {fileID: 9114549346471483665}
   mainMenuPanel: {fileID: 1081932286466123148}
-  userModel: {fileID: 11400000, guid: b25688c35f2de7a41b4b3d6439c1de9d, type: 2}
 --- !u!1 &837094904512191342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4209,7 +4208,7 @@ MonoBehaviour:
   firstSelected: {fileID: 4056428800630943918}
   registerButton: {fileID: 8985138269357756527}
   sendButton: {fileID: 6336965642022664350}
-  usernameInputField: {fileID: 3427647547840789728}
+  emailInputField: {fileID: 3427647547840789728}
   passwordInputField: {fileID: 880663724663588467}
 --- !u!1 &4540781712689623952
 GameObject:
