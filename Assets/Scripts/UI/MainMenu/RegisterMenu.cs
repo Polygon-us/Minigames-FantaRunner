@@ -4,8 +4,10 @@ using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
 using Source.Popups;
+using Med.SafeValue;
 using UnityEngine;
 using UnityREST;
+using UI.DTOs;
 using System;
 using TMPro;
 
@@ -14,7 +16,7 @@ namespace UI.Views
     public class RegisterMenu : ViewBase
     {
         private const string SuccessMessage = "Registrado correctamente";
-       
+
         [SerializeField] private Button sendButton;
         [SerializeField] private Button loginButton;
 
@@ -27,16 +29,24 @@ namespace UI.Views
 
         public Action GoToLogin;
 
-        private void Start()
+        protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnRegister);
             loginButton.onClick.AddListener(() => GoToLogin?.Invoke());
         }
 
+        public override void OnShow()
+        {
+        }
+
+        public override void OnHide()
+        {
+        }
+
         private void OnRegister()
         {
             sendButton.interactable = false;
-            
+
             RegisterDto registerDto = new RegisterDto
             {
                 fullName = nameInputField.text,
@@ -63,7 +73,7 @@ namespace UI.Views
         private void OnRegisterResponse(WebResult<object> response)
         {
             sendButton.interactable = true;
-            
+
             if (response.result.HasError())
             {
                 ConfirmationPopUp.Instance.Open("", response.result.ResponseText);
@@ -71,7 +81,20 @@ namespace UI.Views
             else
             {
                 ConfirmationPopUp.Instance.Open("", SuccessMessage);
+
+                SaveInfoToPrefs();
             }
+        }
+
+        private void SaveInfoToPrefs()
+        {
+            UserInfoDto userInfoDto = new UserInfoDto
+            {
+                username = usernameInputField.text,
+                password = passwordInputField.text
+            };
+
+            PlayerSaves.EncryptClass(userInfoDto, UserInfoKey);
         }
     }
 }

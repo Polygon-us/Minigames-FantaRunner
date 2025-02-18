@@ -18,7 +18,6 @@ namespace UI.Controllers
             loginPanel.GoToRegister += ShowRegister;
             registerPanel.GoToLogin += ShowLogin;
             
-            // loginPanel.gameObject.SetActive(false);
             registerPanel.gameObject.SetActive(false);
             mainMenuPanel.gameObject.SetActive(false);
             
@@ -28,8 +27,10 @@ namespace UI.Controllers
         private void ShowPanel(ViewBase panel)
         {
             _currentMenu?.gameObject.SetActive(false);
+            _currentMenu?.OnHide();
             _currentMenu = panel;
             _currentMenu.gameObject.SetActive(true);
+            _currentMenu.OnShow();
             
             eventSystem.SetSelectedGameObject(_currentMenu.FirstSelected);
         }

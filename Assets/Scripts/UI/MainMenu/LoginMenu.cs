@@ -5,8 +5,10 @@ using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
 using Source.Popups;
+using Med.SafeValue;
 using UnityEngine;
 using UnityREST;
+using UI.DTOs;
 using System;
 using TMPro;
 
@@ -23,10 +25,20 @@ namespace UI.Views
         public Action OnLoginSuccess;
         public Action GoToRegister;
 
-        private void Start()
+        protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnSendLogin);
             registerButton.onClick.AddListener(() => GoToRegister?.Invoke());
+
+            SetPrefills();
+        }
+
+        public override void OnShow()
+        {
+        }
+
+        public override void OnHide()
+        {
         }
 
         private void OnSendLogin()
@@ -56,7 +68,31 @@ namespace UI.Views
                 return;
             }
 
+            SaveInfoToPrefs();
+            
             OnLoginSuccess?.Invoke();
+        }
+
+        private void SetPrefills()
+        {
+            UserInfoDto userInfoDto = PlayerSaves.DecryptClass<UserInfoDto>(UserInfoKey);
+            
+            if (userInfoDto == null)
+                return;
+            
+            usernameInputField.text = userInfoDto.username;
+            passwordInputField.text = userInfoDto.password;
+        }
+        
+        private void SaveInfoToPrefs()
+        {
+            UserInfoDto userInfoDto = new UserInfoDto
+            {
+                username = usernameInputField.text,
+                password = passwordInputField.text
+            };
+
+            PlayerSaves.EncryptClass(userInfoDto, UserInfoKey);
         }
     }
 }

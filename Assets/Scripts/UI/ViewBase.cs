@@ -2,10 +2,23 @@
 
 namespace UI.Views
 {
-    public class ViewBase : MonoBehaviour
+    public abstract class ViewBase : MonoBehaviour
     {
         [SerializeField] protected GameObject firstSelected;
+     
+        protected const string UserInfoKey = "UserInfo";
         
         public GameObject FirstSelected => firstSelected;
+
+        private void Start()
+        {
+            OnCreation();
+        }
+
+        protected abstract void OnCreation();
+        
+        public abstract void OnShow();
+        
+        public abstract void OnHide();
     }
 }
