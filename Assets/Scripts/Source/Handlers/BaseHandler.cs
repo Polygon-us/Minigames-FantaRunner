@@ -7,7 +7,7 @@ namespace Source.Handlers
     {
         private const string UserInfoKey = "UserInfo";
 
-        protected const string GameType = "endless_runner";
+        protected const string GameType = "fanta_runner";
 
         public static SaveUserInfoDto SaveUserInfo => PlayerSaves.DecryptClass<SaveUserInfoDto>(UserInfoKey);
      
