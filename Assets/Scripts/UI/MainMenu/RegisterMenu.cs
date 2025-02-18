@@ -3,6 +3,7 @@ using Source.Utils.Responses;
 using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
+using Source.Popups;
 using UnityEngine;
 using UnityREST;
 using System;
@@ -12,6 +13,8 @@ namespace UI.Views
 {
     public class RegisterMenu : ViewBase
     {
+        private const string SuccessMessage = "Registrado correctamente";
+       
         [SerializeField] private Button sendButton;
         [SerializeField] private Button loginButton;
 
@@ -32,6 +35,8 @@ namespace UI.Views
 
         private void OnRegister()
         {
+            sendButton.interactable = false;
+            
             RegisterDto registerDto = new RegisterDto
             {
                 fullName = nameInputField.text,
@@ -47,8 +52,8 @@ namespace UI.Views
 
             if (!validate.IsSuccess)
             {
-                // TODO: Show error
-                Debug.Log(validate.ErrorMessage);
+                ConfirmationPopUp.Instance.Open("", validate.ErrorMessage);
+                sendButton.interactable = true;
                 return;
             }
 
@@ -57,6 +62,16 @@ namespace UI.Views
 
         private void OnRegisterResponse(WebResult<object> response)
         {
+            sendButton.interactable = true;
+            
+            if (response.result.HasError())
+            {
+                ConfirmationPopUp.Instance.Open("", response.result.ResponseText);
+            }
+            else
+            {
+                ConfirmationPopUp.Instance.Open("", SuccessMessage);
+            }
         }
     }
 }

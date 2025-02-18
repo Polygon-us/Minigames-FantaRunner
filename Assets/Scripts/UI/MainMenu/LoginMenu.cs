@@ -4,6 +4,7 @@ using Source.DTOs.Response;
 using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEngine.UI;
+using Source.Popups;
 using UnityEngine;
 using UnityREST;
 using System;
@@ -40,8 +41,7 @@ namespace UI.Views
 
             if (!validate.IsSuccess)
             {
-                // TODO: Show error
-                Debug.Log(validate.ErrorMessage);
+                ConfirmationPopUp.Instance.Open("", validate.ErrorMessage);
                 return;
             }
 
@@ -52,8 +52,7 @@ namespace UI.Views
         {
             if (response.result.HasError())
             {
-                // TODO: Show error
-                Debug.Log(response.result.ResponseText);
+                ConfirmationPopUp.Instance.Open("", response.result.ResponseText);
                 return;
             }
 
