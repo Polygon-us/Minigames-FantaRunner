@@ -1,18 +1,23 @@
-using UI.Views;
+using UnityEngine.EventSystems;
 using UnityEngine;
+using UI.Views;
 
 namespace UI.Controllers
 {
     public class MainMenuController : MonoBehaviour
     {
+        [SerializeField] private EventSystem eventSystem;
         [SerializeField] private LoginMenu loginPanel;
         [SerializeField] private RegisterMenu registerPanel;
         [SerializeField] private MainMenu mainMenuPanel;
 
-        private GameObject _currentMenu;
+        private ViewBase _currentMenu;
 
         private void Start()
         {
+            loginPanel.GoToRegister += ShowRegister;
+            registerPanel.GoToLogin += ShowLogin;
+            
             // loginPanel.gameObject.SetActive(false);
             registerPanel.gameObject.SetActive(false);
             mainMenuPanel.gameObject.SetActive(false);
@@ -20,26 +25,28 @@ namespace UI.Controllers
             ShowLogin();
         }
 
-        private void ShowPanel(GameObject panel)
+        private void ShowPanel(ViewBase panel)
         {
-            _currentMenu?.SetActive(false);
+            _currentMenu?.gameObject.SetActive(false);
             _currentMenu = panel;
-            _currentMenu?.SetActive(true);
+            _currentMenu.gameObject.SetActive(true);
+            
+            eventSystem.SetSelectedGameObject(_currentMenu.FirstSelected);
         }
 
         private void ShowLogin()
         {
-            ShowPanel(loginPanel.gameObject);
+            ShowPanel(loginPanel);
         }
 
         private void ShowRegister()
         {
-            ShowPanel(registerPanel.gameObject);
+            ShowPanel(registerPanel);
         }
 
         private void ShowMainMenu()
         {
-            ShowPanel(mainMenuPanel.gameObject);
+            ShowPanel(mainMenuPanel);
         }
     }
 }

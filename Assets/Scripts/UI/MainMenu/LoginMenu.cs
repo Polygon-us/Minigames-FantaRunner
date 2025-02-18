@@ -11,20 +11,21 @@ using TMPro;
 
 namespace UI.Views
 {
-    public class LoginMenu : MonoBehaviour
+    public class LoginMenu : ViewBase
     {
+        [SerializeField] private Button registerButton;
         [SerializeField] private Button sendButton;
-        [SerializeField] private Button logoutButton;
 
         [SerializeField] private TMP_InputField usernameInputField;
         [SerializeField] private TMP_InputField passwordInputField;
 
         public Action OnLoginSuccess;
-        
+        public Action GoToRegister;
+
         private void Start()
         {
             sendButton.onClick.AddListener(OnSendLogin);
-            logoutButton.onClick.AddListener(OnLogout);
+            registerButton.onClick.AddListener(() => GoToRegister?.Invoke());
         }
 
         private void OnSendLogin()
@@ -34,7 +35,7 @@ namespace UI.Views
                 email = usernameInputField.text,
                 password = passwordInputField.text
             };
-            
+
             ResultResponse<LoginDto> validate = LoginValidation.Validate(loginDto);
 
             if (!validate.IsSuccess)
@@ -45,11 +46,6 @@ namespace UI.Views
             }
 
             LoginHandler.Login(validate.Data, OnLoginResponse);
-        }
-
-        private void OnLogout()
-        {
-            // await _sessionHandler.SessionLogout();
         }
 
         private void OnLoginResponse(WebResult<LoginResponseDto> response)

@@ -5,13 +5,15 @@ using Source.Handlers;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityREST;
+using System;
 using TMPro;
 
 namespace UI.Views
 {
-    public class RegisterMenu : MonoBehaviour
+    public class RegisterMenu : ViewBase
     {
         [SerializeField] private Button sendButton;
+        [SerializeField] private Button loginButton;
 
         [SerializeField] private TMP_InputField nameInputField;
         [SerializeField] private TMP_InputField lastNameInputField;
@@ -20,9 +22,12 @@ namespace UI.Views
         [SerializeField] private TMP_InputField emailInputField;
         [SerializeField] private TMP_InputField passwordInputField;
 
+        public Action GoToLogin;
+
         private void Start()
         {
             sendButton.onClick.AddListener(OnRegister);
+            loginButton.onClick.AddListener(() => GoToLogin?.Invoke());
         }
 
         private void OnRegister()
@@ -36,7 +41,7 @@ namespace UI.Views
                 email = emailInputField.text,
                 password = passwordInputField.text
             };
-            
+
             ResultResponse<RegisterDto> validate = RegisterValidation.Validate(registerDto);
 
             if (!validate.IsSuccess)
@@ -51,7 +56,6 @@ namespace UI.Views
 
         private void OnRegisterResponse(WebResult<object> response)
         {
-            
         }
     }
 }
