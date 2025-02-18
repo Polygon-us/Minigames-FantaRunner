@@ -28,7 +28,7 @@ namespace Source.Utils.Validations
                 );
             }
 
-            if (!InputValidator.IsValidName(registerDto.name))
+            if (!InputValidator.IsValidName(registerDto.fullName))
             {
                 return ResultResponse<RegisterDto>.Failure(
                     "name must be at least 3 characters long.",
@@ -36,11 +36,11 @@ namespace Source.Utils.Validations
                 );
             }
             
-            if (!InputValidator.IsValidName(registerDto.lastName))
+            if (!InputValidator.IsValidName(registerDto.username))
             {
                 return ResultResponse<RegisterDto>.Failure(
-                    "name must be at least 3 characters long.",
-                    "NAME_TOO_SHORT"
+                    "username must be at least 3 characters long.",
+                    "USERNAME_TOO_SHORT"
                 );
             }
             

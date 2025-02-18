@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scheme: 1
   environment: 1
-  domain: 
-  apiKey: 
+  domain: ysvjqiijna.execute-api.us-east-1.amazonaws.com/dev/v1
+  apiKey: WwICKABsAd3eSOuMehpKLtNfcam88Ny1qeSiamK3
   apiPaths: {fileID: 11400000, guid: 84e59ac36354bc64fbc52059e8526bf6, type: 2}

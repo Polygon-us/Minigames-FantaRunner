@@ -1,15 +1,9 @@
+using FirebaseWebGL.Scripts.FirebaseBridge;
 using FirebaseCore.DTOs;
 using Newtonsoft.Json;
 using UnityEngine;
 using System;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-using FirebaseWebGL.Scripts.FirebaseBridge;
-#else
-using Firebase.Extensions;
-using Firebase.Database;
-using Firebase;
-#endif
 
 namespace FirebaseCore
 {
@@ -20,7 +14,6 @@ namespace FirebaseCore
         public static Action<int> OnMovementInput;
         public static Action OnSubmitInput;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
         private void Start()
         {
             ListenToDatabaseChanges();
@@ -44,7 +37,6 @@ namespace FirebaseCore
                     OnSubmitInput?.Invoke();
                     break;
             }
-
         }
 
         private void HandleError(string error)
@@ -62,37 +54,6 @@ namespace FirebaseCore
         {
             return JsonConvert.DeserializeObject<T>(obj);
         }
-#else
-        DatabaseReference reference;
 
-        // Start is called before the first frame update
-        private void Start()
-        {
-            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(_ => {
-                reference = FirebaseDatabase.DefaultInstance.GetReference(Room);
-
-                // Listening for changes to child properties of Room
-                reference.ChildChanged += HandleChildChanged;
-            });
-        }
-
-        // Handle child changes under the Room node
-        private void HandleChildChanged(object sender, ChildChangedEventArgs e)
-        {
-            if (e.DatabaseError != null)
-            {
-                Debug.LogError("Error: " + e.DatabaseError.Message);
-                return;
-            }
-
-            // Log the changed child key and its new value
-            Debug.Log("Child changed: " + e.Snapshot.Key + " -> " + e.Snapshot.Value);
-        }
-
-        private void OnDisable()
-        {
-            reference.ChildChanged -= HandleChildChanged;
-        }
-#endif
     }
 }

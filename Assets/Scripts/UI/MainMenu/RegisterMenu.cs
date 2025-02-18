@@ -16,11 +16,11 @@ namespace UI.Views
         [SerializeField] private Button loginButton;
 
         [SerializeField] private TMP_InputField nameInputField;
-        [SerializeField] private TMP_InputField lastNameInputField;
-        [SerializeField] private TMP_InputField idCardInputField;
-        [SerializeField] private TMP_InputField phoneInputField;
+        [SerializeField] private TMP_InputField usernameInputField;
         [SerializeField] private TMP_InputField emailInputField;
         [SerializeField] private TMP_InputField passwordInputField;
+        [SerializeField] private TMP_InputField idCardInputField;
+        [SerializeField] private TMP_InputField phoneInputField;
 
         public Action GoToLogin;
 
@@ -34,12 +34,13 @@ namespace UI.Views
         {
             RegisterDto registerDto = new RegisterDto
             {
-                name = nameInputField.text,
-                lastName = lastNameInputField.text,
+                fullName = nameInputField.text,
+                username = usernameInputField.text,
+                email = emailInputField.text,
+                password = passwordInputField.text,
                 idCard = idCardInputField.text,
                 phone = phoneInputField.text,
-                email = emailInputField.text,
-                password = passwordInputField.text
+                acceptedTerms = true
             };
 
             ResultResponse<RegisterDto> validate = RegisterValidation.Validate(registerDto);
