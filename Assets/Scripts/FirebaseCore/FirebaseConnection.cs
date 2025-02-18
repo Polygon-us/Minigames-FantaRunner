@@ -14,6 +14,7 @@ namespace FirebaseCore
         public static Action<int> OnMovementInput;
         public static Action OnSubmitInput;
 
+#if !UNITY_EDITOR
         private void Start()
         {
             ListenToDatabaseChanges();
@@ -54,6 +55,6 @@ namespace FirebaseCore
         {
             return JsonConvert.DeserializeObject<T>(obj);
         }
-
+#endif
     }
 }
