@@ -2,8 +2,14 @@
 {
     public class LoginResponseDto
     {
-        public int statusCode;
-        public string success;
-        public LoginDetailsDto data;
+        public string authorization;
+        public string username;
+        public string fullName;
+        public string address;
+        public string idCard;
+        public string email;
+        public string phone;
+        public string city;
+        public LeaderboardResponseDto[] leaderboard;
     }
 }

@@ -12,17 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6045f1aa6c0a41d085fcd301c234c99e, type: 3}
   m_Name: APIPaths
   m_EditorClassIdentifier: 
-  scheme: 1
-  domain: 0jqh6egbsi.execute-api.us-east-1.amazonaws.com/dev/v1
   resources:
   - name: status
     path: status
   - name: login
-    path: login
+    path: users/login
   - name: register
-    path: users/register
-  - name: update
-    path: users/update
+    path: users
   - name: updateLeaderboard
     path: users/leaderboard?gameType=endless_runner
   - name: listLeaderboard

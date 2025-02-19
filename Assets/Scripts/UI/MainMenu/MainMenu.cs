@@ -8,9 +8,17 @@ namespace UI.Views
     {
         [SerializeField] private Button startButton;
 
-        private void Start()
+        protected override void OnCreation()
         {
             startButton.onClick.AddListener(OnStartGame);
+        }
+
+        public override void OnShow()
+        {
+        }
+
+        public override void OnHide()
+        {
         }
         
         private void OnStartGame()

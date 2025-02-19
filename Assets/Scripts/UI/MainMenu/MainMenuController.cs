@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UI.Views;
@@ -10,15 +11,16 @@ namespace UI.Controllers
         [SerializeField] private LoginMenu loginPanel;
         [SerializeField] private RegisterMenu registerPanel;
         [SerializeField] private MainMenu mainMenuPanel;
-
+        
         private ViewBase _currentMenu;
 
         private void Start()
         {
             loginPanel.GoToRegister += ShowRegister;
+            loginPanel.OnLoginSuccess += StartGame;
             registerPanel.GoToLogin += ShowLogin;
+            registerPanel.OnRegisterSuccess += StartGame;
             
-            // loginPanel.gameObject.SetActive(false);
             registerPanel.gameObject.SetActive(false);
             mainMenuPanel.gameObject.SetActive(false);
             
@@ -28,8 +30,10 @@ namespace UI.Controllers
         private void ShowPanel(ViewBase panel)
         {
             _currentMenu?.gameObject.SetActive(false);
+            _currentMenu?.OnHide();
             _currentMenu = panel;
             _currentMenu.gameObject.SetActive(true);
+            _currentMenu.OnShow();
             
             eventSystem.SetSelectedGameObject(_currentMenu.FirstSelected);
         }
@@ -47,6 +51,16 @@ namespace UI.Controllers
         private void ShowMainMenu()
         {
             ShowPanel(mainMenuPanel);
+        }
+        
+        private void StartGame()
+        {
+            loginPanel.GoToRegister -= ShowRegister;
+            loginPanel.OnLoginSuccess -= StartGame;
+            registerPanel.GoToLogin -= ShowLogin;
+            registerPanel.OnRegisterSuccess -= StartGame;
+
+            SceneManager.LoadScene("Main");
         }
     }
 }

@@ -15,7 +15,7 @@ public class RestApiManager : APIManager
             if (_instance)
                 return _instance;
 
-            GameObject go = Resources.Load<GameObject>("Prefabs/RestApi");
+            GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/RestApi"));
 
             _instance = go.GetComponent<RestApiManager>();
 

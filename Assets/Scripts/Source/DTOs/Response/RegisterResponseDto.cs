@@ -1,9 +1,6 @@
 namespace Source.DTOs.Response
 {
-    public class RegisterResponseDto
+    public class RegisterResponseDto : LoginResponseDto
     {
-        public int statusCode;
-        public string success;
-        public LoginDetailsDto data;
     }
 }
