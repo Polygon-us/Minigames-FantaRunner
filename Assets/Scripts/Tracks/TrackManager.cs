@@ -474,7 +474,7 @@ public class TrackManager : MonoBehaviour
     public void PowerupSpawnUpdate()
     {
         m_TimeSincePowerup += Time.deltaTime;
-        m_TimeSinceLastPremium += Time.deltaTime;
+        //m_TimeSinceLastPremium += Time.deltaTime; //This is for Premium powerup that we are not using for Fanta
     }
 
     public void ChangeZone()
@@ -581,9 +581,9 @@ public class TrackManager : MonoBehaviour
             float currentWorldPos = 0.0f;
             int currentLane = Random.Range(0, 3);
 
-            float powerupChance = Mathf.Clamp01(Mathf.Floor(m_TimeSincePowerup) * 1); //TESTING: increase the chance of powerup
-
+            float powerupChance = Mathf.Clamp01(Mathf.Floor(m_TimeSincePowerup) * 1); ////////******************************TESTING: increase the chance of powerup
             //float powerupChance = Mathf.Clamp01(Mathf.Floor(m_TimeSincePowerup) * 0.5f * 0.001f);
+            
             float premiumChance = Mathf.Clamp01(Mathf.Floor(m_TimeSinceLastPremium) * 0.5f * 0.0001f);
 
             while (currentWorldPos < segment.worldLength)
@@ -636,21 +636,23 @@ public class TrackManager : MonoBehaviour
                             toUse.transform.SetParent(segment.transform, true);
                         }
                     }
-                    else if (Random.value < premiumChance)
-                    {
-                        m_TimeSinceLastPremium = 0.0f;
-                        premiumChance = 0.0f;
+                    //************* This block controls the premium collectable (sardines), we will not use it for Fanta ***************
 
-                        AsyncOperationHandle op = Addressables.InstantiateAsync(currentTheme.premiumCollectible.name, pos, rot);
-                        yield return op;
-                        if (op.Result == null || !(op.Result is GameObject))
-                        {
-                            Debug.LogWarning(string.Format("Unable to load collectable {0}.", currentTheme.premiumCollectible.name));
-                            yield break;
-                        }
-                        toUse = op.Result as GameObject;
-                        toUse.transform.SetParent(segment.transform, true);
-                    }
+                    //else if (Random.value < premiumChance)
+                    //{
+                    //    m_TimeSinceLastPremium = 0.0f;
+                    //    premiumChance = 0.0f;
+
+                    //    AsyncOperationHandle op = Addressables.InstantiateAsync(currentTheme.premiumCollectible.name, pos, rot);
+                    //    yield return op;
+                    //    if (op.Result == null || !(op.Result is GameObject))
+                    //    {
+                    //        Debug.LogWarning(string.Format("Unable to load collectable {0}.", currentTheme.premiumCollectible.name));
+                    //        yield break;
+                    //    }
+                    //    toUse = op.Result as GameObject;
+                    //    toUse.transform.SetParent(segment.transform, true);
+                    //}
                     else
                     {
                         toUse = Coin.coinPool.Get(pos, rot);

@@ -62,6 +62,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - characters
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49e20699abe7d26438d3fc41677a0dfd
+    m_Address: Assets/Prefabs/Fanta/Module10.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e63bfae11cd74146aaaf266d3eab71f
     m_Address: Assets/Prefabs/Fanta/Module04.prefab
     m_ReadOnly: 0
@@ -84,6 +89,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94cb557246c11d14388842cc08be79a8
     m_Address: Assets/Prefabs/UI/PowerupIcon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f24c191c8e74dd45bfa227d0e8c9597
+    m_Address: Assets/Prefabs/Fanta/Module11.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -134,6 +144,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1a536f74c7ef384a8d7132148ace0c8
     m_Address: Assets/UI/UISpritesheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6e8774d97e7b814d9bf526f153484f7
+    m_Address: Assets/Prefabs/Fanta/Module09.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

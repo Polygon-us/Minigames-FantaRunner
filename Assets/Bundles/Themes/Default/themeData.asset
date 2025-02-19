@@ -94,6 +94,21 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    - m_AssetGUID: e6e8774d97e7b814d9bf526f153484f7
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 49e20699abe7d26438d3fc41677a0dfd
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9f24c191c8e74dd45bfa227d0e8c9597
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   collectiblePrefab: {fileID: 184264, guid: 16cac8b68c4ca6448baecd0680e025f6, type: 3}
   premiumCollectible: {fileID: 1000010457517272, guid: ac3c86c2382618643bfda6ab3cc81a0b,
     type: 3}
