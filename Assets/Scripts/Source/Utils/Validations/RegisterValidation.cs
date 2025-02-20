@@ -14,40 +14,54 @@ namespace Source.Utils.Validations
 
             if (!InputValidator.IsValidEmail(registerDto.email))
             {
-                return ResultResponse<RegisterDto>.Failure(
-                    "Invalid email format or email is too long.",
+                return ResultResponse<RegisterDto>.Failure
+                (
+                    "El correo no es válido.",
                     "EMAIL_INVALID"
                 );
             }
 
             if (!InputValidator.IsValidPassword(registerDto.password))
             {
-                return ResultResponse<RegisterDto>.Failure(
-                    "password must be at least 6 characters long.",
+                return ResultResponse<RegisterDto>.Failure
+                (
+                    "Contraseña debe tener al menos 6 caracteres.",
                     "PASSWORD_TOO_SHORT"
+                );
+            }
+
+            if (registerDto.password != registerDto.confirmPassword)
+            {
+                return ResultResponse<RegisterDto>.Failure
+                (
+                    "Las contraseñas deben coincidir.",
+                    "DIFFERENT PASSWORDS"
                 );
             }
 
             if (!InputValidator.IsValidName(registerDto.fullName))
             {
-                return ResultResponse<RegisterDto>.Failure(
-                    "name must be at least 3 characters long.",
+                return ResultResponse<RegisterDto>.Failure
+                (
+                    "Nombre debe tener al menos 3 caracteres.",
                     "NAME_TOO_SHORT"
                 );
             }
             
             if (!InputValidator.IsValidName(registerDto.username))
             {
-                return ResultResponse<RegisterDto>.Failure(
-                    "username must be at least 3 characters long.",
+                return ResultResponse<RegisterDto>.Failure
+                (
+                    "Nombre de usuario debe tener al menos 3 caracteres.",
                     "USERNAME_TOO_SHORT"
                 );
             }
             
             if (!InputValidator.IsValidPhoneNumber(registerDto.phone))
             {
-                return ResultResponse<RegisterDto>.Failure(
-                    "phone number must be a valid phone number.",
+                return ResultResponse<RegisterDto>.Failure
+                (
+                    "El número de celular debe ser válido.",
                     "PHONE_INVALID"
                 );
             }

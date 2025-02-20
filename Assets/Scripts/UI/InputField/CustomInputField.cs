@@ -1,67 +1,78 @@
-using TMPro;
-using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
-[RequireComponent(typeof(ColorInputField))]
-public class CustomInputField : TMP_InputField
+namespace UI.InputField
 {
-    private ColorInputField _colorInputField;
-    
-    public override void OnDeselect(BaseEventData eventData)
+    public class CustomInputField : MonoBehaviour
     {
-        if (!UnityEngine.Device.Application.isMobilePlatform)
-            base.OnDeselect(eventData);
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+        [SerializeField] private string labelText;
+        [SerializeField] private string placeHolderText;
+        [SerializeField] private int textsSize;
+        [SerializeField] private bool hasIcon;
+        [ShowIf(nameof(hasIcon), true, true)]
+        [SerializeField] private Sprite iconSprite;
+        [SerializeField] private TMP_InputField.ContentType contentType;
+        [SerializeField] private TouchScreenKeyboardType keyboardType;
         
-        onSelect.AddListener(ShowKeyboard);
-    }
-    
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        
-        onSelect.RemoveListener(ShowKeyboard);
-    }
+        private TMP_Text label;
+        private TMP_InputField inputField;
+        private TMP_Text[] texts;
+        private Image iconImage;
 
-    protected override void Awake()
-    {
-        base.Awake();
+        public string Text => inputField.text;
 
-        _colorInputField = GetComponent<ColorInputField>();
-
-        colors = new ColorBlock
+        [ContextMenu(nameof(ResetReferences))]
+        private void ResetReferences()
         {
-            normalColor = Color.white,
-            highlightedColor = Color.white * 0.9f,
-            selectedColor = Color.white,
-            pressedColor = Color.white * 0.7f,
-            disabledColor = _colorInputField.disableInputColor,
-            colorMultiplier = 1,
-            fadeDuration = 0.1f
-        };
-    }
+            label = null;
+            inputField = null;
+            texts = null;
+            iconImage = null;
+        }
 
-    public void DisableInput()
-    {
-        m_TextComponent.color = _colorInputField.disableTextColor;
-        
-        interactable = false;
-    }
+        private void EnsureInitialized()
+        {
+            label ??= GetComponentInChildren<TMP_Text>();
+            inputField ??= GetComponentInChildren<TMP_InputField>();
+            texts ??= GetComponentsInChildren<TMP_Text>();
+            iconImage ??= transform.GetChild(1).GetChild(2).GetComponent<Image>();
+        }
 
-    public void HideCaret()
-    {
-        DeactivateInputField();
+        private void OnValidate()
+        {
+            EnsureInitialized();
 
-        SendOnFocusLost();
-    }
+            label.text = labelText;
+            ((TMP_Text)inputField.placeholder).text = placeHolderText;
+            inputField.contentType = contentType;
+            
+            iconImage.enabled = hasIcon;
+            if (hasIcon)
+                iconImage.sprite = iconSprite;
 
-    private void ShowKeyboard(string _)
-    {
-        KeyboardController.Instance.Open(this);
+            foreach (TMP_Text text in texts)
+            {
+                text.fontSize = textsSize;
+            }
+        }
+
+        private void Awake()
+        {
+            EnsureInitialized();
+
+            inputField.onSelect.AddListener(ShowKeyboard);
+        }
+
+        private void ShowKeyboard(string text)
+        {
+            print("Show Keyboard");
+            TouchScreenKeyboard.Open(text, keyboardType, false, false);
+        }
+
+        private void OnDestroy()
+        {
+            inputField.onSelect.RemoveAllListeners();
+        }
     }
 }

@@ -3,11 +3,12 @@
     public class RegisterDto
     {
         public string fullName;
+        public string idCard;
         public string username;
+        public string phone;
         public string email;
         public string password;
-        public string idCard;
-        public string phone;
+        public string confirmPassword;
         public bool acceptedTerms;
     }
 }

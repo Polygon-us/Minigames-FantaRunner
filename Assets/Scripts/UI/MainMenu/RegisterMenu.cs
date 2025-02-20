@@ -18,14 +18,16 @@ namespace UI.Views
         private const string SuccessMessage = "Registrado correctamente";
 
         [SerializeField] private Button sendButton;
-        [SerializeField] private Button loginButton;
+        [SerializeField] private Button backButton;
+        [SerializeField] private Toggle showPasswordToggle;
 
         [SerializeField] private TMP_InputField nameInputField;
+        [SerializeField] private TMP_InputField idCardInputField;
         [SerializeField] private TMP_InputField usernameInputField;
+        [SerializeField] private TMP_InputField phoneInputField;
         [SerializeField] private TMP_InputField emailInputField;
         [SerializeField] private TMP_InputField passwordInputField;
-        [SerializeField] private TMP_InputField idCardInputField;
-        [SerializeField] private TMP_InputField phoneInputField;
+        [SerializeField] private TMP_InputField confirmPasswordInputField;
 
         public Action GoToLogin;
         public Action OnRegisterSuccess;
@@ -33,10 +35,11 @@ namespace UI.Views
         protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnRegister);
-            loginButton.onClick.AddListener(() => GoToLogin?.Invoke());
-            
+            backButton.onClick.AddListener(() => GoToLogin?.Invoke());
+            showPasswordToggle.onValueChanged.AddListener(OnShowPassword);
+
             Buttons.Add(sendButton);
-            Buttons.Add(loginButton);
+            Buttons.Add(backButton);
         }
 
         public override void OnShow()
@@ -54,11 +57,12 @@ namespace UI.Views
             RegisterDto registerDto = new RegisterDto
             {
                 fullName = nameInputField.text,
+                idCard = idCardInputField.text,
                 username = usernameInputField.text,
+                phone = phoneInputField.text,
                 email = emailInputField.text,
                 password = passwordInputField.text,
-                idCard = idCardInputField.text,
-                phone = phoneInputField.text,
+                confirmPassword = confirmPasswordInputField.text,
                 acceptedTerms = true
             };
 
@@ -86,11 +90,24 @@ namespace UI.Views
             else
             {
                 BaseHandler.SaveInfoToPrefs(usernameInputField.text, emailInputField.text, passwordInputField.text);
-                
+
                 RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
 
                 ConfirmationPopUp.Instance.Open(SuccessMessage, OnRegisterSuccess);
             }
+        }
+
+        private void OnShowPassword(bool show)
+        {
+            var contentType = show 
+                ? TMP_InputField.ContentType.Standard
+                : TMP_InputField.ContentType.Password;
+            
+            passwordInputField.contentType = contentType;
+            confirmPasswordInputField.contentType = contentType;
+            
+            passwordInputField.ForceLabelUpdate();
+            confirmPasswordInputField.ForceLabelUpdate();
         }
     }
 }
