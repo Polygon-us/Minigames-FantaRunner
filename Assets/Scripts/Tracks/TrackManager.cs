@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Source.Handlers;
 using UnityEditor;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Analytics;
@@ -85,6 +86,8 @@ public class TrackManager : MonoBehaviour
     //used by the obstacle spawning code in the tutorial, as it need to spawn the 1st obstacle in the middle lane
     public bool firstObstacle { get; set; }
 
+    public CheckpointTimeline CheckpointTimeline => _checkpointTimeline;
+    
     protected float m_TimeToStart = -1.0f;
 
     // If this is set to -1, random seed is init to system clock, otherwise init to that value
@@ -117,6 +120,8 @@ public class TrackManager : MonoBehaviour
     protected bool m_IsTutorial; //Tutorial is a special run that don't chance section until the tutorial step is "validated" by the TutorialState.
     
     Vector3 m_CameraOriginalPos = Vector3.zero;
+
+    private CheckpointTimeline _checkpointTimeline = new CheckpointTimeline();
     
     const float k_FloatingOriginThreshold = 10000f;
 
@@ -271,7 +276,8 @@ public class TrackManager : MonoBehaviour
 
         m_Segments.Clear();
         m_PastSegments.Clear();
-
+        _checkpointTimeline.checkpoints.Clear();
+        
         characterController.End();
 
         gameObject.SetActive(false);
