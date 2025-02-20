@@ -36,7 +36,7 @@ namespace UI.InputField
             label ??= GetComponentInChildren<TMP_Text>();
             inputField ??= GetComponentInChildren<TMP_InputField>();
             texts ??= GetComponentsInChildren<TMP_Text>();
-            iconImage ??= transform.GetChild(1).GetChild(1).GetComponent<Image>();
+            iconImage ??= transform.GetChild(1).GetChild(2).GetComponent<Image>();
         }
 
         private void OnValidate()
