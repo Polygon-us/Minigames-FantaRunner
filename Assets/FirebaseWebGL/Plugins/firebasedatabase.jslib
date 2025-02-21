@@ -159,7 +159,11 @@ mergeInto(LibraryManager.library, {
         try {
 
             firebase.database().ref(parsedPath).on('child_changed', function(snapshot) {
-                window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(snapshot.val()));
+                var data = {
+                    key: snapshot.key,
+                    value: snapshot.val()
+                }
+                window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(data));
             });
 
         } catch (error) {

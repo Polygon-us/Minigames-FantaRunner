@@ -4,13 +4,21 @@ using UnityEngine.UI;
 
 namespace UI.Views
 {
-    public class MainMenu : MonoBehaviour
+    public class MainMenu : ViewBase
     {
         [SerializeField] private Button startButton;
 
-        void Start()
+        protected override void OnCreation()
         {
             startButton.onClick.AddListener(OnStartGame);
+        }
+
+        public override void OnShow()
+        {
+        }
+
+        public override void OnHide()
+        {
         }
         
         private void OnStartGame()

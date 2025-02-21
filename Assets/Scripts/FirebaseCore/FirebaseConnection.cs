@@ -4,28 +4,42 @@ using Newtonsoft.Json;
 using UnityEngine;
 using System;
 
+
 namespace FirebaseCore
 {
     public class FirebaseConnection : MonoBehaviour
     {
         private const string Room = "A1B1";
 
-        public static Action<UserInputDto> OnUserInput;
-        
+        public static Action<int> OnMovementInput;
+        public static Action OnSubmitInput;
+
+#if !UNITY_EDITOR
+        private void Start()
+        {
+            ListenToDatabaseChanges();
+        }
+
         public void ListenToDatabaseChanges()
         {
-#if !UNITY_EDITOR
-            FirebaseDatabase.ListenForValueChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
-#endif
+            FirebaseDatabase.ListenForChildChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
         }
 
-        private void HandleValueChanged(string newValue)
+        private void HandleValueChanged(string data)
         {
-            UserInputDto inputDto = ConvertTo<UserInputDto>(newValue);
-
-            OnUserInput?.Invoke(inputDto);
+            ChangedDataDto dataDto = ConvertTo<ChangedDataDto>(data);
+            
+            switch (dataDto.key)
+            {
+                case nameof(UserInputDto.direction):
+                    OnMovementInput?.Invoke(int.Parse(dataDto.value));
+                    break;
+                case nameof(UserInputDto.submit):
+                    OnSubmitInput?.Invoke();
+                    break;
+            }
         }
-        
+
         private void HandleError(string error)
         {
             Debug.LogError(error);
@@ -33,14 +47,14 @@ namespace FirebaseCore
 
         private void OnDisable()
         {
-#if !UNITY_EDITOR
-            FirebaseDatabase.StopListeningForValueChanged(Room, gameObject.name, nameof(HandleValueChanged), nameof(HandleError));
-#endif
+            FirebaseDatabase.StopListeningForChildChanged(Room, gameObject.name, nameof(HandleValueChanged),
+                nameof(HandleError));
         }
-        
+
         private static T ConvertTo<T>(string obj) where T : class
         {
             return JsonConvert.DeserializeObject<T>(obj);
         }
+#endif
     }
 }
