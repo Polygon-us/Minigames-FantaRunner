@@ -17,19 +17,14 @@ MonoBehaviour:
   premiumCost: 0
   themeIcon: {fileID: 21300036, guid: e1a536f74c7ef384a8d7132148ace0c8, type: 3}
   zones:
-  - length: 1500
+  - length: 0
     prefabList:
-    - m_AssetGUID: af9c256b422be224dbc4f02c0a9713f6
-      m_SubObjectName: 
-      m_SubObjectGUID: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
     - m_AssetGUID: 28e65b6174692734bb99b6561b1f05ac
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 467089cd06a7b704faded36479753714
+    - m_AssetGUID: f87a4afd4c383c34dbd8ced438e06974
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
@@ -39,22 +34,77 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: a447c5369776ed54d93d2ebb321fc539
-      m_SubObjectName: 
-      m_SubObjectGUID: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-    - m_AssetGUID: fdc2d7e43c319e64cafed2b26a7b65a0
-      m_SubObjectName: 
-      m_SubObjectGUID: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-    - m_AssetGUID: 2de6c1b5f8b0d95489cbea9dfd408243
+    - m_AssetGUID: 4e63bfae11cd74146aaaf266d3eab71f
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     - m_AssetGUID: 14cf9c4f0d7c6a647946d931a9e91955
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ace808f9dda27b549adc09cc8bd9abce
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 68dc40cad51e45448a0da4d9e4fd8711
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 09f217c1bd58892499d378e3048b9d42
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ffa462c6076c19e4b8e45384fca2373b
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 23c547fb6d619e244aa8dfe9fc6a25e9
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: de11ed1f193178342a10f51ce6136926
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b757944c6a3909a41b82b4a463483372
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 10409ef829cc6fe4bad5539420c2cf62
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 0c89e7cedccb52c4ea820247a7f753b6
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: fec7d33b1730e284d96c6443f81ff037
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: e6e8774d97e7b814d9bf526f153484f7
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 49e20699abe7d26438d3fc41677a0dfd
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9f24c191c8e74dd45bfa227d0e8c9597
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
