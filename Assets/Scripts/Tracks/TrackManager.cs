@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Source.DTOs.Request;
 using Source.Handlers;
 using UnityEditor;
 using UnityEngine.AddressableAssets;
@@ -8,6 +10,7 @@ using UnityEngine.Analytics;
 using UnityEngine.ResourceManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using GameObject = UnityEngine.GameObject;
+using Random = UnityEngine.Random;
 
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
@@ -121,7 +124,7 @@ public class TrackManager : MonoBehaviour
     
     Vector3 m_CameraOriginalPos = Vector3.zero;
 
-    private CheckpointTimeline _checkpointTimeline = new CheckpointTimeline();
+    private CheckpointTimeline _checkpointTimeline = new ();
     
     const float k_FloatingOriginThreshold = 10000f;
 
@@ -364,6 +367,12 @@ public class TrackManager : MonoBehaviour
             m_Segments.RemoveAt(0);
             _spawnedSegments--;
 
+            _checkpointTimeline.checkpoints.Add(new CheckpointDto
+            {
+                date = DateTime.UtcNow,
+                score = score
+            });
+            
             if (currentSegementChanged != null) currentSegementChanged.Invoke(m_Segments[0]);
         }
 

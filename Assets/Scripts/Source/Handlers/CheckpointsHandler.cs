@@ -1,16 +1,16 @@
-using System;
 using System.Collections.Generic;
-using UnityREST;
+using Source.DTOs.Request;
+using System;
 
 namespace Source.Handlers
 {
     public class CheckpointsHandler : BaseHandler
     {
-        public static void StartRun(Action<WebResult<StartGameResponse>> onRunStart)
+        public static void StartRun()
         {
             string[] args = Args($"gameType={GameType}");
 
-            RestApiManager.Instance.PostRequest("startRun", null, onRunStart, args);
+            RestApiManager.Instance.PostRequest<object>("startRun", null, null, args);
         }
 
         public static void SendCheckpoints(CheckpointTimeline checkpointTimeline)
@@ -24,23 +24,6 @@ namespace Source.Handlers
     [Serializable]
     public class CheckpointTimeline
     {
-        public List<CheckpointData> checkpoints = new();
-    }
-
-    [Serializable]
-    public class CheckpointData
-    {
-        public int distance;
-        public DateTime date;
-    }
-
-    public class StartGameResponse
-    {
-        public StartDetails data;
-    }
-
-    public class StartDetails
-    {
-        public DateTime startDate;
+        public List<CheckpointDto> checkpoints = new();
     }
 }

@@ -171,7 +171,7 @@ public class GameState : AState
         }
         else
         {
-            CheckpointsHandler.StartRun(null);
+            CheckpointsHandler.StartRun();
         }
 
         m_Finished = false;
