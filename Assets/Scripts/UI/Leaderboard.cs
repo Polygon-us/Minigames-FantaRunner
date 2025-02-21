@@ -67,9 +67,7 @@ public class Leaderboard : MonoBehaviour
             
             hs.gameObject.SetActive(true);
 
-            hs.playerName.text = _records[i].username;
-            hs.number.text = _records[i].rank.ToString();
-            hs.score.text = _records[i].distance.ToString();
+            hs.Initialize(_records[i]);
         }
     }
 }

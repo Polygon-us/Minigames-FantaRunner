@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FantaSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 4
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 2e5da0801a5ec0d40b9f88d4596882ec, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - d9eda4a055be8884db943117e21128c7: 21300000
+    - 380ceef2839bd6a478fffc7ef13bce85: 21300000
+    - 35c667d3ad7978949b1f55694feffaf5: 21300000
+    - ff10d055fdbb31e4fb6f54432f87b6ad: 21300000
+    - 18c69e958ed3c524d9fec6c0506f560e: 21300000
+    - 27f519263a3251547beab604615ca393: 21300000
+    - dbe840c6e78ea8546a4dd0560a164150: 21300000
+    - 7c436cfa8c04e964e92c7837667c00c5: 21300000
+    - 2ee5503c6a4efe448b56467a2f54fc30: 21300000
+    - ca49d56eab9e64e43824b8a3a71329d3: 21300000
+    - 22b041dfe302d664a8fef047ed8b2e05: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d9eda4a055be8884db943117e21128c7, type: 3}
+  - {fileID: 21300000, guid: 380ceef2839bd6a478fffc7ef13bce85, type: 3}
+  - {fileID: 21300000, guid: 35c667d3ad7978949b1f55694feffaf5, type: 3}
+  - {fileID: 21300000, guid: ff10d055fdbb31e4fb6f54432f87b6ad, type: 3}
+  - {fileID: 21300000, guid: 18c69e958ed3c524d9fec6c0506f560e, type: 3}
+  - {fileID: 21300000, guid: 27f519263a3251547beab604615ca393, type: 3}
+  - {fileID: 21300000, guid: dbe840c6e78ea8546a4dd0560a164150, type: 3}
+  - {fileID: 21300000, guid: 7c436cfa8c04e964e92c7837667c00c5, type: 3}
+  - {fileID: 21300000, guid: 2ee5503c6a4efe448b56467a2f54fc30, type: 3}
+  - {fileID: 21300000, guid: ca49d56eab9e64e43824b8a3a71329d3, type: 3}
+  - {fileID: 21300000, guid: 22b041dfe302d664a8fef047ed8b2e05, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - T_DefaultRank
+  - T_FantaBackground
+  - T_SecondRank
+  - T_XButton
+  - T_TittleImage
+  - T_RoundedCorner
+  - T_FirstRank
+  - T_ThirdRank
+  - T_FantaLogo
+  - T_LockClosed
+  - T_EmailIcon
+  m_RenderDataMap: {}
+  m_Tag: FantaSpriteAtlas
+  m_IsVariant: 0
