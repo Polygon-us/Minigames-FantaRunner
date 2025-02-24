@@ -279,7 +279,7 @@ public class TrackManager : MonoBehaviour
 
         m_Segments.Clear();
         m_PastSegments.Clear();
-        _checkpointTimeline.checkpoints.Clear();
+        _checkpointTimeline.metadata.Clear();
         
         characterController.End();
 
@@ -367,10 +367,11 @@ public class TrackManager : MonoBehaviour
             m_Segments.RemoveAt(0);
             _spawnedSegments--;
 
-            _checkpointTimeline.checkpoints.Add(new CheckpointDto
+            _checkpointTimeline.metadata.Add(new CheckpointDto
             {
-                date = DateTime.UtcNow,
-                score = score
+                score = score,
+                distance = worldDistance,
+                date = DateTime.UtcNow
             });
             
             if (currentSegementChanged != null) currentSegementChanged.Invoke(m_Segments[0]);

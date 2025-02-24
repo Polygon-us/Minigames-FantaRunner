@@ -24,6 +24,6 @@ namespace Source.Handlers
     [Serializable]
     public class CheckpointTimeline
     {
-        public List<CheckpointDto> checkpoints = new();
+        public List<CheckpointDto> metadata = new();
     }
 }

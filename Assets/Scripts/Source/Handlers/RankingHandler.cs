@@ -13,8 +13,13 @@ namespace Source.Handlers
 
         public void GetRanking(Action<WebResult<ResponseDto<RankingResponseDto>>> onRanking = null)
         {
-            string[] args = Args($"gameType={GameType}", $"limit={Limit}", $"offset={Offset}",
-                $"username={SaveUserInfo.username}");
+            (string, string)[] args =
+            {
+                ("gameType", GameType), 
+                ("limit", Limit.ToString()), 
+                ("offset", Offset.ToString()),
+                ("username", SaveUserInfo.username)
+            };
 
             RestApiManager.Instance.GetRequest("listLeaderboard", onRanking, args);
         }

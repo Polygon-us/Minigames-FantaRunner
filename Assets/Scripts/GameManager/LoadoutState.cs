@@ -85,8 +85,8 @@ public class LoadoutState : AState
 
         k_UILayer = LayerMask.NameToLayer("UI");
 
-        skyMeshFilter.gameObject.SetActive(true);
-        UIGroundFilter.gameObject.SetActive(true);
+        skyMeshFilter.gameObject.SetActive(false);
+        UIGroundFilter.gameObject.SetActive(false);
 
         // Reseting the global blinking value. Can happen if the game unexpectedly exited while still blinking
         Shader.SetGlobalFloat("_BlinkingValue", 0.0f);

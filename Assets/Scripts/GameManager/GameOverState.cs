@@ -132,8 +132,7 @@ public class GameOverState : AState
     {
         RankingDto rankingDto = new RankingDto
         {
-            coins = trackManager.score,
-            distance = trackManager.score
+            score = trackManager.score,
         };
         
         _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
