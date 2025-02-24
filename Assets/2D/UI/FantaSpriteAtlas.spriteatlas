@@ -50,9 +50,11 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 52927850b1447b64abdf0dcb62065e5d: 21300000
     - d9eda4a055be8884db943117e21128c7: 21300000
     - 380ceef2839bd6a478fffc7ef13bce85: 21300000
     - 35c667d3ad7978949b1f55694feffaf5: 21300000
+    - 6c86105491ca83f4aa72f4f0d2cfcd92: 21300000
     - ff10d055fdbb31e4fb6f54432f87b6ad: 21300000
     - 18c69e958ed3c524d9fec6c0506f560e: 21300000
     - 27f519263a3251547beab604615ca393: 21300000
@@ -70,9 +72,11 @@ SpriteAtlas:
     - 22b041dfe302d664a8fef047ed8b2e05: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 52927850b1447b64abdf0dcb62065e5d, type: 3}
   - {fileID: 21300000, guid: d9eda4a055be8884db943117e21128c7, type: 3}
   - {fileID: 21300000, guid: 380ceef2839bd6a478fffc7ef13bce85, type: 3}
   - {fileID: 21300000, guid: 35c667d3ad7978949b1f55694feffaf5, type: 3}
+  - {fileID: 21300000, guid: 6c86105491ca83f4aa72f4f0d2cfcd92, type: 3}
   - {fileID: 21300000, guid: ff10d055fdbb31e4fb6f54432f87b6ad, type: 3}
   - {fileID: 21300000, guid: 18c69e958ed3c524d9fec6c0506f560e, type: 3}
   - {fileID: 21300000, guid: 27f519263a3251547beab604615ca393, type: 3}
@@ -89,9 +93,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ca49d56eab9e64e43824b8a3a71329d3, type: 3}
   - {fileID: 21300000, guid: 22b041dfe302d664a8fef047ed8b2e05, type: 3}
   m_PackedSpriteNamesToIndex:
+  - T_SettingsIcon
   - T_DefaultRank
   - T_FantaBackground
   - T_SecondRank
+  - T_LeaderboardIcon
   - T_XButton
   - T_TittleImage
   - T_RoundedCorner
