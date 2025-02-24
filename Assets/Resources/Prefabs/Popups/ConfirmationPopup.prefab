@@ -283,7 +283,6 @@ GameObject:
   - component: {fileID: 614751165052166432}
   - component: {fileID: 1691966427254569694}
   - component: {fileID: 3822913709630787183}
-  - component: {fileID: 1503650407396804350}
   m_Layer: 5
   m_Name: ConfirmationPanel
   m_TagString: Untagged
@@ -340,7 +339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 380ceef2839bd6a478fffc7ef13bce85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ee7da89369b4f7438abd4c663900205, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -390,21 +389,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: -7, y: -7}
-  m_UseGraphicAlpha: 1
---- !u!114 &1503650407396804350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614751165052166446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -3, y: -3}
   m_UseGraphicAlpha: 1
 --- !u!1 &677916033276445267
 GameObject:

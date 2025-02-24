@@ -55,6 +55,16 @@ public class MusicPlayer : MonoBehaviour
 		StartCoroutine(RestartAllStems());
 	}
 
+	public void SetMusicVolume(float volume)
+	{
+		
+	}
+
+	public void SetSfxVolume(float volume)
+	{
+		
+	}
+	
     public void SetStem(int index, AudioClip clip)
     {
         if (stems.Length <= index)
