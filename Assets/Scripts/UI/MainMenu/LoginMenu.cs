@@ -78,14 +78,14 @@ namespace UI.Views
  
             JWTPayloadDto payloadDto = JsonWebToken.DecodeToObject<JWTPayloadDto>
             (
-                response.data.data.authorization, 
+                response.data.data.token, 
                 string.Empty, 
                 false
             );
 
             BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email/*, passwordInputField.text*/);
             
-            RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
+            RestApiManager.Instance.SetAuthToken(response.data.data.token);
 
             OnLoginSuccess?.Invoke();
         }

@@ -91,7 +91,7 @@ namespace UI.Views
             {
                 BaseHandler.SaveInfoToPrefs(usernameInputField.text, emailInputField.text/*, passwordInputField.text*/);
 
-                RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
+                RestApiManager.Instance.SetAuthToken(response.data.data.token);
 
                 ConfirmationPopUp.Instance.Open(SuccessMessage, OnRegisterSuccess);
             }

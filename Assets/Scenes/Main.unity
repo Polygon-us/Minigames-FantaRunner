@@ -1531,6 +1531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3821300586473402930, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
         type: 3}
+      propertyPath: leaderboard
+      value: 
+      objectReference: {fileID: 1732932058}
+    - target: {fileID: 3821300586473402930, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
+        type: 3}
       propertyPath: charPosition
       value: 
       objectReference: {fileID: 764160786}
