@@ -21,7 +21,7 @@ namespace UI.Views
         [SerializeField] private Button sendButton;
 
         [SerializeField] private TMP_InputField emailInputField;
-        [SerializeField] private TMP_InputField passwordInputField;
+        // [SerializeField] private TMP_InputField passwordInputField;
 
         public Action OnLoginSuccess;
         public Action GoToRegister;
@@ -52,7 +52,7 @@ namespace UI.Views
             LoginDto loginDto = new LoginDto
             {
                 email = emailInputField.text,
-                password = passwordInputField.text
+                // password = passwordInputField.text
             };
 
             ResultResponse<LoginDto> validate = LoginValidation.Validate(loginDto);
@@ -83,7 +83,7 @@ namespace UI.Views
                 false
             );
 
-            BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email, passwordInputField.text);
+            BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email/*, passwordInputField.text*/);
             
             RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
 
@@ -98,7 +98,7 @@ namespace UI.Views
                 return;
 
             emailInputField.text = saveUserInfoDto.email;
-            passwordInputField.text = saveUserInfoDto.password;
+            // passwordInputField.text = saveUserInfoDto.password;
         }
     }
 }

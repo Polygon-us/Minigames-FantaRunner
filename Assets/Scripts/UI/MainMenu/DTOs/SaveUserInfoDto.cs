@@ -7,6 +7,6 @@ namespace UI.DTOs
     {
         public string username;
         public string email;
-        public string password;
+        // public string password;
     }
 }
