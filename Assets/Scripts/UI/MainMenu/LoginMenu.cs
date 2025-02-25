@@ -83,7 +83,11 @@ namespace UI.Views
                 false
             );
 
-            // BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email, payloadDto.score/*, passwordInputField.text*/);
+            int.TryParse(payloadDto.score, out int score);
+
+            int.TryParse(payloadDto.distance, out int distance);
+            
+            BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email, score, distance/*, passwordInputField.text*/);
             
             RestApiManager.Instance.SetAuthToken(response.data.data.token);
 

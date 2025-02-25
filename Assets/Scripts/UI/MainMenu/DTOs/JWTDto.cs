@@ -1,13 +1,13 @@
-﻿using System;
-using Source.DTOs.Request;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
+﻿using Source.DTOs.Request;
+using System;
 
 namespace UI.DTOs
 {
     public class JWTPayloadDto : RegisterDto
     {
         public DateTime lastLogin;
-        public int score;
+        public string score;
+        public string distance;
         public long iat;
         public long exp;
     }

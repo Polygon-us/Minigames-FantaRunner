@@ -3,8 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Source.DTOs.Request;
 using Source.Handlers;
 using TMPro;
+using UI.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -88,10 +90,14 @@ public class GameState : AState
     protected TrackSegment m_NextValidSegment = null;
     protected int k_ObstacleToClear = 3;
 
+    private LeaderboardHandler _leaderboardHandler;
+    
     public override void Enter(AState from)
     {
         m_CountdownRectTransform = countdownText.GetComponent<RectTransform>();
 
+        _leaderboardHandler = new LeaderboardHandler();
+        
         m_LifeHearts = new Image[k_MaxLives];
         for (int i = 0; i < k_MaxLives; ++i)
         {
@@ -175,7 +181,7 @@ public class GameState : AState
         {
             SessionHandler.StartRun(result =>
             {
-                trackManager.TimeOffset = result.data.data.startDate - DateTime.UtcNow;
+                trackManager.CurrenDate = result.data.data.startDate;
             });
         }
 
@@ -390,6 +396,10 @@ public class GameState : AState
 		m_Finished = true;
 		trackManager.StopMove();
 
+        trackManager.AddCheckpoint();
+        
+        TrySendLeaderboard();
+        
         // Reseting the global blinking value. Can happen if game unexpectly exited while still blinking
         Shader.SetGlobalFloat("_BlinkingValue", 0.0f);
 
@@ -402,6 +412,26 @@ public class GameState : AState
                 OpenGameOverPopup();
         }
 	}
+    
+    private void TrySendLeaderboard()
+    {
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        
+        // Don't send if not record
+        if (trackManager.score < userInfoDto.score)
+            return;
+        
+        RankingDto rankingDto = new RankingDto
+        {
+            score = trackManager.score,
+            distance = (int)trackManager.worldDistance
+        };
+
+        _leaderboardHandler.PostRanking(rankingDto, _ =>
+        {
+            SessionHandler.SendCheckpoints(trackManager.CheckpointTimeline);
+        });
+    }
 
     protected void ClearPowerup()
     {
