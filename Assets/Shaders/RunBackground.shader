@@ -24,12 +24,14 @@ Shader "Unlit/RunBackground"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float4 color : COLOR;
             };
 
             struct v2f
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float4 color : COLOR;
             };
 
             sampler2D _MainTex;
@@ -45,6 +47,7 @@ Shader "Unlit/RunBackground"
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 
                 o.uv = v.uv;
+                o.color = v.color;
                 
                 return o;
             }
@@ -52,6 +55,7 @@ Shader "Unlit/RunBackground"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 backgroundColor = tex2D(_MainTex, i.uv);
+                backgroundColor.rgb *= i.color.rgb;
                 
                 fixed4 mask = tex2D(_Mask, i.uv);
                 
@@ -59,7 +63,7 @@ Shader "Unlit/RunBackground"
                 
                 fixed4 runColor = tex2D(_RunTexture, offset).a;
                 
-                fixed alpha = runColor.a * (1 - mask.a);
+                fixed alpha = runColor.a * 2 * (1 - mask.a);
                 
                 float4 col = lerp(backgroundColor, 1, alpha);
 

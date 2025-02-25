@@ -63,6 +63,7 @@ SpriteAtlas:
     - fa3db83861f794b48acf2bbffa332d15: 21300000
     - 7ee7da89369b4f7438abd4c663900205: 21300000
     - 7c436cfa8c04e964e92c7837667c00c5: 21300000
+    - 76d82a2bbd438e146ad50481cb1ceb77: 21300000
     - f4b9239b7e7768c4fb872fab9f7b3391: 21300000
     - 8b6723abf0c77e84f940d5c734b23901: 21300000
     - 2ee5503c6a4efe448b56467a2f54fc30: 21300000
@@ -85,6 +86,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fa3db83861f794b48acf2bbffa332d15, type: 3}
   - {fileID: 21300000, guid: 7ee7da89369b4f7438abd4c663900205, type: 3}
   - {fileID: 21300000, guid: 7c436cfa8c04e964e92c7837667c00c5, type: 3}
+  - {fileID: 21300000, guid: 76d82a2bbd438e146ad50481cb1ceb77, type: 3}
   - {fileID: 21300000, guid: f4b9239b7e7768c4fb872fab9f7b3391, type: 3}
   - {fileID: 21300000, guid: 8b6723abf0c77e84f940d5c734b23901, type: 3}
   - {fileID: 21300000, guid: 2ee5503c6a4efe448b56467a2f54fc30, type: 3}
@@ -106,6 +108,7 @@ SpriteAtlas:
   - T_RunMask2
   - T_BackgroundGradient
   - T_ThirdRank
+  - T_RappiLogo
   - T_BackgroundGradient2
   - T_RunMask
   - T_FantaLogo

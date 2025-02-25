@@ -56,9 +56,9 @@ public class RestApiManager : APIManager
         StartRequest(endpoint, path => Transport.POST(path, JsonConvert.SerializeObject(data), callback, args));
     }
 
-    public void PatchRequest<T>(string endpoint, object data, Action<WebResult<T>> callback)
+    public void PatchRequest<T>(string endpoint, object data, Action<WebResult<T>> callback, string[] args = null)
     {
-        StartRequest(endpoint, path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback));
+        StartRequest(endpoint, path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback, args));
     }
 
     public static string GetErrorResponse(string json)

@@ -26,7 +26,9 @@ namespace Source.Handlers
 
         public void PostRanking(RankingDto rankingDto, Action<WebResult<object>> onRanking = null)
         {
-            RestApiManager.Instance.PatchRequest("updateLeaderboard", rankingDto, onRanking);
+            string[] args = Args($"gameType={GameType}");
+            
+            RestApiManager.Instance.PatchRequest("updateLeaderboard", rankingDto, onRanking, args);
         }
     }
 }
