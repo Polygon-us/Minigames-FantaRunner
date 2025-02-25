@@ -1,9 +1,63 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Source.DTOs.Response;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class HighscoreUI : MonoBehaviour
 {
-	public Text number;
-	public Text playerName;
-	public Text score;
+	[SerializeField] private int rank;
+
+	[SerializeField] private Sprite defaultSprite;
+	[SerializeField] private List<Sprite> rankSprites;
+ 	
+	[SerializeField] private TMP_Text number;
+	[SerializeField] private TMP_Text playerName;
+	[SerializeField] private TMP_Text score;
+
+	[SerializeField] private int[] textSizes;
+	
+	private	Image backgroundImage;
+
+	private void Awake()
+	{
+		backgroundImage = GetComponent<Image>();
+	}
+
+	private void OnValidate()
+	{
+		if (!gameObject.activeInHierarchy)
+			return;
+		
+		backgroundImage ??= GetComponent<Image>();
+		
+		backgroundImage.sprite = rank switch
+		{
+			1 => rankSprites[0],
+			2 => rankSprites[1],
+			3 => rankSprites[2],
+			_ => defaultSprite
+		};
+
+		int textSize = rank switch
+		{
+			1 => textSizes[0],
+			2 => textSizes[1],
+			3 => textSizes[2],
+			_ => textSizes[3]
+		};
+		
+		number.fontSize = textSize;
+		playerName.fontSize = textSize;
+		score.fontSize = textSize;
+	}
+
+	public void Initialize(PlayerRankingResponseDto responseDto)
+	{
+		playerName.text = responseDto.username;
+		number.text = responseDto.rank.ToString();
+		score.text = responseDto.distance.ToString();
+		
+		rank = responseDto.rank;
+	}
 }

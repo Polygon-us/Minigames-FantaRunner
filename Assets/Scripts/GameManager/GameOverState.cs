@@ -34,6 +34,7 @@ public class GameOverState : AState
         canvas.gameObject.SetActive(true);
 
         SendLeaderboard();
+        SendCheckpoints();
         
         if (MissionManager.Instance.AnyMissionComplete())
             StartCoroutine(missionPopup.Open());
@@ -41,7 +42,7 @@ public class GameOverState : AState
             missionPopup.gameObject.SetActive(false);
 
 		CreditCoins();
-
+        
 		if (MusicPlayer.instance.GetStem(0) != gameOverTheme)
 		{
             MusicPlayer.instance.SetStem(0, gameOverTheme);
@@ -131,8 +132,7 @@ public class GameOverState : AState
     {
         RankingDto rankingDto = new RankingDto
         {
-            coins = trackManager.score,
-            distance = trackManager.score
+            score = trackManager.score,
         };
         
         _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
@@ -141,6 +141,11 @@ public class GameOverState : AState
     private void OnRankingPosted(WebResult<object> _)
     {
         miniLeaderboard.Populate();
+    }
+
+    private void SendCheckpoints()
+    {
+        CheckpointsHandler.SendCheckpoints(trackManager.CheckpointTimeline);
     }
     
 	protected void FinishRun()
@@ -160,7 +165,7 @@ public class GameOverState : AState
 #endif
 
         PlayerData.instance.Save();
-
+        
         trackManager.End();
     }
 

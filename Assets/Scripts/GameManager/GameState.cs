@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Source.Handlers;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -168,6 +169,10 @@ public class GameState : AState
                 }
             };
         }
+        else
+        {
+            CheckpointsHandler.StartRun();
+        }
 
         m_Finished = false;
         m_PowerupIcons.Clear();
@@ -324,6 +329,7 @@ public class GameState : AState
 		// Used by the pause menu to return immediately to loadout, canceling everything.
 		Time.timeScale = 1.0f;
 		AudioListener.pause = false;
+        
 		trackManager.End();
 		trackManager.isRerun = false;
         PlayerData.instance.Save();
@@ -413,7 +419,8 @@ public class GameState : AState
 
         ClearPowerup();
 
-        gameOverPopup.SetActive(true);
+        // gameOverPopup.SetActive(true);
+        GameOver();
     }
 
     public void GameOver()

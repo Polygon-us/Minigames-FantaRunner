@@ -13,15 +13,22 @@ namespace Source.Handlers
 
         public void GetRanking(Action<WebResult<ResponseDto<RankingResponseDto>>> onRanking = null)
         {
-            string[] args = Args($"gameType={GameType}", $"limit={Limit}", $"offset={Offset}",
-                $"username={SaveUserInfo.username}");
+            (string, string)[] args =
+            {
+                ("gameType", GameType), 
+                ("limit", Limit.ToString()), 
+                ("offset", Offset.ToString()),
+                ("username", SaveUserInfo.username)
+            };
 
             RestApiManager.Instance.GetRequest("listLeaderboard", onRanking, args);
         }
 
         public void PostRanking(RankingDto rankingDto, Action<WebResult<object>> onRanking = null)
         {
-            RestApiManager.Instance.PatchRequest("updateLeaderboard", rankingDto, onRanking);
+            string[] args = Args($"gameType={GameType}");
+            
+            RestApiManager.Instance.PatchRequest("updateLeaderboard", rankingDto, onRanking, args);
         }
     }
 }

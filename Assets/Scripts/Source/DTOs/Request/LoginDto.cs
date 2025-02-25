@@ -3,6 +3,6 @@
     public class LoginDto
     {
     	public string email;
-    	public string password;
+    	// public string password;
     }
 }

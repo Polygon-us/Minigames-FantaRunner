@@ -89,9 +89,9 @@ namespace UI.Views
             }
             else
             {
-                BaseHandler.SaveInfoToPrefs(usernameInputField.text, emailInputField.text, passwordInputField.text);
+                BaseHandler.SaveInfoToPrefs(usernameInputField.text, emailInputField.text, 0/*, passwordInputField.text*/);
 
-                RestApiManager.Instance.SetAuthToken(response.data.data.authorization);
+                RestApiManager.Instance.SetAuthToken(response.data.data.token);
 
                 ConfirmationPopUp.Instance.Open(SuccessMessage, OnRegisterSuccess);
             }

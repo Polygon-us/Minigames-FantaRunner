@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -84,8 +85,8 @@ public class LoadoutState : AState
 
         k_UILayer = LayerMask.NameToLayer("UI");
 
-        skyMeshFilter.gameObject.SetActive(true);
-        UIGroundFilter.gameObject.SetActive(true);
+        skyMeshFilter.gameObject.SetActive(false);
+        UIGroundFilter.gameObject.SetActive(false);
 
         // Reseting the global blinking value. Can happen if the game unexpectedly exited while still blinking
         Shader.SetGlobalFloat("_BlinkingValue", 0.0f);
@@ -97,7 +98,7 @@ public class LoadoutState : AState
         }
 
         runButton.interactable = false;
-        runButton.GetComponentInChildren<Text>().text = "Loading...";
+        runButton.GetComponentInChildren<TMP_Text>().text = "Cargando...";
 
         if(m_PowerupToUse != Consumable.ConsumableType.NONE)
         {
@@ -159,7 +160,7 @@ public class LoadoutState : AState
             if(interactable)
             {
                 runButton.interactable = true;
-                runButton.GetComponentInChildren<Text>().text = "Run!";
+                runButton.GetComponentInChildren<TMP_Text>().text = "¡Corre!";
 
                 //we can always enabled, as the parent will be disabled if tutorial is already done
                 tutorialPrompt.SetActive(true);
