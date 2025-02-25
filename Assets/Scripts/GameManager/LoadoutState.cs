@@ -2,7 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Source.Handlers;
 using TMPro;
+using UI.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -52,6 +54,9 @@ public class LoadoutState : AState
 
 	public AudioClip menuTheme;
 
+	[Header("Settings")] 
+	[SerializeField] private TMP_Text maxScoreTxt;
+	[SerializeField] private TMP_Text maxDistanceTxt;
 
     [Header("Prefabs")]
     public ConsumableIcon consumableIcon;
@@ -83,6 +88,10 @@ public class LoadoutState : AState
         charNameDisplay.text = "";
         themeNameDisplay.text = "";
 
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        maxScoreTxt.text = userInfoDto.score.ToString();
+        maxScoreTxt.text = userInfoDto.distance.ToString("N0");
+        
         k_UILayer = LayerMask.NameToLayer("UI");
 
         skyMeshFilter.gameObject.SetActive(false);
@@ -115,7 +124,9 @@ public class LoadoutState : AState
         missionPopup.gameObject.SetActive(false);
         inventoryCanvas.gameObject.SetActive(false);
 
-        if (m_Character != null) Addressables.ReleaseInstance(m_Character);
+        if (m_Character)
+	        // Addressables.ReleaseInstance(m_Character);
+			m_Character.gameObject.SetActive(false);
 
         GameState gs = to as GameState;
 

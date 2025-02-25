@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Source.Handlers;
+using TMPro;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -27,11 +29,11 @@ public class GameState : AState
 	public AudioClip gameTheme;
 
     [Header("UI")]
-    public Text coinText;
+    public TMP_Text coinText;
     public Text premiumText;
-    public Text scoreText;
-	public Text distanceText;
-    public Text multiplierText;
+    public TMP_Text scoreText;
+	public TMP_Text distanceText;
+    public TMP_Text multiplierText;
 	public Text countdownText;
     public RectTransform powerupZone;
 	public RectTransform lifeRectTransform;
@@ -43,15 +45,15 @@ public class GameState : AState
     public Image inventoryIcon;
 
     public GameObject gameOverPopup;
-    public Button premiumForLifeButton;
-    public GameObject adsForLifeButton;
-    public Text premiumCurrencyOwned;
+    // public Button premiumForLifeButton;
+    // public GameObject adsForLifeButton;
+    // public TMP_Text premiumCurrencyOwned;
 
     [Header("Prefabs")]
     public GameObject PowerupIconPrefab;
 
     [Header("Tutorial")]
-    public Text tutorialValidatedObstacles;
+    public TMP_Text tutorialValidatedObstacles;
     public GameObject sideSlideTuto;
     public GameObject upSlideTuto;
     public GameObject downSlideTuto;
@@ -171,7 +173,10 @@ public class GameState : AState
         }
         else
         {
-            CheckpointsHandler.StartRun();
+            SessionHandler.StartRun(result =>
+            {
+                trackManager.TimeOffset = result.data.data.startDate - DateTime.UtcNow;
+            });
         }
 
         m_Finished = false;
@@ -206,7 +211,7 @@ public class GameState : AState
             else if(trackManager.isTutorial || !m_AdsInitialised)
                 adsForLifeButton.SetActive(false);
 #else
-            adsForLifeButton.SetActive(false); //Ads is disabled
+            // adsForLifeButton.SetActive(false); //Ads is disabled
 #endif
 
             return;
@@ -413,9 +418,9 @@ public class GameState : AState
 
     public void OpenGameOverPopup()
     {
-        premiumForLifeButton.interactable = PlayerData.instance.premium >= 3;
+        // premiumForLifeButton.interactable = PlayerData.instance.premium >= 3;
 
-        premiumCurrencyOwned.text = PlayerData.instance.premium.ToString();
+        // premiumCurrencyOwned.text = PlayerData.instance.premium.ToString();
 
         ClearPowerup();
 
