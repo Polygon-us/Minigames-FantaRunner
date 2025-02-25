@@ -1,5 +1,6 @@
 ﻿using Source.DTOs.Request;
 using Source.Handlers;
+using TMPro;
 using UnityEngine;
 using UnityREST;
 #if UNITY_ANALYTICS
@@ -20,7 +21,8 @@ public class GameOverState : AState
 	public Leaderboard miniLeaderboard;
 	public Leaderboard fullLeaderboard;
 
-    public GameObject addButton;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text distanceText;
     
     private RankingHandler _rankingHandler;
 
@@ -33,6 +35,9 @@ public class GameOverState : AState
     {
         canvas.gameObject.SetActive(true);
 
+        scoreText.text = trackManager.score.ToString();
+        distanceText.text = trackManager.worldDistance.ToString("N0");
+        
         SendLeaderboard();
         SendCheckpoints();
         
@@ -82,6 +87,11 @@ public class GameOverState : AState
 		manager.SwitchState("Loadout");
     }
 
+    public void OpenRappi()
+    {
+        
+    }
+    
     public void RunAgain()
     {
         trackManager.isRerun = false;

@@ -50,8 +50,10 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 91d79920edda4c64ca628d225529f760: 21300000
     - 52927850b1447b64abdf0dcb62065e5d: 21300000
     - d9eda4a055be8884db943117e21128c7: 21300000
+    - c3c664d125030bd4b8cb98a1bf61349a: 21300000
     - 380ceef2839bd6a478fffc7ef13bce85: 21300000
     - 35c667d3ad7978949b1f55694feffaf5: 21300000
     - 6c86105491ca83f4aa72f4f0d2cfcd92: 21300000
@@ -67,14 +69,17 @@ SpriteAtlas:
     - f4b9239b7e7768c4fb872fab9f7b3391: 21300000
     - 8b6723abf0c77e84f940d5c734b23901: 21300000
     - 2ee5503c6a4efe448b56467a2f54fc30: 21300000
+    - c2593f6cae4b2434f9c7e3f3c6982253: 21300000
     - c17c851ea3805fd4a89a0abfa75a4166: 21300000
     - 1fcdc45efa95c1d4e95f8e6057adfd36: 21300000
     - ca49d56eab9e64e43824b8a3a71329d3: 21300000
     - 22b041dfe302d664a8fef047ed8b2e05: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 91d79920edda4c64ca628d225529f760, type: 3}
   - {fileID: 21300000, guid: 52927850b1447b64abdf0dcb62065e5d, type: 3}
   - {fileID: 21300000, guid: d9eda4a055be8884db943117e21128c7, type: 3}
+  - {fileID: 21300000, guid: c3c664d125030bd4b8cb98a1bf61349a, type: 3}
   - {fileID: 21300000, guid: 380ceef2839bd6a478fffc7ef13bce85, type: 3}
   - {fileID: 21300000, guid: 35c667d3ad7978949b1f55694feffaf5, type: 3}
   - {fileID: 21300000, guid: 6c86105491ca83f4aa72f4f0d2cfcd92, type: 3}
@@ -90,18 +95,21 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f4b9239b7e7768c4fb872fab9f7b3391, type: 3}
   - {fileID: 21300000, guid: 8b6723abf0c77e84f940d5c734b23901, type: 3}
   - {fileID: 21300000, guid: 2ee5503c6a4efe448b56467a2f54fc30, type: 3}
+  - {fileID: 21300000, guid: c2593f6cae4b2434f9c7e3f3c6982253, type: 3}
   - {fileID: 21300000, guid: c17c851ea3805fd4a89a0abfa75a4166, type: 3}
   - {fileID: 21300000, guid: 1fcdc45efa95c1d4e95f8e6057adfd36, type: 3}
   - {fileID: 21300000, guid: ca49d56eab9e64e43824b8a3a71329d3, type: 3}
   - {fileID: 21300000, guid: 22b041dfe302d664a8fef047ed8b2e05, type: 3}
   m_PackedSpriteNamesToIndex:
+  - T_PauseBtn
   - T_SettingsIcon
   - T_DefaultRank
+  - T_FantaBottle
   - T_FantaBackground
   - T_SecondRank
   - T_LeaderboardIcon
   - T_XButton
-  - T_TittleImage
+  - T_TitleImage
   - T_RoundedCorner
   - T_FirstRank
   - T_MusicIcon
@@ -112,6 +120,7 @@ SpriteAtlas:
   - T_BackgroundGradient2
   - T_RunMask
   - T_FantaLogo
+  - T_FantaBottleLid
   - T_Button
   - T_SFXIcon
   - T_LockClosed

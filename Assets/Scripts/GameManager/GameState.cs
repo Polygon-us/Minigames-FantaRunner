@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Source.Handlers;
+using TMPro;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -27,11 +28,11 @@ public class GameState : AState
 	public AudioClip gameTheme;
 
     [Header("UI")]
-    public Text coinText;
+    public TMP_Text coinText;
     public Text premiumText;
-    public Text scoreText;
-	public Text distanceText;
-    public Text multiplierText;
+    public TMP_Text scoreText;
+	public TMP_Text distanceText;
+    public TMP_Text multiplierText;
 	public Text countdownText;
     public RectTransform powerupZone;
 	public RectTransform lifeRectTransform;
