@@ -1,18 +1,20 @@
 using System.Collections.Generic;
+using Source.DTOs.Response;
 using Source.DTOs.Request;
+using UnityREST;
 using System;
 
 namespace Source.Handlers
 {
-    public class CheckpointsHandler : BaseHandler
+    public class SessionHandler : BaseHandler
     {
-        public static void StartRun()
+        public static void StartRun(Action<WebResult<SessionResponseDto>> result)
         {
             string[] args = Args($"gameType={GameType}");
 
-            RestApiManager.Instance.PostRequest<object>("startRun", null, null, args);
+            RestApiManager.Instance.PostRequest("startRun", null, result, args);
         }
-
+         
         public static void SendCheckpoints(CheckpointTimeline checkpointTimeline)
         {
             string[] args = Args($"gameType={GameType}");

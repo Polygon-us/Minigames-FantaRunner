@@ -124,7 +124,9 @@ public class LoadoutState : AState
         missionPopup.gameObject.SetActive(false);
         inventoryCanvas.gameObject.SetActive(false);
 
-        if (m_Character != null) Addressables.ReleaseInstance(m_Character);
+        if (m_Character)
+	        // Addressables.ReleaseInstance(m_Character);
+			m_Character.gameObject.SetActive(false);
 
         GameState gs = to as GameState;
 

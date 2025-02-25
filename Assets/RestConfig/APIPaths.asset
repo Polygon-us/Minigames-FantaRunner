@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: register
     path: users
   - name: updateLeaderboard
-    path: users/leaderboard
+    path: leaderboard
   - name: listLeaderboard
     path: leaderboard
   - name: startRun

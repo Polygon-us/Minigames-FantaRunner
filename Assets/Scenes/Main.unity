@@ -9341,6 +9341,11 @@ PrefabInstance:
       objectReference: {fileID: 1958487560}
     - target: {fileID: 4755050719301085916, guid: c1f2fb49a94507c45b52369c806a2de8,
         type: 3}
+      propertyPath: characterSlot
+      value: 
+      objectReference: {fileID: 764160786}
+    - target: {fileID: 4755050719301085916, guid: c1f2fb49a94507c45b52369c806a2de8,
+        type: 3}
       propertyPath: fullLeaderboard
       value: 
       objectReference: {fileID: 1732932058}

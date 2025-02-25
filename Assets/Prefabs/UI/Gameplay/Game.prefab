@@ -1934,11 +1934,8 @@ MonoBehaviour:
   pauseButton: {fileID: 2832261025885710151}
   inventoryIcon: {fileID: 4043930895400373511}
   gameOverPopup: {fileID: 8605366427568328300}
-  premiumForLifeButton: {fileID: 0}
-  adsForLifeButton: {fileID: 0}
-  premiumCurrencyOwned: {fileID: 0}
   PowerupIconPrefab: {fileID: 102596, guid: 94cb557246c11d14388842cc08be79a8, type: 3}
-  tutorialValidatedObstacles: {fileID: 0}
+  tutorialValidatedObstacles: {fileID: 6403405262054958732}
   sideSlideTuto: {fileID: 1946853025933907480}
   upSlideTuto: {fileID: 9053141552070014297}
   downSlideTuto: {fileID: 1041830639937249829}

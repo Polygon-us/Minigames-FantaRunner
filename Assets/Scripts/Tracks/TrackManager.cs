@@ -91,6 +91,8 @@ public class TrackManager : MonoBehaviour
 
     public CheckpointTimeline CheckpointTimeline => _checkpointTimeline;
     
+    public TimeSpan TimeOffset { get; set; }
+    
     protected float m_TimeToStart = -1.0f;
 
     // If this is set to -1, random seed is init to system clock, otherwise init to that value
@@ -371,7 +373,7 @@ public class TrackManager : MonoBehaviour
             {
                 score = score,
                 distance = worldDistance,
-                date = DateTime.UtcNow
+                date = DateTime.UtcNow + TimeOffset
             });
             
             if (currentSegementChanged != null) currentSegementChanged.Invoke(m_Segments[0]);

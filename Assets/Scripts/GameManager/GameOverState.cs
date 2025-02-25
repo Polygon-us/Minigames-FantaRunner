@@ -12,9 +12,11 @@ using UnityEngine.Analytics;
 /// </summary>
 public class GameOverState : AState
 {
+    [SerializeField] private Transform characterSlot;
+    
     public TrackManager trackManager;
     public Canvas canvas;
-    public MissionUI missionPopup;
+    // public MissionUI missionPopup;
 
 	public AudioClip gameOverTheme;
 
@@ -41,12 +43,19 @@ public class GameOverState : AState
         SendLeaderboard();
         SendCheckpoints();
         
-        if (MissionManager.Instance.AnyMissionComplete())
-            StartCoroutine(missionPopup.Open());
-        else
-            missionPopup.gameObject.SetActive(false);
+        // if (MissionManager.Instance.AnyMissionComplete())
+        //     StartCoroutine(missionPopup.Open());
+        // else
+        //     missionPopup.gameObject.SetActive(false);
 
 		CreditCoins();
+
+        Transform character = characterSlot.GetChild(0);
+        if (character)
+        {
+            character.gameObject.SetActive(true);
+            character.forward = Vector3.back;
+        }   
         
 		if (MusicPlayer.instance.GetStem(0) != gameOverTheme)
 		{
@@ -87,11 +96,6 @@ public class GameOverState : AState
 		manager.SwitchState("Loadout");
     }
 
-    public void OpenRappi()
-    {
-        
-    }
-    
     public void RunAgain()
     {
         trackManager.isRerun = false;
@@ -143,6 +147,7 @@ public class GameOverState : AState
         RankingDto rankingDto = new RankingDto
         {
             score = trackManager.score,
+            distance = trackManager.worldDistance
         };
         
         _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
@@ -150,12 +155,12 @@ public class GameOverState : AState
 
     private void OnRankingPosted(WebResult<object> _)
     {
-        miniLeaderboard.Populate();
+        // miniLeaderboard.Populate();
     }
 
     private void SendCheckpoints()
     {
-        CheckpointsHandler.SendCheckpoints(trackManager.CheckpointTimeline);
+        SessionHandler.SendCheckpoints(trackManager.CheckpointTimeline);
     }
     
 	protected void FinishRun()

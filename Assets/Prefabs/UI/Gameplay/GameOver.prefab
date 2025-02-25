@@ -399,9 +399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  characterSlot: {fileID: 0}
   trackManager: {fileID: 0}
   canvas: {fileID: 4933922272415906926}
-  missionPopup: {fileID: 8797893755577136421}
   gameOverTheme: {fileID: 8300000, guid: 15e26518785848f4caf8ba236b4d0690, type: 3}
   miniLeaderboard: {fileID: 0}
   fullLeaderboard: {fileID: 0}
@@ -3275,7 +3275,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 4755050719301085916}
+      objectReference: {fileID: 4615131199839153703}
+    - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3284,7 +3289,12 @@ PrefabInstance:
     - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OpenRappi
+      value: OpenLink
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
         type: 3}
@@ -3294,12 +3304,22 @@ PrefabInstance:
     - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LinkOpener, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: GameOverState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472027949433266679, guid: c0743b41f1e881a40aa37f0d0df99d35,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5757614096593767350, guid: c0743b41f1e881a40aa37f0d0df99d35,
         type: 3}
@@ -3333,7 +3353,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3352276074353242689}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6695184979834584155, guid: c0743b41f1e881a40aa37f0d0df99d35,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4615131199839153703}
   m_SourcePrefab: {fileID: 100100000, guid: c0743b41f1e881a40aa37f0d0df99d35, type: 3}
 --- !u!224 &469689745094770515 stripped
 RectTransform:
@@ -3353,6 +3377,25 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 3704876401442451952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8034507707726056875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6695184979834584155, guid: c0743b41f1e881a40aa37f0d0df99d35,
+    type: 3}
+  m_PrefabInstance: {fileID: 3704876401442451952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4615131199839153703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034507707726056875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: www.rappi.com
 --- !u!1001 &8577329109435562049
 PrefabInstance:
   m_ObjectHideFlags: 0
