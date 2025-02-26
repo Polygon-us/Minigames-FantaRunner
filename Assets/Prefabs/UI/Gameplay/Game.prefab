@@ -1920,7 +1920,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   canvas: {fileID: 3636318666681263476}
   trackManager: {fileID: 0}
-  gameTheme: {fileID: 8300000, guid: b341b9410b3c5274e8b15199f3b95fb5, type: 3}
+  gameTheme: {fileID: 8300000, guid: e6a5d38d0ea7fa840b14049acfe5b856, type: 3}
   coinText: {fileID: 2902035934461428964}
   premiumText: {fileID: 7142122693044015647}
   scoreText: {fileID: 891643373269440346}
@@ -2819,7 +2819,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4890245440304200971}
         m_TargetAssemblyTypeName: SettingPopup, Assembly-CSharp
         m_MethodName: MasterSFXVolumeChangeValue
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4147,7 +4147,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4890245440304200971}
         m_TargetAssemblyTypeName: SettingPopup, Assembly-CSharp
         m_MethodName: MasterSFXVolumeChangeValue
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5507,7 +5507,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4890245440304200971}
         m_TargetAssemblyTypeName: SettingPopup, Assembly-CSharp
         m_MethodName: MusicVolumeChangeValue
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
