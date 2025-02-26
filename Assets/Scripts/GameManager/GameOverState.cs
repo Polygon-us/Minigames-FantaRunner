@@ -1,8 +1,5 @@
-﻿using Source.DTOs.Request;
-using Source.Handlers;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityREST;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
 #endif
@@ -25,13 +22,6 @@ public class GameOverState : AState
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text distanceText;
-    
-    private RankingHandler _rankingHandler;
-
-    private void Awake()
-    {
-        _rankingHandler = new RankingHandler();
-    }
 
     public override void Enter(AState from)
     {
@@ -39,9 +29,6 @@ public class GameOverState : AState
 
         scoreText.text = trackManager.score.ToString();
         distanceText.text = trackManager.worldDistance.ToString("N0");
-        
-        SendLeaderboard();
-        SendCheckpoints();
         
         // if (MissionManager.Instance.AnyMissionComplete())
         //     StartCoroutine(missionPopup.Open());
@@ -141,27 +128,6 @@ public class GameOverState : AState
         }
 #endif 
 	}
-
-    private void SendLeaderboard()
-    {
-        RankingDto rankingDto = new RankingDto
-        {
-            score = trackManager.score,
-            distance = trackManager.worldDistance
-        };
-        
-        _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
-    }
-
-    private void OnRankingPosted(WebResult<object> _)
-    {
-        // miniLeaderboard.Populate();
-    }
-
-    private void SendCheckpoints()
-    {
-        SessionHandler.SendCheckpoints(trackManager.CheckpointTimeline);
-    }
     
 	protected void FinishRun()
     {

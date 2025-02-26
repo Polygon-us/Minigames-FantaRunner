@@ -6,7 +6,7 @@ namespace Source.DTOs.Request
     public class CheckpointDto
     {
         public int score;
-        public float distance;
-        public DateTime date;
+        public int distance;
+        public string date;
     }
 }

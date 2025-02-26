@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Source.DTOs.Request;
 using Source.Handlers;
+using Source.Utils.Date;
 using UnityEditor;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Analytics;
@@ -91,7 +92,7 @@ public class TrackManager : MonoBehaviour
 
     public CheckpointTimeline CheckpointTimeline => _checkpointTimeline;
     
-    public TimeSpan TimeOffset { get; set; }
+    public Date CurrenDate { get; set; }
     
     protected float m_TimeToStart = -1.0f;
 
@@ -369,12 +370,7 @@ public class TrackManager : MonoBehaviour
             m_Segments.RemoveAt(0);
             _spawnedSegments--;
 
-            _checkpointTimeline.metadata.Add(new CheckpointDto
-            {
-                score = score,
-                distance = worldDistance,
-                date = DateTime.UtcNow + TimeOffset
-            });
+            AddCheckpoint();
             
             if (currentSegementChanged != null) currentSegementChanged.Invoke(m_Segments[0]);
         }
@@ -489,6 +485,16 @@ public class TrackManager : MonoBehaviour
         MusicPlayer.instance.UpdateVolumes(speedRatio);
     }
 
+    public void AddCheckpoint()
+    {
+        _checkpointTimeline.metadata.Add(new CheckpointDto
+        {
+            score = score,
+            distance = (int)worldDistance,
+            date = CurrenDate.ToString()
+        });
+    }
+    
     public void PowerupSpawnUpdate()
     {
         m_TimeSincePowerup += Time.deltaTime;
