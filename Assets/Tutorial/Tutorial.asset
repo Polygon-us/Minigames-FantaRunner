@@ -19,17 +19,17 @@ MonoBehaviour:
   zones:
   - length: 0
     prefabList:
-    - m_AssetGUID: 68a52f3ad60bf6e4d8165784f5dffd9e
+    - m_AssetGUID: 28e65b6174692734bb99b6561b1f05ac
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 19a9ea291ba68194c8cac8f13a84fe83
+    - m_AssetGUID: f87a4afd4c383c34dbd8ced438e06974
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: e64ce49b27bab6e49a4fcec2c01f3602
+    - m_AssetGUID: 91afb2042cca4864597fa76b557b1386
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 
@@ -38,9 +38,9 @@ MonoBehaviour:
   premiumCollectible: {fileID: 1000010457517272, guid: ac3c86c2382618643bfda6ab3cc81a0b,
     type: 3}
   cloudPrefabs:
-  - {fileID: 2008483555455286340, guid: af9c256b422be224dbc4f02c0a9713f6, type: 3}
-  - {fileID: 2008483555455286340, guid: 28e65b6174692734bb99b6561b1f05ac, type: 3}
-  - {fileID: 2008483555455286340, guid: 467089cd06a7b704faded36479753714, type: 3}
+  - {fileID: 1000012225143368, guid: 1225524528f67794ead226c3401f6bd6, type: 3}
+  - {fileID: 1000012941456988, guid: e4217d014d522f94bb0a059a38e2cb14, type: 3}
+  - {fileID: 1000013540275922, guid: 480053abe3ba0aa4883a1b63c0deee9d, type: 3}
   cloudMinimumDistance: {x: 0, y: 10, z: 10}
   cloudSpread: {x: 20, y: 1, z: 20}
   cloudNumber: 20
