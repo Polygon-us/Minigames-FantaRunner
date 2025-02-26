@@ -6,7 +6,7 @@ using System;
 
 namespace Source.Handlers
 {
-    public class RankingHandler : BaseHandler
+    public class LeaderboardHandler : BaseHandler
     {
         private const int Limit = 5;
         private const int Offset = 0;

@@ -47,17 +47,23 @@ public class HighscoreUI : MonoBehaviour
 			_ => textSizes[3]
 		};
 		
-		number.fontSize = textSize;
-		playerName.fontSize = textSize;
-		score.fontSize = textSize;
+		playerName.enableAutoSizing = true;
+		score.enableAutoSizing = true;
+		number.enableAutoSizing = true;
+		
+		number.fontSizeMax = textSize;
+		playerName.fontSizeMax = textSize;
+		score.fontSizeMax = textSize;
 	}
 
 	public void Initialize(PlayerRankingResponseDto responseDto)
 	{
 		playerName.text = responseDto.username;
 		number.text = responseDto.rank.ToString();
-		score.text = responseDto.distance.ToString();
+		score.text = responseDto.score.ToString();
 		
 		rank = responseDto.rank;
+		
+		OnValidate();
 	}
 }
