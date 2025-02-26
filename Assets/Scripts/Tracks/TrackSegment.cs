@@ -17,8 +17,8 @@ public class TrackSegment : MonoBehaviour
 	public Transform collectibleTransform;
 
     public AssetReference[] possibleObstacles; 
-
-    [HideInInspector]
+    
+    [SerializeField]
     public float[] obstaclePositions;
 
     public float worldLength { get { return m_WorldLength; } }
@@ -124,41 +124,58 @@ public class TrackSegment : MonoBehaviour
 #endif
 }
 
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(TrackSegment))]
 class TrackSegmentEditor : Editor
 {
-    protected TrackSegment m_Segment;
-
+    private TrackSegment segment;
     public void OnEnable()
     {
-        m_Segment = target as TrackSegment;
+        segment = (TrackSegment)target;
     }
 
     public override void OnInspectorGUI()
     {
+        serializedObject.Update(); // Ensure we work with the latest data
+
         base.OnInspectorGUI();
 
+        
         if (GUILayout.Button("Add obstacles"))
         {
-            ArrayUtility.Add(ref m_Segment.obstaclePositions, 0.0f);
+            ArrayUtility.Add(ref segment.obstaclePositions, 0.0f);
+            EditorUtility.SetDirty(segment); // Mark the object as dirty
         }
 
-        if (m_Segment.obstaclePositions != null)
+        if (segment.obstaclePositions != null)
         {
-            int toremove = -1;
-            for (int i = 0; i < m_Segment.obstaclePositions.Length; ++i)
+            int toRemove = -1;
+            for (int i = 0; i < segment.obstaclePositions.Length; ++i)
             {
                 GUILayout.BeginHorizontal();
-                m_Segment.obstaclePositions[i] = EditorGUILayout.Slider(m_Segment.obstaclePositions[i], 0.0f, 1.0f);
+                float newValue = EditorGUILayout.Slider(segment.obstaclePositions[i], 0.0f, 1.0f);
+
+                if (Mathf.Abs(newValue - segment.obstaclePositions[i]) > Mathf.Epsilon)
+                {
+                    segment.obstaclePositions[i] = newValue;
+                    EditorUtility.SetDirty(segment); // Mark as dirty when changed
+                }
+
                 if (GUILayout.Button("-", GUILayout.MaxWidth(32)))
-                    toremove = i;
+                    toRemove = i;
+
                 GUILayout.EndHorizontal();
             }
 
-            if (toremove != -1)
-                ArrayUtility.RemoveAt(ref m_Segment.obstaclePositions, toremove);
+            if (toRemove != -1)
+            {
+                ArrayUtility.RemoveAt(ref segment.obstaclePositions, toRemove);
+                EditorUtility.SetDirty(segment); // Ensure Unity registers the change
+            }
         }
+
+        serializedObject.ApplyModifiedProperties(); // Save changes
     }
 }
 
