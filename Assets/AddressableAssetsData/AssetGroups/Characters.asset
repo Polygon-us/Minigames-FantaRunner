@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Characters
   m_GUID: 0ee8914add8bf184eb2669a5f9b6f538
   m_SerializeEntries:
+  - m_GUID: 0f71244d042802144935a3570890e7e9
+    m_Address: Assets/Prefabs/Tutorial/LeftRight/FantaTutorialLeftRight2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 17b427e866c26924e80a3a9557c2d356
     m_Address: Assets/Materials/Fanta/GenericCurved.mat
     m_ReadOnly: 0
@@ -41,8 +46,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 439f6d9ac38fb1f468c3f3a96baab3a4
+    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f695e4f7d798b04598531a809740ad8
+    m_Address: Assets/Prefabs/Tutorial/LeftRight/FantaTutorialLeftRight3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b09c1d95546fa849b0c207d231ec208
+    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70b1fe3b13e297c4fbdda30d34abb327
+    m_Address: Assets/Prefabs/Tutorial/LeftRight/FantaTutorialLeftRight.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71514012df4dcd146957cb145cec8287
     m_Address: Assets/Prefabs/UI/MissionEntry.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b303fba2b941e9479446d13ccc66ead
+    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 906597c279ead1444b893fb386b24dc4
+    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -71,6 +106,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1102e9aa8fdd874da78438febeb21f6
+    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b25dbe4a2518632489e68e75bc72891f
     m_Address: Assets/Prefabs/Particles/Fanta/FantaMagnetParticles.prefab
     m_ReadOnly: 0
@@ -83,6 +123,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1a536f74c7ef384a8d7132148ace0c8
     m_Address: Assets/UI/UISpritesheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee3afa5c240e27d4580ae48f1da88cff
+    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
