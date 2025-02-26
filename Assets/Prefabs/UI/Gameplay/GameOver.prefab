@@ -402,7 +402,7 @@ MonoBehaviour:
   characterSlot: {fileID: 0}
   trackManager: {fileID: 0}
   canvas: {fileID: 4933922272415906926}
-  gameOverTheme: {fileID: 8300000, guid: 15e26518785848f4caf8ba236b4d0690, type: 3}
+  gameOverTheme: {fileID: 8300000, guid: ceda2d6544ef21641a21168ab2fea297, type: 3}
   miniLeaderboard: {fileID: 0}
   fullLeaderboard: {fileID: 0}
   scoreText: {fileID: 7200760363870969564}
