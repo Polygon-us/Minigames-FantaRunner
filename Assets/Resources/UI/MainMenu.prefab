@@ -1185,7 +1185,7 @@ GameObject:
   - component: {fileID: 522746117113778774}
   - component: {fileID: 1544297741476418705}
   m_Layer: 5
-  m_Name: SendTxt
+  m_Name: TermsTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "aqu\xED"
+  m_text: "t\xE9rminos y condiciones"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea5470f334cb1d34a81864bffa0f3dd3, type: 2}
   m_sharedMaterial: {fileID: 500319035391857112, guid: ea5470f334cb1d34a81864bffa0f3dd3,
@@ -1346,7 +1346,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 660, y: 300}
+  m_SizeDelta: {x: 660, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737050483732943140
 MonoBehaviour:
@@ -1623,7 +1623,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstSelected: {fileID: 7674856511197288078}
-  registerButton: {fileID: 6336965642022664350}
   sendButton: {fileID: 8985138269357756527}
   emailInputField: {fileID: 6219669118722183790}
 --- !u!1 &4527952182210367439
@@ -1862,8 +1861,9 @@ GameObject:
   - component: {fileID: 3693591937205056588}
   - component: {fileID: 6336965642022664350}
   - component: {fileID: 2291462668042880582}
+  - component: {fileID: 3983715471686958925}
   m_Layer: 5
-  m_Name: RegisterBtn
+  m_Name: TermsConditionsBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,9 +1971,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StartGame
+      - m_Target: {fileID: 3983715471686958925}
+        m_TargetAssemblyTypeName: LinkOpener, Assembly-CSharp
+        m_MethodName: OpenLink
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2093,6 +2093,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &3983715471686958925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758822045882357584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: www.fanta.com
 --- !u!1 &6647475876515456930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2142,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 660, y: 250}
+  m_SizeDelta: {x: 660, y: 353.6868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7362421557240660458
 MonoBehaviour:
@@ -2823,8 +2836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -370.5}
-  m_SizeDelta: {x: 660, y: 621}
+  m_AnchoredPosition: {x: 0, y: -226.35861}
+  m_SizeDelta: {x: 660, y: 546.2489}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2712446578981636950
 MonoBehaviour:
@@ -5335,17 +5348,17 @@ PrefabInstance:
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_ContentType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_KeyboardType
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_CharacterValidation
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3539735009205170497, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
@@ -5417,7 +5430,7 @@ PrefabInstance:
     - target: {fileID: 6043451133522721451, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: contentType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043451133522721451, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
@@ -5507,7 +5520,7 @@ PrefabInstance:
     - target: {fileID: 8835747331712248393, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 8835747331712248393, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}

@@ -17,7 +17,7 @@ namespace UI.Views
 {
     public class LoginMenu : ViewBase
     {
-        [SerializeField] private Button registerButton;
+        // [SerializeField] private Button registerButton;
         [SerializeField] private Button sendButton;
 
         [SerializeField] private TMP_InputField emailInputField;
@@ -29,9 +29,9 @@ namespace UI.Views
         protected override void OnCreation()
         {
             sendButton.onClick.AddListener(OnSendLogin);
-            registerButton.onClick.AddListener(() => GoToRegister?.Invoke());
+            // registerButton.onClick.AddListener(() => GoToRegister?.Invoke());
 
-            Buttons.Add(registerButton);
+            // Buttons.Add(registerButton);
             Buttons.Add(sendButton);
 
             SetPrefills();
@@ -52,6 +52,7 @@ namespace UI.Views
             LoginDto loginDto = new LoginDto
             {
                 email = emailInputField.text,
+                acceptedTerms = true
                 // password = passwordInputField.text
             };
 
