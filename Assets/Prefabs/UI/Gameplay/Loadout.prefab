@@ -7016,7 +7016,7 @@ MonoBehaviour:
   tutorialPrompt: {fileID: 434089801861885648}
   skyMeshFilter: {fileID: 0}
   UIGroundFilter: {fileID: 0}
-  menuTheme: {fileID: 8300000, guid: 1588137430bfbab4b9a00ba3b220b82b, type: 3}
+  menuTheme: {fileID: 8300000, guid: 8ca430765ec1e2148a3d9dd20c3b4052, type: 3}
   maxScoreTxt: {fileID: 6988449695162415045}
   maxDistanceTxt: {fileID: 8961170914670443761}
   consumableIcon: {fileID: 11439736, guid: 0c5f0793b82536342bd64bc3e3fdee8a, type: 3}
@@ -7735,10 +7735,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 24296926276685033}
         m_TargetAssemblyTypeName: SettingPopup, Assembly-CSharp
         m_MethodName: MasterSFXVolumeChangeValue
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10567,10 +10567,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 24296926276685033}
         m_TargetAssemblyTypeName: SettingPopup, Assembly-CSharp
         m_MethodName: MusicVolumeChangeValue
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
