@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: www.fanta.com
+  link: https://fanta.com
 --- !u!1 &6647475876515456930
 GameObject:
   m_ObjectHideFlags: 0

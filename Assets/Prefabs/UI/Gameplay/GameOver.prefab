@@ -3395,7 +3395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: www.rappi.com
+  link: https://rappi.com
 --- !u!1001 &8577329109435562049
 PrefabInstance:
   m_ObjectHideFlags: 0
