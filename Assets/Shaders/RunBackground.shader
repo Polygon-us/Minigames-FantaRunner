@@ -101,7 +101,7 @@ Shader "Unlit/RunBackground"
                 float4 col = lerp(backgroundColor, 1, alpha);
 
                 #ifdef UNITY_UI_CLIP_RECT
-                col.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+                col.a *= UnityGet2DClipping(i.worldPosition.xy, _ClipRect);
                 #endif
 
                 #ifdef UNITY_UI_ALPHACLIP

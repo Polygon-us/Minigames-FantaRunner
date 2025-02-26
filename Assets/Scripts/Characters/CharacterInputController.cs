@@ -5,6 +5,7 @@ using FirebaseCore;
 using FirebaseCore.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityREST.Editor;
 
 /// <summary>
 /// Handle everything related to controlling the character. Interact with both the Character (visual, animation) and CharacterCollider
@@ -46,7 +47,7 @@ public class CharacterInputController : MonoBehaviour
 	public AudioClip powerUpUseSound;
 	public AudioSource powerupSource;
 
-    [HideInInspector] public int currentTutorialLevel;
+    [ReadOnly] public int currentTutorialLevel;
     [HideInInspector] public bool tutorialWaitingForValidation;
 
     protected int m_Coins;
