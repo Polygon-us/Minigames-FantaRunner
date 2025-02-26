@@ -5348,17 +5348,17 @@ PrefabInstance:
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_ContentType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_KeyboardType
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_CharacterValidation
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3539735009205170497, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
@@ -5430,7 +5430,7 @@ PrefabInstance:
     - target: {fileID: 6043451133522721451, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: contentType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043451133522721451, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
