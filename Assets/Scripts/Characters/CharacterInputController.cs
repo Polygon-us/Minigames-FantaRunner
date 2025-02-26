@@ -221,7 +221,6 @@ public class CharacterInputController : MonoBehaviour
 	    }
     }
     
-#if UNITY_EDITOR
 	protected void Update()
 	{
 		// Disabled if it's tutorial and not thec urrent right tutorial level (see func TutorialMoveCheck)
@@ -322,19 +321,19 @@ public class CharacterInputController : MonoBehaviour
 		SetBlobShadow();
 	}
 	
-#elif UNITY_WEBGL
-    protected void Update ()
-    {
-        Vector3 verticalTargetPosition = m_TargetPosition;
-
-		UpdateSliding();
-		UpdateJump(ref verticalTargetPosition);
-		
-        characterCollider.transform.localPosition = Vector3.MoveTowards(characterCollider.transform.localPosition, verticalTargetPosition, laneChangeSpeed * Time.deltaTime);
-
-		SetBlobShadow();
-	}
-#endif
+// #elif UNITY_WEBGL
+//     protected void Update ()
+//     {
+//         Vector3 verticalTargetPosition = m_TargetPosition;
+//
+// 		UpdateSliding();
+// 		UpdateJump(ref verticalTargetPosition);
+// 		
+//         characterCollider.transform.localPosition = Vector3.MoveTowards(characterCollider.transform.localPosition, verticalTargetPosition, laneChangeSpeed * Time.deltaTime);
+//
+// 		SetBlobShadow();
+// 	}
+// #endif
 	    
 	private void UpdateSliding()
 	{
