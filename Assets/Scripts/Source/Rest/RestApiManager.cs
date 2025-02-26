@@ -46,19 +46,19 @@ public class RestApiManager : APIManager
         SetAuth(token);
     }
 
-    public void GetRequest<T>(string endpoint, Action<WebResult<T>> callback = null, string[] args = null)
+    public void GetRequest<T>(string endpoint, Action<WebResult<T>> callback = null, (string, string)[] args = null)
     {
-        StartRequest(endpoint, path => Transport.GET(PathWithArgs(path, args), callback));
+        StartRequest(endpoint, path => Transport.GET(path, args, callback));
     }
 
     public void PostRequest<T>(string endpoint, object data, Action<WebResult<T>> callback = null, string[] args = null)
     {
-        StartRequest(endpoint, path => Transport.POST(PathWithArgs(path, args), JsonConvert.SerializeObject(data), callback));
+        StartRequest(endpoint, path => Transport.POST(path, JsonConvert.SerializeObject(data), callback, args));
     }
 
-    public void PatchRequest<T>(string endpoint, object data, Action<WebResult<T>> callback)
+    public void PatchRequest<T>(string endpoint, object data, Action<WebResult<T>> callback, string[] args = null)
     {
-        StartRequest(endpoint, path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback));
+        StartRequest(endpoint, path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback, args));
     }
 
     public static string GetErrorResponse(string json)
@@ -71,11 +71,6 @@ public class RestApiManager : APIManager
         Transport?.SignOut();
     }
 
-    private string PathWithArgs(string path, string[] args)
-    {
-        string pathWithArgs = path + (args != null ? $"?{string.Join("&", args)}" : "");
-        return pathWithArgs;
-    }
 }
 
 [Serializable]

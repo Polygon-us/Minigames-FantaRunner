@@ -3,6 +3,7 @@
     public class LoginDto
     {
     	public string email;
-    	public string password;
+	    public bool acceptedTerms;
+    	// public string password;
     }
 }

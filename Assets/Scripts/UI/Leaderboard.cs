@@ -15,11 +15,11 @@ public class Leaderboard : MonoBehaviour
 
     private List<PlayerRankingResponseDto> _records;
 
-    private RankingHandler _rankingHandler;
+    private LeaderboardHandler _leaderboardHandler;
     
     private void Awake()
     {
-        _rankingHandler = new RankingHandler();
+        _leaderboardHandler = new LeaderboardHandler();
     }
 
     public void Open()
@@ -41,7 +41,7 @@ public class Leaderboard : MonoBehaviour
             entriesRoot.GetChild(i).gameObject.SetActive(false);
         }
 
-        _rankingHandler.GetRanking(OnLeaderboardResponse);
+        _leaderboardHandler.GetRanking(OnLeaderboardResponse);
     }
     
     private void OnLeaderboardResponse(WebResult<ResponseDto<RankingResponseDto>> response)
@@ -67,9 +67,7 @@ public class Leaderboard : MonoBehaviour
             
             hs.gameObject.SetActive(true);
 
-            hs.playerName.text = _records[i].username;
-            hs.number.text = _records[i].rank.ToString();
-            hs.score.text = _records[i].distance.ToString();
+            hs.Initialize(_records[i]);
         }
     }
 }

@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Source.Handlers;
+using TMPro;
+using UI.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -51,6 +54,9 @@ public class LoadoutState : AState
 
 	public AudioClip menuTheme;
 
+	[Header("Settings")] 
+	[SerializeField] private TMP_Text maxScoreTxt;
+	[SerializeField] private TMP_Text maxDistanceTxt;
 
     [Header("Prefabs")]
     public ConsumableIcon consumableIcon;
@@ -82,10 +88,14 @@ public class LoadoutState : AState
         charNameDisplay.text = "";
         themeNameDisplay.text = "";
 
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        maxScoreTxt.text = userInfoDto.score.ToString();
+        maxScoreTxt.text = userInfoDto.distance.ToString("N0");
+        
         k_UILayer = LayerMask.NameToLayer("UI");
 
-        skyMeshFilter.gameObject.SetActive(true);
-        UIGroundFilter.gameObject.SetActive(true);
+        skyMeshFilter.gameObject.SetActive(false);
+        UIGroundFilter.gameObject.SetActive(false);
 
         // Reseting the global blinking value. Can happen if the game unexpectedly exited while still blinking
         Shader.SetGlobalFloat("_BlinkingValue", 0.0f);
@@ -97,7 +107,7 @@ public class LoadoutState : AState
         }
 
         runButton.interactable = false;
-        runButton.GetComponentInChildren<Text>().text = "Loading...";
+        runButton.GetComponentInChildren<TMP_Text>().text = "Cargando...";
 
         if(m_PowerupToUse != Consumable.ConsumableType.NONE)
         {
@@ -114,7 +124,9 @@ public class LoadoutState : AState
         missionPopup.gameObject.SetActive(false);
         inventoryCanvas.gameObject.SetActive(false);
 
-        if (m_Character != null) Addressables.ReleaseInstance(m_Character);
+        if (m_Character)
+	        // Addressables.ReleaseInstance(m_Character);
+			m_Character.gameObject.SetActive(false);
 
         GameState gs = to as GameState;
 
@@ -159,7 +171,7 @@ public class LoadoutState : AState
             if(interactable)
             {
                 runButton.interactable = true;
-                runButton.GetComponentInChildren<Text>().text = "Run!";
+                runButton.GetComponentInChildren<TMP_Text>().text = "¡Corre!";
 
                 //we can always enabled, as the parent will be disabled if tutorial is already done
                 tutorialPrompt.SetActive(true);

@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Source.DTOs.Request;
+using Source.Handlers;
+using TMPro;
+using UI.DTOs;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -26,11 +31,11 @@ public class GameState : AState
 	public AudioClip gameTheme;
 
     [Header("UI")]
-    public Text coinText;
+    public TMP_Text coinText;
     public Text premiumText;
-    public Text scoreText;
-	public Text distanceText;
-    public Text multiplierText;
+    public TMP_Text scoreText;
+	public TMP_Text distanceText;
+    public TMP_Text multiplierText;
 	public Text countdownText;
     public RectTransform powerupZone;
 	public RectTransform lifeRectTransform;
@@ -42,15 +47,15 @@ public class GameState : AState
     public Image inventoryIcon;
 
     public GameObject gameOverPopup;
-    public Button premiumForLifeButton;
-    public GameObject adsForLifeButton;
-    public Text premiumCurrencyOwned;
+    // public Button premiumForLifeButton;
+    // public GameObject adsForLifeButton;
+    // public TMP_Text premiumCurrencyOwned;
 
     [Header("Prefabs")]
     public GameObject PowerupIconPrefab;
 
     [Header("Tutorial")]
-    public Text tutorialValidatedObstacles;
+    public TMP_Text tutorialValidatedObstacles;
     public GameObject sideSlideTuto;
     public GameObject upSlideTuto;
     public GameObject downSlideTuto;
@@ -85,10 +90,14 @@ public class GameState : AState
     protected TrackSegment m_NextValidSegment = null;
     protected int k_ObstacleToClear = 3;
 
+    private LeaderboardHandler _leaderboardHandler;
+    
     public override void Enter(AState from)
     {
         m_CountdownRectTransform = countdownText.GetComponent<RectTransform>();
 
+        _leaderboardHandler = new LeaderboardHandler();
+        
         m_LifeHearts = new Image[k_MaxLives];
         for (int i = 0; i < k_MaxLives; ++i)
         {
@@ -168,6 +177,13 @@ public class GameState : AState
                 }
             };
         }
+        else
+        {
+            SessionHandler.StartRun(result =>
+            {
+                trackManager.CurrenDate = result.data.data.startDate;
+            });
+        }
 
         m_Finished = false;
         m_PowerupIcons.Clear();
@@ -201,7 +217,7 @@ public class GameState : AState
             else if(trackManager.isTutorial || !m_AdsInitialised)
                 adsForLifeButton.SetActive(false);
 #else
-            adsForLifeButton.SetActive(false); //Ads is disabled
+            // adsForLifeButton.SetActive(false); //Ads is disabled
 #endif
 
             return;
@@ -324,6 +340,7 @@ public class GameState : AState
 		// Used by the pause menu to return immediately to loadout, canceling everything.
 		Time.timeScale = 1.0f;
 		AudioListener.pause = false;
+        
 		trackManager.End();
 		trackManager.isRerun = false;
         PlayerData.instance.Save();
@@ -379,6 +396,10 @@ public class GameState : AState
 		m_Finished = true;
 		trackManager.StopMove();
 
+        trackManager.AddCheckpoint();
+        
+        TrySendLeaderboard();
+        
         // Reseting the global blinking value. Can happen if game unexpectly exited while still blinking
         Shader.SetGlobalFloat("_BlinkingValue", 0.0f);
 
@@ -391,6 +412,26 @@ public class GameState : AState
                 OpenGameOverPopup();
         }
 	}
+    
+    private void TrySendLeaderboard()
+    {
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        
+        // Don't send if not record
+        if (trackManager.score < userInfoDto.score)
+            return;
+        
+        RankingDto rankingDto = new RankingDto
+        {
+            score = trackManager.score,
+            distance = (int)trackManager.worldDistance
+        };
+
+        _leaderboardHandler.PostRanking(rankingDto, _ =>
+        {
+            SessionHandler.SendCheckpoints(trackManager.CheckpointTimeline);
+        });
+    }
 
     protected void ClearPowerup()
     {
@@ -407,13 +448,14 @@ public class GameState : AState
 
     public void OpenGameOverPopup()
     {
-        premiumForLifeButton.interactable = PlayerData.instance.premium >= 3;
+        // premiumForLifeButton.interactable = PlayerData.instance.premium >= 3;
 
-        premiumCurrencyOwned.text = PlayerData.instance.premium.ToString();
+        // premiumCurrencyOwned.text = PlayerData.instance.premium.ToString();
 
         ClearPowerup();
 
-        gameOverPopup.SetActive(true);
+        // gameOverPopup.SetActive(true);
+        GameOver();
     }
 
     public void GameOver()

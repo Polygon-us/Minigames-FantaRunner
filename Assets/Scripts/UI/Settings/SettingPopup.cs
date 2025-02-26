@@ -40,7 +40,7 @@ public class SettingPopup : MonoBehaviour
         mixer.GetFloat(k_MusicVolumeFloatName, out m_MusicVolume);
         mixer.GetFloat(k_MasterSFXVolumeFloatName, out m_MasterSFXVolume);
 
-        masterSlider.value = 1.0f - (m_MasterVolume / k_MinVolume);
+        masterSlider.value = 1.0f;
         musicSlider.value = 1.0f - (m_MusicVolume / k_MinVolume);
         masterSFXSlider.value = 1.0f - (m_MasterSFXVolume / k_MinVolume);
     }

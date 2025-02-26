@@ -2,7 +2,9 @@
  * Author : Anth
 */
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 /// <summary>
 /// Atttribute for show a field if other field is true or false.
@@ -28,13 +30,12 @@ public sealed class ShowIfAttribute : PropertyAttribute
     }
 }
 
-
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ShowIfAttribute))]
 public class ConditionalHidePropertyDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-#if UNITY_EDITOR
         ShowIfAttribute condHAtt = (ShowIfAttribute)attribute;
         bool enabled = GetConditionalSourceField(property, condHAtt);
         GUI.enabled = enabled;
@@ -46,13 +47,10 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
         else if (!condHAtt.HideInInspector)
             EditorGUI.PropertyField(position, property, label, false);
         // else hide it ,dont draw it
-        else return;
-#endif
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-#if UNITY_EDITOR
         ShowIfAttribute condHAtt = (ShowIfAttribute)attribute;
         bool enabled = GetConditionalSourceField(property, condHAtt);
 
@@ -70,9 +68,6 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
             else
                 return -EditorGUIUtility.standardVerticalSpacing; // Oculta el campo visualmente.
         }
-#else
-        return 0f;
-#endif
     }
 
     /// <summary>
@@ -83,7 +78,6 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
     /// <returns> only if the field y is same to the value expected return true</returns>
     private bool GetConditionalSourceField(SerializedProperty property, ShowIfAttribute condHAtt)
     {
-#if UNITY_EDITOR
         bool enabled = false;
         string propertyPath = property.propertyPath;
         string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField);
@@ -103,8 +97,6 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
         }
 
         return enabled;
-#else
-        return false;
-#endif
     }
 }
+#endif

@@ -20,13 +20,13 @@ namespace Source.Utils.Validations
                 );
             }
 
-            if (!InputValidator.IsValidPassword(loginDto.password))
-            {
-                return ResultResponse<LoginDto>.Failure(
-                    "password must be at least 6 characters long.",
-                    "PASSWORD_TOO_SHORT"
-                );
-            }
+            // if (!InputValidator.IsValidPassword(loginDto.password))
+            // {
+            //     return ResultResponse<LoginDto>.Failure(
+            //         "password must be at least 6 characters long.",
+            //         "PASSWORD_TOO_SHORT"
+            //     );
+            // }
 
             return ResultResponse<LoginDto>.Success(loginDto, "Validation successful.");
         }

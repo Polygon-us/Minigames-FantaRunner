@@ -1,7 +1,5 @@
-﻿using Source.DTOs.Request;
-using Source.Handlers;
+﻿using TMPro;
 using UnityEngine;
-using UnityREST;
 #if UNITY_ANALYTICS
 using UnityEngine.Analytics;
 #endif
@@ -11,37 +9,41 @@ using UnityEngine.Analytics;
 /// </summary>
 public class GameOverState : AState
 {
+    [SerializeField] private Transform characterSlot;
+    
     public TrackManager trackManager;
     public Canvas canvas;
-    public MissionUI missionPopup;
+    // public MissionUI missionPopup;
 
 	public AudioClip gameOverTheme;
 
 	public Leaderboard miniLeaderboard;
 	public Leaderboard fullLeaderboard;
 
-    public GameObject addButton;
-    
-    private RankingHandler _rankingHandler;
-
-    private void Awake()
-    {
-        _rankingHandler = new RankingHandler();
-    }
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text distanceText;
 
     public override void Enter(AState from)
     {
         canvas.gameObject.SetActive(true);
 
-        SendLeaderboard();
+        scoreText.text = trackManager.score.ToString();
+        distanceText.text = trackManager.worldDistance.ToString("N0");
         
-        if (MissionManager.Instance.AnyMissionComplete())
-            StartCoroutine(missionPopup.Open());
-        else
-            missionPopup.gameObject.SetActive(false);
+        // if (MissionManager.Instance.AnyMissionComplete())
+        //     StartCoroutine(missionPopup.Open());
+        // else
+        //     missionPopup.gameObject.SetActive(false);
 
 		CreditCoins();
 
+        Transform character = characterSlot.GetChild(0);
+        if (character)
+        {
+            character.gameObject.SetActive(true);
+            character.forward = Vector3.back;
+        }   
+        
 		if (MusicPlayer.instance.GetStem(0) != gameOverTheme)
 		{
             MusicPlayer.instance.SetStem(0, gameOverTheme);
@@ -126,22 +128,6 @@ public class GameOverState : AState
         }
 #endif 
 	}
-
-    private void SendLeaderboard()
-    {
-        RankingDto rankingDto = new RankingDto
-        {
-            coins = trackManager.score,
-            distance = trackManager.score
-        };
-        
-        _rankingHandler.PostRanking(rankingDto, OnRankingPosted);
-    }
-
-    private void OnRankingPosted(WebResult<object> _)
-    {
-        miniLeaderboard.Populate();
-    }
     
 	protected void FinishRun()
     {
@@ -160,7 +146,7 @@ public class GameOverState : AState
 #endif
 
         PlayerData.instance.Save();
-
+        
         trackManager.End();
     }
 
