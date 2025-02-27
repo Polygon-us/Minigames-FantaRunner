@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Med.SafeValue;
 using Source.DTOs.Request;
 using Source.Handlers;
 using Source.Utils.Date;
@@ -70,10 +71,10 @@ public class TrackManager : MonoBehaviour
 
     public float timeToStart { get { return m_TimeToStart; } }  // Will return -1 if already started (allow to update UI)
 
-    public int score { get { return m_Score; } }
+    public int score { get { return m_Score.Value; } }
     public int multiplier { get { return m_Multiplier; } }
     public float currentSegmentDistance { get { return m_CurrentSegmentDistance; } }
-    public float worldDistance { get { return m_TotalWorldDistance; } }
+    public float worldDistance { get { return m_TotalWorldDistance.Value; } }
     public float speed { get { return m_Speed; } }
     public float speedRatio { get { return (m_Speed - minSpeed) / (maxSpeed - minSpeed); } }
     public int currentZone { get { return m_CurrentZone; } }
@@ -101,7 +102,7 @@ public class TrackManager : MonoBehaviour
     protected int m_TrackSeed = -1;
 
     protected float m_CurrentSegmentDistance;
-    protected float m_TotalWorldDistance;
+    protected SafeFloat m_TotalWorldDistance;
     protected bool m_IsMoving;
     protected float m_Speed;
 
@@ -119,8 +120,8 @@ public class TrackManager : MonoBehaviour
     protected float m_CurrentZoneDistance;
     protected int m_PreviousSegment = -1;
 
-    protected int m_Score;
-    protected float m_ScoreAccum;
+    protected SafeInt m_Score;
+    protected SafeFloat m_ScoreAccum;
     protected bool m_Rerun;     // This lets us know if we are entering a game over (ads) state or starting a new game (see GameState)
 
     protected bool m_IsTutorial; //Tutorial is a special run that don't chance section until the tutorial step is "validated" by the TutorialState.
@@ -142,7 +143,7 @@ public class TrackManager : MonoBehaviour
     
     protected void Awake()
     {
-        m_ScoreAccum = 0.0f;
+        m_ScoreAccum = new SafeFloat(0);
         s_Instance = this;
     }
 
@@ -197,7 +198,7 @@ public class TrackManager : MonoBehaviour
 
             // Since this is not a rerun, init the whole system (on rerun we want to keep the states we had on death)
             m_CurrentSegmentDistance = k_StartingSegmentDistance;
-            m_TotalWorldDistance = 0.0f;
+            m_TotalWorldDistance = new SafeFloat(0);
 
             characterController.gameObject.SetActive(true);
 
@@ -243,8 +244,8 @@ public class TrackManager : MonoBehaviour
             characterController.coins = 0;
             characterController.premium = 0;
 
-            m_Score = 0;
-            m_ScoreAccum = 0;
+            m_Score = new SafeInt(0);
+            m_ScoreAccum = new SafeFloat(0);
 
             m_SafeSegementLeft = m_IsTutorial ? 0 : k_StartingSafeSegments;
 
@@ -350,14 +351,14 @@ public class TrackManager : MonoBehaviour
             return;
 
         float scaledSpeed = m_Speed * Time.deltaTime;
-        m_ScoreAccum += scaledSpeed;
+        m_ScoreAccum.Value += scaledSpeed;
         m_CurrentZoneDistance += scaledSpeed;
 
-        int intScore = Mathf.FloorToInt(m_ScoreAccum);
+        int intScore = Mathf.FloorToInt(m_ScoreAccum.Value);
         if (intScore != 0) AddScore(intScore);
-        m_ScoreAccum -= intScore;
+        m_ScoreAccum.Value -= intScore;
 
-        m_TotalWorldDistance += scaledSpeed;
+        m_TotalWorldDistance.Value += scaledSpeed;
         m_CurrentSegmentDistance += scaledSpeed;
 
         if (m_CurrentSegmentDistance > m_Segments[0].worldLength)
@@ -469,7 +470,7 @@ public class TrackManager : MonoBehaviour
         {
             //check for next rank achieved
             int currentTarget = (PlayerData.instance.rank + 1) * 300;
-            if (m_TotalWorldDistance > currentTarget)
+            if (m_TotalWorldDistance.Value > currentTarget)
             {
                 PlayerData.instance.rank += 1;
                 PlayerData.instance.Save();
@@ -703,6 +704,6 @@ public class TrackManager : MonoBehaviour
     public void AddScore(int amount)
     {
         int finalAmount = amount;
-        m_Score += finalAmount * m_Multiplier;
+        m_Score.Value += finalAmount * m_Multiplier;
     }
 }

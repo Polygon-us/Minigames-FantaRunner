@@ -149,7 +149,7 @@ public class CharacterCollider : MonoBehaviour
             }
             else
             {
-                controller.currentLife -= 1;
+                controller.currentLife--;
             }
 
             controller.character.animator.SetTrigger(s_HitHash);
