@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using FirebaseCore;
 using FirebaseCore.DTOs;
+using Med.SafeValue;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 using UnityREST.Editor;
@@ -25,13 +26,14 @@ public class CharacterInputController : MonoBehaviour
 	public GameObject blobShadow;
 	public float laneChangeSpeed = 1.0f;
 
-	public int maxLife = 3;
+	private SafeInt m_maxLife = new (3);
 
 	public Consumable inventory;
 
-	public int coins { get { return m_Coins; } set { m_Coins = value; } }
-	public int premium { get { return m_Premium; } set { m_Premium = value; } }
-	public int currentLife { get { return m_CurrentLife; } set { m_CurrentLife = value; } }
+	public int maxLife => m_maxLife.Value;
+	public int coins { get { return m_Coins.Value; } set { m_Coins.Value = value; } }
+	public int premium { get { return m_Premium.Value; } set { m_Premium.Value = value; } }
+	public int currentLife { get { return m_CurrentLife.Value; } set { m_CurrentLife.Value = value; } }
 	public List<Consumable> consumables { get { return m_ActiveConsumables; } }
 	public bool isJumping { get { return m_Jumping; } }
 	public bool isSliding { get { return m_Sliding; } }
@@ -50,9 +52,9 @@ public class CharacterInputController : MonoBehaviour
     [ReadOnly] public int currentTutorialLevel;
     [HideInInspector] public bool tutorialWaitingForValidation;
 
-    protected int m_Coins;
-    protected int m_Premium;
-    protected int m_CurrentLife;
+    protected SafeInt m_Coins;
+    protected SafeInt m_Premium;
+    protected SafeInt m_CurrentLife;
 
     protected List<Consumable> m_ActiveConsumables = new List<Consumable>();
 
@@ -89,8 +91,8 @@ public class CharacterInputController : MonoBehaviour
 
     protected void Awake ()
     {
-        m_Premium = 0;
-        m_CurrentLife = 0;
+        m_Premium = new SafeInt(0);
+        m_CurrentLife = new SafeInt(0);
         m_Sliding = false;
         m_SlideStart = 0.0f;
 	    m_IsRunning = false;

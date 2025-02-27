@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
+﻿using System.Collections;
 
 public class ExtraLife : Consumable
 {
@@ -39,7 +37,7 @@ public class ExtraLife : Consumable
     {
         yield return base.Started(c);
         if (c.currentLife < k_MaxLives)
-            c.currentLife += 1;
+            c.currentLife++;
 		else
             c.coins += k_CoinValue;
     }
