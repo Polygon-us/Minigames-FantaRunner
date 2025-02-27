@@ -488,7 +488,7 @@ public class TrackManager : MonoBehaviour
 
     public void AddCheckpoint()
     {
-        if (CurrenDate == null)
+        if (isTutorial || CurrenDate == null)
             return;
         
         _checkpointTimeline.metadata.Add(new CheckpointDto
