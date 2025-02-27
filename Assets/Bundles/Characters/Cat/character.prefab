@@ -84,7 +84,7 @@ MonoBehaviour:
   icon: {fileID: 21300054, guid: e1a536f74c7ef384a8d7132148ace0c8, type: 3}
   jumpSound: {fileID: 8300000, guid: 46041e8279bf47f44837664277004284, type: 3}
   hitSound: {fileID: 8300000, guid: 4df05e5a3da67b74ab57e4fdbff8c1fa, type: 3}
-  deathSound: {fileID: 8300000, guid: 3acd66c1c1f3d3a499214949f2b98bc5, type: 3}
+  deathSound: {fileID: 8300000, guid: 603f051bdda9f2e4e85ca5ebcececfdf, type: 3}
 --- !u!82 &82000013563701790
 AudioSource:
   m_ObjectHideFlags: 0
@@ -94,7 +94,8 @@ AudioSource:
   m_GameObject: {fileID: 199232}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243000013519457790, guid: 3b7e99a6684bf49fa9bad5f4bb585fab,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e38bebbdc31db468a604b05bd1d75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: SFX
+  mixerGroup: SFXUnducked
 --- !u!1 &1000010983816196
 GameObject:
   m_ObjectHideFlags: 0
