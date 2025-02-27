@@ -144,7 +144,8 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   obstaclePositions:
-  - 0.552
+  - 0.698
+  - 0.33
 --- !u!1 &3975059195978289747
 GameObject:
   m_ObjectHideFlags: 0
