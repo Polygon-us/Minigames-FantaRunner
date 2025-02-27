@@ -1267,6 +1267,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6378419678098663979, guid: 37f1ae65c0e72354abe0f12b7f5f7d31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6668079871198405208, guid: 37f1ae65c0e72354abe0f12b7f5f7d31,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1461,7 +1466,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -8374,6 +8379,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534894259753208572, guid: c1f2fb49a94507c45b52369c806a2de8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6783802315306425336, guid: c1f2fb49a94507c45b52369c806a2de8,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -8628,7 +8638,6 @@ MonoBehaviour:
   characterCollider: {fileID: 1144878499}
   blobShadow: {fileID: 184212906}
   laneChangeSpeed: 14
-  maxLife: 3
   inventory: {fileID: 0}
   jumpLength: 6
   jumpHeight: 1.2
@@ -8669,7 +8678,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -8909,6 +8918,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 590897648}
     m_Modifications:
+    - target: {fileID: 414311949893940353, guid: 2786b822f2cd36c43b7fba8c01618b8a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1116344883183446986, guid: 2786b822f2cd36c43b7fba8c01618b8a,
         type: 3}
       propertyPath: m_AnchorMax.y
