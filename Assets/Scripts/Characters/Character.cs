@@ -21,7 +21,20 @@ public class Character : MonoBehaviour
 	public AudioClip hitSound;
 	public AudioClip deathSound;
 
-    // Called by the game when an accessory changes, enable/disable the accessories children objects accordingly
+	private AudioSource source;
+
+	public AudioSource Source
+	{
+		get
+		{
+			if (source)
+				return source;
+			source = GetComponent<AudioSource>();
+			return source;
+		}
+	}
+
+	// Called by the game when an accessory changes, enable/disable the accessories children objects accordingly
     // a value of -1 as parameter disables all accessory.
     public void SetupAccesory(int accessory)
     {
