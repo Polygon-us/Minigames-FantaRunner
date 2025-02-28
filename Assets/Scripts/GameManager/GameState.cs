@@ -29,6 +29,7 @@ public class GameState : AState
     public TrackManager trackManager;
 
 	public AudioClip gameTheme;
+    public AudioClip gameOverTheme;
 
     [Header("UI")]
     public TMP_Text coinText;
@@ -399,6 +400,9 @@ public class GameState : AState
 		trackManager.StopMove();
 
         trackManager.AddCheckpoint();
+        
+        MusicPlayer.instance.SetStem(0, gameOverTheme);
+        StartCoroutine(MusicPlayer.instance.RestartAllStems());
         
         TrySendLeaderboard();
         
