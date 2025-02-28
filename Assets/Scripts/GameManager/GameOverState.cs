@@ -14,6 +14,7 @@ public class GameOverState : AState
     public TrackManager trackManager;
     public Canvas canvas;
     // public MissionUI missionPopup;
+    public AudioClip gameOverTheme;
     
 	public Leaderboard miniLeaderboard;
 	public Leaderboard fullLeaderboard;
@@ -41,6 +42,12 @@ public class GameOverState : AState
             character.gameObject.SetActive(true);
             character.forward = Vector3.back;
         }   
+        
+        if (MusicPlayer.instance.GetStem(0) != gameOverTheme)
+        {
+            MusicPlayer.instance.SetStem(0, gameOverTheme);
+            StartCoroutine(MusicPlayer.instance.RestartAllStems());
+        }
     }
 
 	public override void Exit(AState to)

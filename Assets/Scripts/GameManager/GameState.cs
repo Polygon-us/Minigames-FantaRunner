@@ -401,8 +401,7 @@ public class GameState : AState
 
         trackManager.AddCheckpoint();
         
-        MusicPlayer.instance.SetStem(0, gameOverTheme);
-        StartCoroutine(MusicPlayer.instance.RestartAllStems());
+        StartCoroutine(MusicPlayer.instance.FadeoutStems());
         
         TrySendLeaderboard();
         
