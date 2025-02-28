@@ -120,7 +120,10 @@ public class CharacterCollider : MonoBehaviour
                 PlayerData.instance.coins += 1;
 				controller.coins += 1;
 				if (coinSound)
+				{
+					m_Audio.pitch = Random.Range(0.9f, 1.1f);
 					m_Audio.PlayOneShot(coinSound);
+				}
             }
         }
         else if(c.gameObject.layer == k_ObstacleLayerIndex)
