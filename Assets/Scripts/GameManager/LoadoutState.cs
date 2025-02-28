@@ -414,7 +414,11 @@ public class LoadoutState : AState
             }
         }
 
-        manager.SwitchState("Game");
+        runButton.interactable = false;
+
+        LeanTween.delayedCall(0.3f,
+	        () => manager.SwitchState("Game")
+	    );
     }
 
 	public void Openleaderboard()

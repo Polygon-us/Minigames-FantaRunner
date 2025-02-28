@@ -80,8 +80,10 @@ public class GameOverState : AState
     public void GoToLoadout()
     {
         trackManager.isRerun = false;
-		manager.SwitchState("Loadout");
-    }
+        LeanTween.delayedCall(0.3f, 
+            () => manager.SwitchState("Loadout")
+        );
+}
 
     public void RunAgain()
     {
