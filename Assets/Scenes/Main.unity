@@ -1267,6 +1267,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6378419678098663979, guid: 37f1ae65c0e72354abe0f12b7f5f7d31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6668079871198405208, guid: 37f1ae65c0e72354abe0f12b7f5f7d31,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1445,7 +1450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2094493432}
   koParticle: {fileID: 2038194883}
-  coinSound: {fileID: 8300000, guid: 8e71770f508375042849fa6fd083f13a, type: 3}
+  coinSound: {fileID: 8300000, guid: cbeabf178200c724e96e89d2a20b0a28, type: 3}
   premiumSound: {fileID: 8300000, guid: 553f1d03da54003479f6ff63d3155919, type: 3}
   magnetCoins: []
 --- !u!82 &1144878500
@@ -1461,7 +1466,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1967,16 +1972,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 997630276980775211, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 602
-      objectReference: {fileID: 0}
-    - target: {fileID: 997630276980775211, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 44.44
       objectReference: {fileID: 0}
     - target: {fileID: 1108222240017336094, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
         type: 3}
@@ -7854,11 +7849,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 745079276682096796, guid: c1f2fb49a94507c45b52369c806a2de8,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 883184554392047291, guid: c1f2fb49a94507c45b52369c806a2de8,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -8138,31 +8128,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787374405758979370, guid: c1f2fb49a94507c45b52369c806a2de8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787374405758979370, guid: c1f2fb49a94507c45b52369c806a2de8,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787374405758979370, guid: c1f2fb49a94507c45b52369c806a2de8,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 732.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787374405758979370, guid: c1f2fb49a94507c45b52369c806a2de8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 366.415
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787374405758979370, guid: c1f2fb49a94507c45b52369c806a2de8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -185
       objectReference: {fileID: 0}
     - target: {fileID: 4380329600882007156, guid: c1f2fb49a94507c45b52369c806a2de8,
         type: 3}
@@ -8633,7 +8598,6 @@ MonoBehaviour:
   characterCollider: {fileID: 1144878499}
   blobShadow: {fileID: 184212906}
   laneChangeSpeed: 14
-  maxLife: 3
   inventory: {fileID: 0}
   jumpLength: 6
   jumpHeight: 1.2
@@ -8674,7 +8638,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -8914,6 +8878,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 590897648}
     m_Modifications:
+    - target: {fileID: 414311949893940353, guid: 2786b822f2cd36c43b7fba8c01618b8a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1116344883183446986, guid: 2786b822f2cd36c43b7fba8c01618b8a,
         type: 3}
       propertyPath: m_AnchorMax.y

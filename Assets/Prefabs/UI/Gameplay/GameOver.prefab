@@ -1626,7 +1626,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 330}
-  m_SizeDelta: {x: 512, y: 1024}
+  m_SizeDelta: {x: 450, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6746885933522305642
 CanvasRenderer:
@@ -3395,7 +3395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: www.rappi.com
+  link: https://rappi.com
 --- !u!1001 &8577329109435562049
 PrefabInstance:
   m_ObjectHideFlags: 0

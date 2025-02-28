@@ -128,7 +128,7 @@ public class GameState : AState
         canvas.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
         wholeUI.gameObject.SetActive(true);
-        pauseButton.gameObject.SetActive(!trackManager.isTutorial);
+        
         gameOverPopup.SetActive(false);
 
         sideSlideTuto.SetActive(false);
@@ -147,6 +147,8 @@ public class GameState : AState
 
         m_IsTutorial = !PlayerData.instance.tutorialDone;
         trackManager.isTutorial = m_IsTutorial;
+        
+        pauseButton.gameObject.SetActive(!m_IsTutorial);
 
         if (m_IsTutorial)
         {
