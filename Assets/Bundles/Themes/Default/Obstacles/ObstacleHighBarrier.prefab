@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000013229578836}
   - component: {fileID: 33000010693366440}
   - component: {fileID: 23000011926034692}
-  - component: {fileID: 111000014007675272}
+  - component: {fileID: 4382193872367312294}
   m_Layer: 0
   m_Name: RoadWorksBarrierHigh
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!111 &111000014007675272
+--- !u!111 &4382193872367312294
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,9 +96,9 @@ Animation:
   m_GameObject: {fileID: 1000011114526480}
   m_Enabled: 1
   serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: bbccc718107e16e4d9e070aa75df5218, type: 3}
+  m_Animation: {fileID: 7400000, guid: e2e29704575cbbc4c800481788a86c7c, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: bbccc718107e16e4d9e070aa75df5218, type: 3}
+  - {fileID: 7400000, guid: e2e29704575cbbc4c800481788a86c7c, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -115,7 +115,6 @@ GameObject:
   - component: {fileID: 4000010868486168}
   - component: {fileID: 65000011981347708}
   - component: {fileID: 114000011473360826}
-  - component: {fileID: 111000013917959116}
   - component: {fileID: 82000010844000776}
   - component: {fileID: 114422673240210310}
   m_Layer: 9
@@ -140,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 4000013229578836}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -29.39426, y: -4.9545693, z: 21.41021}
 --- !u!65 &65000011981347708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -175,24 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactedSound: {fileID: 8300000, guid: 9ed08397b3fef21418662ed63130d301, type: 3}
---- !u!111 &111000013917959116
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011769374998}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: e2e29704575cbbc4c800481788a86c7c, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: bbccc718107e16e4d9e070aa75df5218, type: 3}
-  - {fileID: 7400000, guid: e2e29704575cbbc4c800481788a86c7c, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!82 &82000010844000776
 AudioSource:
   m_ObjectHideFlags: 0
