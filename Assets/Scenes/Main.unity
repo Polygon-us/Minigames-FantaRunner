@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2094493432}
   koParticle: {fileID: 2038194883}
-  coinSound: {fileID: 8300000, guid: 267e00b4093dd1647a1e979ac53998a9, type: 3}
+  coinSound: {fileID: 8300000, guid: 78db26c0275d147438ced66ccd7e0bc6, type: 3}
   premiumSound: {fileID: 8300000, guid: 553f1d03da54003479f6ff63d3155919, type: 3}
   magnetCoins: []
 --- !u!82 &1144878500
@@ -1462,8 +1462,7 @@ AudioSource:
   m_GameObject: {fileID: 1144878495}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243000013519457790, guid: 3b7e99a6684bf49fa9bad5f4bb585fab,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
