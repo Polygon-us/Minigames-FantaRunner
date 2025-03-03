@@ -13,7 +13,7 @@ namespace Source.Handlers
      
         protected static string[] Args(params string[] args) => args;
         
-        public static void SaveInfoToPrefs(string username, string email, int score, int distance/*, string password*/)
+        public static void SaveInfoToPrefs(string username, string email, int score, int distance, bool tutorial/*, string password*/)
         {
             SaveUserInfoDto saveUserInfoDto = new SaveUserInfoDto
             {
@@ -21,6 +21,7 @@ namespace Source.Handlers
                 email = email,
                 score = score,
                 distance = distance,
+                tutorial = tutorial
                 // password = password
             };
 

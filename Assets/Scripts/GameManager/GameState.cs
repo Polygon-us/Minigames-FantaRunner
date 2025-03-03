@@ -146,7 +146,8 @@ public class GameState : AState
 
         currentModifier.OnRunStart(this);
 
-        m_IsTutorial = !PlayerData.instance.tutorialDone;
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        m_IsTutorial = !userInfoDto.tutorial;
         trackManager.isTutorial = m_IsTutorial;
         
         pauseButton.gameObject.SetActive(!m_IsTutorial);
@@ -641,7 +642,16 @@ public class GameState : AState
 
     public void FinishTutorial()
     {
-        PlayerData.instance.tutorialDone = true;
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        BaseHandler.SaveInfoToPrefs
+        (
+            userInfoDto.username,
+            userInfoDto.email,
+            userInfoDto.score,
+            userInfoDto.distance,
+            true
+        );
+
         PlayerData.instance.Save();
 
         QuitToLoadout();
