@@ -80,7 +80,7 @@ public class LoadoutState : AState
     public override void Enter(AState from)
     {
         SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
-        tutorialBlocker.SetActive(!userInfoDto.tutorial);
+        tutorialBlocker.SetActive(userInfoDto.tutorial);
         tutorialPrompt.SetActive(false);
 
         inventoryCanvas.gameObject.SetActive(true);

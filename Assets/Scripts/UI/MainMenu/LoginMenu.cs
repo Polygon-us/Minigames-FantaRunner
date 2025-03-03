@@ -90,7 +90,7 @@ namespace UI.Views
             
             SaveUserInfoDto saveUserInfoDto = BaseHandler.SaveUserInfo;
             
-            BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email, score, distance, saveUserInfoDto?.tutorial ?? false/*, passwordInputField.text*/);
+            BaseHandler.SaveInfoToPrefs(payloadDto.username, payloadDto.email, score, distance, saveUserInfoDto?.tutorial ?? true/*, passwordInputField.text*/);
             
             RestApiManager.Instance.SetAuthToken(response.data.data.token);
 

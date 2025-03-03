@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2094493432}
   koParticle: {fileID: 2038194883}
-  coinSound: {fileID: 8300000, guid: 78db26c0275d147438ced66ccd7e0bc6, type: 3}
+  coinSound: {fileID: 8300000, guid: 0c41cd724df2c4949af4a71cc80f2463, type: 3}
   premiumSound: {fileID: 8300000, guid: 553f1d03da54003479f6ff63d3155919, type: 3}
   magnetCoins: []
 --- !u!82 &1144878500
