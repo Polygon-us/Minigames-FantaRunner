@@ -63,6 +63,7 @@ SpriteAtlas:
     - dbe840c6e78ea8546a4dd0560a164150: 21300000
     - f69bcfd7fbf3905499c7bb3ebc0bb3c9: 21300000
     - fa3db83861f794b48acf2bbffa332d15: 21300000
+    - 63b80a68ae03471438471071c323a06a: 21300000
     - 7ee7da89369b4f7438abd4c663900205: 21300000
     - 7c436cfa8c04e964e92c7837667c00c5: 21300000
     - 76d82a2bbd438e146ad50481cb1ceb77: 21300000
@@ -74,6 +75,7 @@ SpriteAtlas:
     - c17c851ea3805fd4a89a0abfa75a4166: 21300000
     - 1fcdc45efa95c1d4e95f8e6057adfd36: 21300000
     - ca49d56eab9e64e43824b8a3a71329d3: 21300000
+    - e7ee7e9f8f33f3641ad2a32d8272a561: 21300000
     - 22b041dfe302d664a8fef047ed8b2e05: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -90,6 +92,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: dbe840c6e78ea8546a4dd0560a164150, type: 3}
   - {fileID: 21300000, guid: f69bcfd7fbf3905499c7bb3ebc0bb3c9, type: 3}
   - {fileID: 21300000, guid: fa3db83861f794b48acf2bbffa332d15, type: 3}
+  - {fileID: 21300000, guid: 63b80a68ae03471438471071c323a06a, type: 3}
   - {fileID: 21300000, guid: 7ee7da89369b4f7438abd4c663900205, type: 3}
   - {fileID: 21300000, guid: 7c436cfa8c04e964e92c7837667c00c5, type: 3}
   - {fileID: 21300000, guid: 76d82a2bbd438e146ad50481cb1ceb77, type: 3}
@@ -101,6 +104,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c17c851ea3805fd4a89a0abfa75a4166, type: 3}
   - {fileID: 21300000, guid: 1fcdc45efa95c1d4e95f8e6057adfd36, type: 3}
   - {fileID: 21300000, guid: ca49d56eab9e64e43824b8a3a71329d3, type: 3}
+  - {fileID: 21300000, guid: e7ee7e9f8f33f3641ad2a32d8272a561, type: 3}
   - {fileID: 21300000, guid: 22b041dfe302d664a8fef047ed8b2e05, type: 3}
   m_PackedSpriteNamesToIndex:
   - T_PauseBtn
@@ -116,6 +120,7 @@ SpriteAtlas:
   - T_FirstRank
   - T_MusicIcon
   - T_RunMask2
+  - T_FantaBottle2
   - T_BackgroundGradient
   - T_ThirdRank
   - T_RappiLogo
@@ -127,6 +132,7 @@ SpriteAtlas:
   - T_Button
   - T_SFXIcon
   - T_LockClosed
+  - T_FantaBottleShadow
   - T_EmailIcon
   m_RenderDataMap: {}
   m_Tag: FantaSpriteAtlas
