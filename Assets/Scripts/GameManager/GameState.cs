@@ -312,10 +312,9 @@ public class GameState : AState
     public void Pause(bool displayMenu = true)
 	{
 		//check if we aren't finished OR if we aren't already in pause (as that would mess states)
-		if (m_Finished || AudioListener.pause == true)
+		if (m_Finished)
 			return;
 
-		AudioListener.pause = true;
 		Time.timeScale = 0;
 
 		pauseButton.gameObject.SetActive(false);
@@ -336,14 +335,12 @@ public class GameState : AState
 			trackManager.StartMove(false);
 		}
 
-		AudioListener.pause = false;
 	}
 
 	public void QuitToLoadout()
 	{
 		// Used by the pause menu to return immediately to loadout, canceling everything.
 		Time.timeScale = 1.0f;
-		AudioListener.pause = false;
         
 		trackManager.End();
 		trackManager.isRerun = false;
@@ -565,7 +562,7 @@ public class GameState : AState
         if (trackManager.segments.Count == 0)
             return;
 
-        if (AudioListener.pause && !trackManager.characterController.tutorialWaitingForValidation)
+        if (!trackManager.characterController.tutorialWaitingForValidation)
         {
             m_DisplayTutorial = false;
             DisplayTutorial(false);
