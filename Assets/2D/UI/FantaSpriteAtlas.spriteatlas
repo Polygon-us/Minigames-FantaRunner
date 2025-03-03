@@ -70,6 +70,7 @@ SpriteAtlas:
     - 8b6723abf0c77e84f940d5c734b23901: 21300000
     - 2ee5503c6a4efe448b56467a2f54fc30: 21300000
     - c2593f6cae4b2434f9c7e3f3c6982253: 21300000
+    - b0d762dcd51e5d445841ed3a456ce147: 21300000
     - c17c851ea3805fd4a89a0abfa75a4166: 21300000
     - 1fcdc45efa95c1d4e95f8e6057adfd36: 21300000
     - ca49d56eab9e64e43824b8a3a71329d3: 21300000
@@ -96,6 +97,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8b6723abf0c77e84f940d5c734b23901, type: 3}
   - {fileID: 21300000, guid: 2ee5503c6a4efe448b56467a2f54fc30, type: 3}
   - {fileID: 21300000, guid: c2593f6cae4b2434f9c7e3f3c6982253, type: 3}
+  - {fileID: 21300000, guid: b0d762dcd51e5d445841ed3a456ce147, type: 3}
   - {fileID: 21300000, guid: c17c851ea3805fd4a89a0abfa75a4166, type: 3}
   - {fileID: 21300000, guid: 1fcdc45efa95c1d4e95f8e6057adfd36, type: 3}
   - {fileID: 21300000, guid: ca49d56eab9e64e43824b8a3a71329d3, type: 3}
@@ -121,6 +123,7 @@ SpriteAtlas:
   - T_RunMask
   - T_FantaLogo
   - T_FantaBottleLid
+  - T_FantaBottles
   - T_Button
   - T_SFXIcon
   - T_LockClosed
