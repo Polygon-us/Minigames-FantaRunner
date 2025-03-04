@@ -651,7 +651,7 @@ public class GameState : AState
             userInfoDto.email,
             userInfoDto.score,
             userInfoDto.distance,
-            true
+            false
         );
 
         PlayerData.instance.Save();
