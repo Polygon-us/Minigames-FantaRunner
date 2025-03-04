@@ -2020,6 +2020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2992644471550809906, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992644471550809906, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2041,6 +2046,11 @@ PrefabInstance:
     - target: {fileID: 3099527767547049512, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099527767547049512, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3099527767547049512, guid: cf06bc0cfbd054b4b8fb9c8b823c2daa,
