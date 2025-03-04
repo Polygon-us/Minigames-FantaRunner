@@ -1663,6 +1663,7 @@ MonoBehaviour:
   canvas: {fileID: 3636318666681263476}
   trackManager: {fileID: 0}
   gameTheme: {fileID: 8300000, guid: e6a5d38d0ea7fa840b14049acfe5b856, type: 3}
+  gameOverTheme: {fileID: 8300000, guid: ceda2d6544ef21641a21168ab2fea297, type: 3}
   coinText: {fileID: 2902035934461428964}
   premiumText: {fileID: 7142122693044015647}
   scoreText: {fileID: 891643373269440346}

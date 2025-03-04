@@ -100,6 +100,33 @@ public class MusicPlayer : MonoBehaviour
 		}
     }
 
+    public IEnumerator FadeoutStems()
+    {
+	    float[] initialVolumes = new float[stems.Length];
+	    for (int i = 0; i < stems.Length; i++)
+	    {
+		    initialVolumes[i] = stems[i].source.volume;
+	    }
+	   
+	    float fadeOutTime = 0.5f;
+	    float currentTime = Time.time;
+	    while (Time.time < currentTime + fadeOutTime)
+	    {
+		    for (int i = 0; i < stems.Length; i++)
+		    {
+				float newVolume = Mathf.Lerp(initialVolumes[i], 0,  (Time.time - currentTime) / fadeOutTime);
+			    stems[i].source.volume = newVolume;
+		    }
+		    
+		    yield return null;
+	    }
+	   
+	    foreach (Stem stem in stems)
+	    {
+		    stem.source.volume = 0;
+	    }
+    }
+    
     public void UpdateVolumes(float currentSpeedRatio)
     {
         const float fadeSpeed = 0.5f;

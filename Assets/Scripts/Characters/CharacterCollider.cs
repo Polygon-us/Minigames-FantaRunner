@@ -121,7 +121,7 @@ public class CharacterCollider : MonoBehaviour
 				controller.coins += 1;
 				if (coinSound)
 				{
-					m_Audio.pitch = Random.Range(0.9f, 1.1f);
+					// m_Audio.pitch = Random.Range(0.9f, 1.1f);
 					m_Audio.PlayOneShot(coinSound);
 				}
             }
@@ -159,13 +159,13 @@ public class CharacterCollider : MonoBehaviour
 
 			if (controller.currentLife > 0)
 			{
-				m_Audio.PlayOneShot(controller.character.hitSound);
+				controller.character.Source.PlayOneShot(controller.character.hitSound);
                 SetInvincible ();
 			}
             // The collision killed the player, record all data to analytics.
 			else
 			{
-				m_Audio.PlayOneShot(controller.character.deathSound);
+				controller.character.Source.PlayOneShot(controller.character.deathSound);
 
 				m_DeathData.character = controller.character.characterName;
 				m_DeathData.themeUsed = controller.trackManager.currentTheme.themeName;

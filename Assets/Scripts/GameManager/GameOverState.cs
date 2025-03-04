@@ -14,9 +14,8 @@ public class GameOverState : AState
     public TrackManager trackManager;
     public Canvas canvas;
     // public MissionUI missionPopup;
-
-	public AudioClip gameOverTheme;
-
+    public AudioClip gameOverTheme;
+    
 	public Leaderboard miniLeaderboard;
 	public Leaderboard fullLeaderboard;
 
@@ -44,10 +43,10 @@ public class GameOverState : AState
             character.forward = Vector3.back;
         }   
         
-		if (MusicPlayer.instance.GetStem(0) != gameOverTheme)
-		{
+        if (MusicPlayer.instance.GetStem(0) != gameOverTheme)
+        {
             MusicPlayer.instance.SetStem(0, gameOverTheme);
-			StartCoroutine(MusicPlayer.instance.RestartAllStems());
+            StartCoroutine(MusicPlayer.instance.RestartAllStems());
         }
     }
 
@@ -80,8 +79,10 @@ public class GameOverState : AState
     public void GoToLoadout()
     {
         trackManager.isRerun = false;
-		manager.SwitchState("Loadout");
-    }
+        LeanTween.delayedCall(0.3f, 
+            () => manager.SwitchState("Loadout")
+        );
+}
 
     public void RunAgain()
     {
