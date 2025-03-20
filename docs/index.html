@@ -23,34 +23,19 @@
 
         document.body.style.textAlign = "left";
       }
-      document.addEventListener('DOMContentLoaded', (event) => {
-        createUnityInstance(document.querySelector("#unity-canvas"), {
-          arguments: [],
-          dataUrl: "Build/docs.data",
-          frameworkUrl: "Build/docs.framework.js",
-          codeUrl: "Build/docs.wasm",
-          streamingAssetsUrl: "StreamingAssets",
-          companyName: "Polygonus",
-          productName: "Fanta Endless Runner",
-          productVersion: "1.0.0",
-          // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-          // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-        }).then((unityInstance) => {
-          window.unityInstance = unityInstance;
-        });
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/docs.data",
+        frameworkUrl: "Build/docs.framework.js",
+        codeUrl: "Build/docs.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Polygonus",
+        productName: "Fanta Endless Runner",
+        productVersion: "1.2.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
-    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-database-compat.js"></script>  </body>
-    <script>
-      const firebaseApp = firebase.initializeApp({
-        apiKey: "AIzaSyBBs0Fyx51ef1xmFhn_9ifMzo7zr_J4Zuo",
-        authDomain: "polygonus-fantarunner.firebaseapp.com",
-        databaseURL: "https://polygonus-fantarunner-default-rtdb.firebaseio.com",
-        projectId: "polygonus-fantarunner",
-        storageBucket: "polygonus-fantarunner.firebasestorage.app",
-        messagingSenderId: "181429508314",
-        appId: "1:181429508314:web:1c9d7fb549f39fedcfade3"
-      });
-    </script>
+  </body>
 </html>
