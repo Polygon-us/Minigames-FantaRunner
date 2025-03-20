@@ -315,7 +315,7 @@ public class TrackManager : MonoBehaviour
     private int _spawnedSegments = 0;
     void Update()
     {
-        while (_spawnedSegments < (m_IsTutorial ? 4 : k_DesiredSegmentCount))
+        while (_spawnedSegments < (m_IsTutorial ? 2 : k_DesiredSegmentCount))  
         {
             StartCoroutine(SpawnNewSegment());
             _spawnedSegments++;
