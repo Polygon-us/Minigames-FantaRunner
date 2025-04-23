@@ -2442,8 +2442,8 @@ MonoBehaviour:
   missionEntryPrefab:
     m_AssetGUID: 71514012df4dcd146957cb145cec8287
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 0
 --- !u!1 &8559387612125460755
 GameObject:
@@ -3395,7 +3395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: https://rappi.com.pe
+  link: https://rappi.app.link/turbofanta
 --- !u!1001 &8577329109435562049
 PrefabInstance:
   m_ObjectHideFlags: 0

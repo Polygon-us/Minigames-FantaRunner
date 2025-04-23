@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdba99bc4144095439f8a967c1d53b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: https://fanta.com
+  link: https://promos.rappi.com/peru/fanta1
 --- !u!1 &6647475876515456930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2961,7 @@ PrefabInstance:
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_KeyboardType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
@@ -3898,7 +3898,7 @@ PrefabInstance:
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
       propertyPath: m_KeyboardType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3411344918027239727, guid: 79da559eb4ade434ea324f7a2b0c2c7e,
         type: 3}
