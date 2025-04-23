@@ -2606,6 +2606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b5aacc6ee422940bfcaa5dae17b59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScoreText: {fileID: 6988449695162415045}
+  highDistanceText: {fileID: 8961170914670443761}
   mixer: {fileID: 24100000, guid: 3b7e99a6684bf49fa9bad5f4bb585fab, type: 2}
   masterSlider: {fileID: 3853108694276601021}
   musicSlider: {fileID: 4868224656624739687}
