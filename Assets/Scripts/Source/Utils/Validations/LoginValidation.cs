@@ -11,24 +11,23 @@ namespace Source.Utils.Validations
             {
                 return ResultResponse<LoginDto>.Failure("DTO cannot be null.", "DTO_NULL");
             }
+            
+            Satinize(loginDto);
 
             if (!InputValidator.IsValidEmail(loginDto.email))
             {
                 return ResultResponse<LoginDto>.Failure(
-                    "Invalid email format or email is too long.",
+                    "El correo no es válido.",
                     "EMAIL_INVALID"
                 );
             }
 
-            // if (!InputValidator.IsValidPassword(loginDto.password))
-            // {
-            //     return ResultResponse<LoginDto>.Failure(
-            //         "password must be at least 6 characters long.",
-            //         "PASSWORD_TOO_SHORT"
-            //     );
-            // }
-
             return ResultResponse<LoginDto>.Success(loginDto, "Validation successful.");
+        }
+
+        private static void Satinize(LoginDto loginDto)
+        {
+            loginDto.email = loginDto.email.Trim();
         }
     }
 }

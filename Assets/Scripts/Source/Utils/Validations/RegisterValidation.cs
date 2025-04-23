@@ -11,6 +11,8 @@ namespace Source.Utils.Validations
             {
                 return ResultResponse<RegisterDto>.Failure("DTO cannot be null.", "DTO_NULL");
             }
+            
+            Satinize(registerDto);
 
             if (!InputValidator.IsValidEmail(registerDto.email))
             {
@@ -67,6 +69,16 @@ namespace Source.Utils.Validations
             }
 
             return ResultResponse<RegisterDto>.Success(registerDto, "Validation successful.");
+        }
+        
+        private static void Satinize(RegisterDto registerDto)
+        {
+            registerDto.email = registerDto.email.Trim();
+            registerDto.password = registerDto.password.Trim();
+            registerDto.confirmPassword = registerDto.confirmPassword.Trim();
+            registerDto.fullName = registerDto.fullName.Trim();
+            registerDto.username = registerDto.username.Trim();
+            registerDto.phone = registerDto.phone.Trim();
         }
     }
 }
