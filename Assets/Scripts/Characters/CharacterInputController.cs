@@ -1,8 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using FirebaseCore;
-using FirebaseCore.DTOs;
 using Med.SafeValue;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
@@ -102,11 +99,6 @@ public class CharacterInputController : MonoBehaviour
 	    swipeAction = InputSystem.actions.FindAction("Swipe");
     }
 
-    private void OnDisable()
-    {
-	    FirebaseConnection.OnMovementInput -= OnMovementInput;
-    }
-
     // Cheating functions, use for testing
 	public void CheatInvincible(bool invincible)
 	{
@@ -142,14 +134,10 @@ public class CharacterInputController : MonoBehaviour
 		characterCollider.Init();
 
 		m_ActiveConsumables.Clear();
-	    
-		FirebaseConnection.OnMovementInput += OnMovementInput;
 	}
 
 	public void End()
 	{
-		FirebaseConnection.OnMovementInput -= OnMovementInput;
-		
         CleanConsumable();
     }
 

@@ -15,23 +15,8 @@ MonoBehaviour:
   m_GroupName: Characters
   m_GUID: 0ee8914add8bf184eb2669a5f9b6f538
   m_SerializeEntries:
-  - m_GUID: 0f71244d042802144935a3570890e7e9
-    m_Address: Assets/Prefabs/Tutorial/LeftRight/FantaTutorialLeftRight2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 17b427e866c26924e80a3a9557c2d356
     m_Address: Assets/Materials/Fanta/GenericCurved.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1c8b4e674120cad47a3fc249308e5af3
-    m_Address: Assets/Prefabs/UI/AddMissionButton.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1e613583ba9fcc9459ade43a1c4c6841
-    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -41,58 +26,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - characters
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2bfa18892388236498842bbfe7a3ff83
-    m_Address: Assets/Prefabs/UI/Header.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4397383c2a950794e85c633b5f79926d
     m_Address: Assets/Models/Usagi/SK_Usagi.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 439f6d9ac38fb1f468c3f3a96baab3a4
-    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5f695e4f7d798b04598531a809740ad8
-    m_Address: Assets/Prefabs/Tutorial/LeftRight/FantaTutorialLeftRight3.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6b09c1d95546fa849b0c207d231ec208
-    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 70b1fe3b13e297c4fbdda30d34abb327
-    m_Address: Assets/Prefabs/Tutorial/LeftRight/FantaTutorialLeftRight.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 71514012df4dcd146957cb145cec8287
-    m_Address: Assets/Prefabs/UI/MissionEntry.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 74825386e7b59ec42b1e9163e8072247
-    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown4.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8b303fba2b941e9479446d13ccc66ead
-    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp3.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 906597c279ead1444b893fb386b24dc4
-    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 94cb557246c11d14388842cc08be79a8
-    m_Address: Assets/Prefabs/UI/PowerupIcon.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -101,43 +36,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a53fe2875371488408daf0df7d69a981
-    m_Address: Assets/Prefabs/UI/MissionPopup.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: abafe3707f9235b4ab7cdfd1333295c3
-    m_Address: Assets/Prefabs/UI/ItemEntry.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ac361d43768a861498da8046b83b94f5
-    m_Address: Assets/Prefabs/UI/Score.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b1102e9aa8fdd874da78438febeb21f6
-    m_Address: Assets/Prefabs/Tutorial/Up/FantaTutorialUp2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b25dbe4a2518632489e68e75bc72891f
     m_Address: Assets/Prefabs/Particles/Fanta/FantaMagnetParticles.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b718c14c1e836cc4a8ca91d61382c504
-    m_Address: Assets/Bundles/Themes/Default/Obstacles/ObstacleDog.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1a536f74c7ef384a8d7132148ace0c8
     m_Address: Assets/UI/UISpritesheet.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ee3afa5c240e27d4580ae48f1da88cff
-    m_Address: Assets/Prefabs/Tutorial/Down/FantaTutorialDown3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

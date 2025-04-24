@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: FantaModules
   m_GUID: 38a65670a9876fe40a42a68d7dad5964
   m_SerializeEntries:
+  - m_GUID: 05028d55852cdd34dbf6f58f49718186
+    m_Address: Assets/Materials/Fanta/Module3.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 09f217c1bd58892499d378e3048b9d42
     m_Address: Assets/Prefabs/Fanta/Module08.prefab
     m_ReadOnly: 0
@@ -35,6 +40,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 194ae8cf89dcd8b48890047c868a3211
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m13_BCO_alphainvertido.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dbdc7773d7ccad49b3f6f8b274c60a5
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module6.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2143c40287e05a5469cb8bdb5ed54270
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m6_BaseColor_mirror.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 23c547fb6d619e244aa8dfe9fc6a25e9
     m_Address: Assets/Prefabs/Fanta/Module02 Mirror.prefab
     m_ReadOnly: 0
@@ -42,6 +62,46 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 28e65b6174692734bb99b6561b1f05ac
     m_Address: Assets/Prefabs/Fanta/Module02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ca49b3f488ea2842a94b3eb2324ce1f
+    m_Address: Assets/Materials/Fanta/Module10.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30a162f59ad13d441bb1094d39679463
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m5_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30f6b9bfad95b2546b591459a1b88da0
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m9_Base_color.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a026a37c220b1a468a849e1a322fc16
+    m_Address: Assets/Materials/Fanta/Module4.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f0d440d62c165e45af2c448a59cea3d
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 420c60740571824459885d2277db0412
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module10.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4781a122e849cbc41a450a2d4f3f88d6
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m13_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48edd78de620a6d4f978ab5dc6a434a6
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module8.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -55,8 +115,93 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50370694312d0a44ba5e516c8c75f77c
+    m_Address: Assets/Materials/Fanta/Module13.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50fe1d72e8527414d8826b708e6de72c
+    m_Address: Assets/Materials/Fanta/Module4Mirror.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5343f9d0d66f26549aa7536f6368d3d5
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module3.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5acdfa48f81b6364597516e944eef26d
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m7_BaseColor_mirror.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68216a891b460f84a8001c8de42bbbe3
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m3_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 683dabf2f171e8241a026bc5d5131c49
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m6_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 68dc40cad51e45448a0da4d9e4fd8711
     m_Address: Assets/Prefabs/Fanta/Module07.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c0a80aef0c803449baac0ec894b0985
+    m_Address: Assets/Materials/Fanta/Module1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d9ab97f319192e4b9e8d19bf4f2e537
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module11.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79eb4f3f3a153ea458a7bb278328e0a3
+    m_Address: Assets/Materials/Fanta/Module1Mirror.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c59277f1fe10b64bbcfba01050eea58
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module7.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8284b3ec01f4e3f42badcdb6cd879e7f
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module12.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 832269e0b8d636f4ebc1d2c015dfdb6d
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m10_BaseColor_PNG_mirror.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87400ee5f18b69847b31cf1a23a30e49
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module2.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b817826dc8396245b50b5b521ce0d71
+    m_Address: Assets/Materials/Fanta/Module9.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e6c37a3c44357a4cb562cdd98ec7110
+    m_Address: Assets/Textures/Fanta/Modules/M_ER_module9_Base_color.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ea1f4c66ef96da419f76ff506ef5ad9
+    m_Address: Assets/Materials/Fanta/Module6Mirror.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f110ae4b86cb3f46ad095763e5671ca
+    m_Address: Assets/Materials/Fanta/Module5.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -65,8 +210,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 980e239727126a1459185c6432b1714a
+    m_Address: Assets/Materials/Fanta/Module7.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9deb082bc04799e47af25b25ce12192c
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m7_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9f24c191c8e74dd45bfa227d0e8c9597
     m_Address: Assets/Prefabs/Fanta/Module11.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a34a890276fbe77499e1de8c53c7f83e
+    m_Address: Assets/Materials/Fanta/Module8.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,8 +235,43 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1a54d847c4d85949b737108e9deacc9
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m4_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b757944c6a3909a41b82b4a463483372
     m_Address: Assets/Prefabs/Fanta/Module04 Mirror.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1833bc66ad01804f85cf2402defadfd
+    m_Address: Assets/Materials/Fanta/Module7Mirror.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c24122ee46835a34d872e321f2b4df69
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m1_Base_color_Mirror.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3f245540ce41b8448fc8c5c9f515c25
+    m_Address: Assets/Materials/Fanta/Module2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c67d0760f43f35c42ae6060a26108cca
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m2_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da2ec1634d8d7c043a2d690acf1c1917
+    m_Address: Assets/Materials/Fanta/Module6.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db8382929a860bd4b85e2a2f9394d03c
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module4.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -85,13 +280,58 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e467648aa5957e94ea004192d9aa4b52
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module13.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6e8774d97e7b814d9bf526f153484f7
     m_Address: Assets/Prefabs/Fanta/Module09.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed01075c23bdf094687af13fa6efbbeb
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m1_Base_color.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f059fc3fb39828c48a14f4f13d637fcb
+    m_Address: Assets/Materials/Fanta/Module11.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0722841afa1a954aa5f99f21a0c973c
+    m_Address: Assets/Materials/Fanta/Module12.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4a9e49e4e5aaae42974f37330f62dba
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module5.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4f963ecd4ea42e42b27d1106813657e
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m9_BaseColor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f70eb94449f0f624390ee1059e19d140
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m3m4_Base_color_Mirror.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f724f19b1e81b624f8c46214b397a76a
+    m_Address: Assets/Models/Fanta Modules/SM_ER_module9.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f87a4afd4c383c34dbd8ced438e06974
     m_Address: Assets/Prefabs/Fanta/Module02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9e67988257258f41a4bb4780b3aae76
+    m_Address: Assets/Textures/Fanta/Modules/M_ATL_m8_BaseColor.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
