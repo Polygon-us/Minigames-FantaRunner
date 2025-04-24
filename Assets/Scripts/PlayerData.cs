@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.Analytics;
 #endif
 #if UNITY_EDITOR
+using Source.Handlers;
 using UnityEditor;
 #endif
 
@@ -400,6 +401,7 @@ public class PlayerDataEditor : Editor
     static public void ClearSave()
     {
         File.Delete(Application.persistentDataPath + "/save.bin");
+        BaseHandler.ResetInfoFromPrefs();
     } 
 
     [MenuItem("Trash Dash Debug/Give 1000000 fishbones and 1000 premium")]

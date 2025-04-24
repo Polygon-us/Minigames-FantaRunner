@@ -63,11 +63,5 @@ namespace UI.Controllers
 
             SceneManager.LoadScene("Main");
         }
-
-        [ContextMenu("ResetSaveGame")]
-        private void ResetSaveGame()
-        {
-            BaseHandler.ResetInfoFromPrefs();
-        }
     }
 }
