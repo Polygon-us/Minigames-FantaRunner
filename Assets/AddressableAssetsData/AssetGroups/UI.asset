@@ -13,10 +13,93 @@ MonoBehaviour:
   m_Name: UI
   m_EditorClassIdentifier: 
   m_GroupName: UI
-  m_Data:
-    m_SerializedData: []
   m_GUID: 6da73523aa5283d4582ef072976f7b42
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0614e086eab0c4b4ab09315ef7c89d5c
+    m_Address: Assets/Prefabs/UI/MenuTitle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c8b4e674120cad47a3fc249308e5af3
+    m_Address: Assets/Prefabs/UI/AddMissionButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2786b822f2cd36c43b7fba8c01618b8a
+    m_Address: Assets/Prefabs/UI/Gameplay/RappiPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2bfa18892388236498842bbfe7a3ff83
+    m_Address: Assets/Prefabs/UI/Header.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37f1ae65c0e72354abe0f12b7f5f7d31
+    m_Address: Assets/Prefabs/UI/Gameplay/Game.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44bdd4e0c57d7da48ac56c0f6a10aa9d
+    m_Address: Assets/Prefabs/UI/Gameplay/Leaderboard.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71514012df4dcd146957cb145cec8287
+    m_Address: Assets/Prefabs/UI/MissionEntry.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7655457a0b0cf4b499ea9578d79bb281
+    m_Address: Assets/Prefabs/UI/StartButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79da559eb4ade434ea324f7a2b0c2c7e
+    m_Address: Assets/Prefabs/UI/InputField.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86aa79ba3867e314ea8d2a5772505884
+    m_Address: Assets/Prefabs/UI/PrimaryButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94cb557246c11d14388842cc08be79a8
+    m_Address: Assets/Prefabs/UI/PowerupIcon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a53fe2875371488408daf0df7d69a981
+    m_Address: Assets/Prefabs/UI/MissionPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abafe3707f9235b4ab7cdfd1333295c3
+    m_Address: Assets/Prefabs/UI/ItemEntry.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac361d43768a861498da8046b83b94f5
+    m_Address: Assets/Prefabs/UI/Score.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0743b41f1e881a40aa37f0d0df99d35
+    m_Address: Assets/Prefabs/UI/SecondatyButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1f2fb49a94507c45b52369c806a2de8
+    m_Address: Assets/Prefabs/UI/Gameplay/GameOver.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf06bc0cfbd054b4b8fb9c8b823c2daa
+    m_Address: Assets/Prefabs/UI/Gameplay/Loadout.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 735e874f947d0e143a6b4e83f8a7283a, type: 2}
   m_SchemaSet:

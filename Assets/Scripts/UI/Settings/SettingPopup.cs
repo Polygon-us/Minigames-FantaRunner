@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using Source.Handlers;
+using TMPro;
+using UI.DTOs;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SettingPopup : MonoBehaviour
 {
+    [SerializeField] private TMP_Text highScoreText;
+    [SerializeField] private TMP_Text highDistanceText;
+    
     public AudioMixer mixer;
 
     public Slider masterSlider;
@@ -43,6 +49,16 @@ public class SettingPopup : MonoBehaviour
         masterSlider.value = 1.0f;
         musicSlider.value = 1.0f - (m_MusicVolume / k_MinVolume);
         masterSFXSlider.value = 1.0f - (m_MasterSFXVolume / k_MinVolume);
+        
+        SaveUserInfoDto saveUserInfoDto = BaseHandler.SaveUserInfo;
+
+        if (saveUserInfoDto == null)
+            return;
+        
+        if (highScoreText)
+            highScoreText.text = saveUserInfoDto.score.ToString();
+        if (highDistanceText)
+            highDistanceText.text = $"{saveUserInfoDto.distance} m";    
     }
 
     public void DeleteData()

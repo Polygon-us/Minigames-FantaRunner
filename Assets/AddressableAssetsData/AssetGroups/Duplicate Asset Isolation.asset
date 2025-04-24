@@ -50,68 +50,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1359dd6aa47776244b81e26522160310
-    m_Address: Assets/Models/Daytime/Warehouse03.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1f6f8aef6ad2c6441a3fe10ca76836c2
-    m_Address: Assets/Models/Daytime/BinBagOpen.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1fa0d134c763a194ea3daba8ff85489a
-    m_Address: Assets/Animation/Rat_Run.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 24a05966196c7fc4380001ad323f651e
-    m_Address: Assets/Models/Daytime/WheelyBinBlue.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 24b9245bce05384439fa7fcfc8f87224
-    m_Address: Assets/Models/Rat.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 25293e058eb614f489870528ad08d334
-    m_Address: Assets/Textures/RatAlbedo.tif
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2b522e171171f3c4ca45046c30055569
-    m_Address: Assets/Models/Daytime/FarBackBuilding02.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2b755775ae966024fab169f5ae2e95d6
-    m_Address: Assets/Models/Cat.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2b75d09c3bf9ba64cbccca5ff894cbfa
-    m_Address: Assets/Models/Daytime/Pipes.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 30ef3480996caf140bcd7afeae88ea89
-    m_Address: Assets/Models/Daytime/RoadWorksBarrier01.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3940fade9e1ac7e44b7df894133991ea
-    m_Address: Assets/Models/Daytime/House.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b7e99a6684bf49fa9bad5f4bb585fab
     m_Address: Assets/Sounds/Mixers/MainMix.mixer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b9892fba65295a4b839fa96a5b7b0f8
-    m_Address: Assets/Models/Daytime/Cloud02.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -122,16 +62,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3dc78b81a4d12bd42bd2c32e62d95511
     m_Address: Assets/Materials/Bin.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 46384fcfaae550648892113bcd7e8d4a
-    m_Address: Assets/Models/Daytime/TelegraphPole02.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4aed8c63f75928c40a2709007cecbee8
-    m_Address: Assets/Models/Racoon.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -160,18 +90,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5dc9820c76494354e9e924a6c791efa7
-    m_Address: Assets/Models/Daytime/Road02.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 61242e7b68c333746862afde9cdaf181
     m_Address: Assets/Shaders/CurvedUnlitCloud.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6336c4a6c52726d4b8aa9810b8b76ef7
-    m_Address: Assets/Textures/RubbishAlbedo.tif
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -185,18 +105,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 692deea899152264f8419135ceefafcb
-    m_Address: Assets/Sounds/SFX/Rat/RatLoop1.ogg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69829cac8b260bf41b9f2f02e4309ca8
     m_Address: Assets/Materials/BinBag.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6a31c5f9148e2ff4ea200e2ec3b4b1dc
-    m_Address: Assets/Textures/CorrugatedMetalAlbedo.tif
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -210,11 +120,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 713124634fbfebc43a3788c3a73c6a74
-    m_Address: Assets/Models/Daytime/BinBagClosed.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7240c07fe5949594d986ba5a52ff74a3
     m_Address: Assets/Materials/WheelyBin.mat
     m_ReadOnly: 0
@@ -222,16 +127,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7914a9a713af18c40b1a5f1032318361
     m_Address: Assets/Textures/Graffiti/Graffiti05.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 794fdbc2f5db99443a100bbb6d837640
-    m_Address: Assets/Models/Daytime/TelegraphWires.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7a81a2da35d793c4590d34c242ca5901
-    m_Address: Assets/Models/Daytime/Warehouse02.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -250,16 +145,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8358882a52ff2274a942a2128ae80355
-    m_Address: Assets/Models/Daytime/BackgroundBuilding02.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 849c1240a7018e340883c9a4738cabac
-    m_Address: Assets/Models/Daytime/FarBackBuilding03.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8508a626a3eef6146867ac6890f2e865
     m_Address: Assets/Textures/TreeBranchAlbedo.png
     m_ReadOnly: 0
@@ -270,23 +155,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 89e6fbf81f961324680e4bf3f84b5990
-    m_Address: Assets/Models/Daytime/TelegraphPole01.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ae7f702ec351074699756ad9e5ccd8a
     m_Address: Assets/Materials/Graffiti.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8f39f909c6c874a43a86c77bb5eeed5f
-    m_Address: Assets/Models/Daytime/Wire.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 90690b03aaccb6e4a96d2cdb757b3b44
-    m_Address: Assets/Sounds/SFX/Rat/RatHit.ogg
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -300,28 +170,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 97d3d75c59ef7f544808ac9ea51905f2
-    m_Address: Assets/Animation/Rat_Death.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 98bdd2e108de67d439c390dc7cb78caa
     m_Address: Assets/Materials/CorrugatedMetal.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9a26112fdfc12324d8fee247fbeb44e7
-    m_Address: Assets/Models/Daytime/Road01.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9b635fbb467c2e84f9b8b0d2cc7a19fd
     m_Address: Assets/Animation/ObstacleRoadWorksBarrierLow_Death.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9baf6e72cc9bd7b4293830149cc335fe
-    m_Address: Assets/Textures/WashingLineClothesAlbedo.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -347,41 +202,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a360c9ac9532bde44ac815403ab03c52
     m_Address: Assets/Materials/PickupParticle.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a3a59b2bb313ed049b43ffee79f2a52b
-    m_Address: Assets/Models/Daytime/BrickWall.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a41010c8e687cb946bd98efd6045e35b
-    m_Address: Assets/Animation/Animators/Rat.controller
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a4d34a3bbaf4fee48a79af8df924ce78
-    m_Address: Assets/Textures/DumpsterAlbedo.tif
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a683c76e59dd6b04a9420526560624a0
-    m_Address: Assets/Sounds/SFX/Rat/RatLoop2.ogg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a8c476cf0b8398b4e919eabd66d621af
-    m_Address: Assets/Models/Daytime/RoadWorksCone.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ab2cfde409d710b47b0b502877abb479
-    m_Address: Assets/Font/LuckiestGuy.ttf
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ad9b4d3f2df395b4fb7ad98e98d4acdf
-    m_Address: Assets/Textures/Car02Albedo.tif
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -420,21 +240,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c465382239af23b42aed17eb30f6a2b0
-    m_Address: Assets/Models/Daytime/Car01.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c83acac26e89c0d4db877bae8451c329
-    m_Address: Assets/Textures/Car01Albedo.tif
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c84695815df82b242ad2319af4d44725
-    m_Address: Assets/Models/Daytime/DumpsterGreen.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8c02decebafb7246953032df24e5c77
     m_Address: Assets/Materials/BlobShadow.mat
     m_ReadOnly: 0
@@ -450,11 +255,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ccb1af2fc45666b4da4f5150678e4834
-    m_Address: Assets/Models/Daytime/WheelyBinRed.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d0d7f9d969c49cd4885f97c165bdfa7b
     m_Address: Assets/Textures/Graffiti/Graffiti03.png
     m_ReadOnly: 0
@@ -467,11 +267,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2c086d8d57305b46badb6b502a5a968
     m_Address: Assets/Textures/Graffiti/Graffiti01.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d6ced1c4e07951e47a0cf24db677b719
-    m_Address: Assets/Models/Daytime/Car02.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -500,43 +295,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e3c6f3a775938914f92f111623346cbf
-    m_Address: Assets/Models/Daytime/Cloud03.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e492f336a8502944cb8729237e067291
-    m_Address: Assets/Models/Daytime/BackgroundBuilding01.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e4d05444ba14c1849b2cd7bb279e1ee6
-    m_Address: Assets/Models/NightTime/ObstacleWheelyBinNight.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e678ec0f80695014392e78a0142dfd2f
     m_Address: Assets/Shaders/CurvedUnlitAlpha.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e8b76d69401072b47881c8ae05bfbeae
-    m_Address: Assets/Models/Daytime/Warehouse01.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e98075cb4974df0408eb7ee2083b60f8
-    m_Address: Assets/Models/Daytime/PlasteredWall02.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fa5a8fc362c346548982ad762f0c9fd7
     m_Address: Assets/Textures/SlatsAlbedo.tif
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fa7e3ccbd9a948748b3c7e74fc803e5b
-    m_Address: Assets/Textures/WheelyBinAlbedo.tif
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
