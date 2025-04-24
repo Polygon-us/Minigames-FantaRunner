@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c434ed4a30841c7be2577f58c140689, type: 3}
   m_Name: APIConfig
   m_EditorClassIdentifier: 
-  currentEnvironment: 1
+  currentEnvironment: 3
   settings:
     timeout: 10
     maxRetryAttempts: 3
