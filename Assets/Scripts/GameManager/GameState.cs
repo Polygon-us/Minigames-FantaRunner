@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Source.DTOs.Request;
 using Source.Handlers;
 using TMPro;
@@ -40,7 +41,7 @@ public class GameState : AState
 	public Text countdownText;
     public RectTransform powerupZone;
 	public RectTransform lifeRectTransform;
-
+    [SerializeField] private RectTransform loadingPanel;
 	public RectTransform pauseMenu;
 	public RectTransform wholeUI;
 	public Button pauseButton;
@@ -116,7 +117,7 @@ public class GameState : AState
         m_AdsInitialised = false;
         m_GameoverSelectionDone = false;
 
-        StartGame();
+        StartGame().Forget();
     }
 
     public override void Exit(AState to)
@@ -126,7 +127,7 @@ public class GameState : AState
         ClearPowerup();
     }
 
-    public void StartGame()
+    private async UniTaskVoid StartGame()
     {
         canvas.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
@@ -194,7 +195,9 @@ public class GameState : AState
         m_Finished = false;
         m_PowerupIcons.Clear();
 
-        StartCoroutine(trackManager.Begin());
+        loadingPanel.gameObject.SetActive(true);
+        await trackManager.Begin();
+        loadingPanel.gameObject.SetActive(false);
     }
 
     public override string GetName()
@@ -494,7 +497,7 @@ public class GameState : AState
     {
         trackManager.characterController.currentLife = 1;
         trackManager.isRerun = true;
-        StartGame();
+        StartGame().Forget();
     }
 
     public void ShowRewardedAd()

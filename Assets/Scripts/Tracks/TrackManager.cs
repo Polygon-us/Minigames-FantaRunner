@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Med.SafeValue;
 using Source.DTOs.Request;
 using Source.Handlers;
@@ -184,7 +185,7 @@ public class TrackManager : MonoBehaviour
         StartMove();
     }
 
-    public IEnumerator Begin()
+    public async UniTask Begin()
     {
         if (!m_Rerun)
         {
@@ -204,16 +205,16 @@ public class TrackManager : MonoBehaviour
 
             //Addressables 1.0.1-preview
             // Spawn the player
-            var op = Addressables.InstantiateAsync(PlayerData.instance.characters[PlayerData.instance.usedCharacter],
+            var op = await Addressables.InstantiateAsync(PlayerData.instance.characters[PlayerData.instance.usedCharacter],
                 Vector3.zero,
                 Quaternion.identity);
-            yield return op;
-            if (op.Result == null || !(op.Result is GameObject))
+            
+            if (!op)
             {
                 Debug.LogWarning(string.Format("Unable to load character {0}.", PlayerData.instance.characters[PlayerData.instance.usedCharacter]));
-                yield break;
+                return;
             }
-            Character player = op.Result.GetComponent<Character>();
+            Character player = op.GetComponent<Character>();
 
             player.SetupAccesory(PlayerData.instance.usedAccessory);
 
@@ -263,6 +264,8 @@ public class TrackManager : MonoBehaviour
 #endif
         }
 
+        await SpawnInitialSegments();
+        
         characterController.Begin();
         StartCoroutine(WaitToStart());
         isLoaded = true;
@@ -310,6 +313,18 @@ public class TrackManager : MonoBehaviour
         }
     }
 
+    private UniTask SpawnInitialSegments()
+    {
+        List<UniTask> tasks = new List<UniTask>();
+        
+        while (_spawnedSegments < (m_IsTutorial ? 2 : k_DesiredSegmentCount)) //Tutorial spawned segments = 2 (4 originally) 
+        {
+            tasks.Add(SpawnNewSegment());
+            _spawnedSegments++;
+        }
+        
+        return UniTask.WhenAll(tasks);
+    }
 
     private int _parallaxRootChildren = 0;
     private int _spawnedSegments = 0;
@@ -317,7 +332,7 @@ public class TrackManager : MonoBehaviour
     {
         while (_spawnedSegments < (m_IsTutorial ? 2 : k_DesiredSegmentCount)) //Tutorial spawned segments = 2 (4 originally) 
         {
-            StartCoroutine(SpawnNewSegment());
+            SpawnNewSegment().Forget();
             _spawnedSegments++;
         }
 
@@ -515,7 +530,7 @@ public class TrackManager : MonoBehaviour
     }
 
     private readonly Vector3 _offScreenSpawnPos = new Vector3(-100f, -100f, -100f);
-    public IEnumerator SpawnNewSegment()
+    public async UniTask SpawnNewSegment()
     {
         if (!m_IsTutorial)
         {
@@ -526,14 +541,15 @@ public class TrackManager : MonoBehaviour
         int segmentUse = Random.Range(0, m_CurrentThemeData.zones[m_CurrentZone].prefabList.Length);
         if (segmentUse == m_PreviousSegment) segmentUse = (segmentUse + 1) % m_CurrentThemeData.zones[m_CurrentZone].prefabList.Length;
 
-        AsyncOperationHandle segmentToUseOp = m_CurrentThemeData.zones[m_CurrentZone].prefabList[segmentUse].InstantiateAsync(_offScreenSpawnPos, Quaternion.identity);
-        yield return segmentToUseOp;
-        if (segmentToUseOp.Result == null || !(segmentToUseOp.Result is GameObject))
+        var segmentToUseOp = await m_CurrentThemeData.zones[m_CurrentZone].prefabList[segmentUse].InstantiateAsync(_offScreenSpawnPos, Quaternion.identity);
+        
+        if (!segmentToUseOp)
         {
             Debug.LogWarning(string.Format("Unable to load segment {0}.", m_CurrentThemeData.zones[m_CurrentZone].prefabList[segmentUse].Asset.name));
-            yield break;
+            return;
         }
-        TrackSegment newSegment = (segmentToUseOp.Result as GameObject).GetComponent<TrackSegment>();
+        
+        TrackSegment newSegment = segmentToUseOp.GetComponent<TrackSegment>();
 
         Vector3 currentExitPoint;
         Quaternion currentExitRotation;
