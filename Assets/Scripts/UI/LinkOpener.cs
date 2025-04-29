@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LinkOpener : MonoBehaviour
 {
-    [SerializeField] private string link;
+    [SerializeField, TextArea] private string link;
 
     public void OpenLink()
     {
