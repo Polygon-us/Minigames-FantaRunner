@@ -1,11 +1,16 @@
 using UnityEngine;
 
-public class LinkOpener : MonoBehaviour
+namespace UI
 {
-    [SerializeField, TextArea] private string link;
-
-    public void OpenLink()
+    public class LinkOpener : MonoBehaviour
     {
-        Application.OpenURL(link);
+        [SerializeField, TextArea] private string link;
+        [SerializeField] private CodeView codeView;
+        
+        public void OpenLink()
+        {
+            codeView.CopyCode();
+            Application.OpenURL(link);
+        }
     }
 }
