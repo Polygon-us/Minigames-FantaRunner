@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CountdownSound : MonoBehaviour
 {
@@ -6,8 +7,13 @@ public class CountdownSound : MonoBehaviour
 	protected float m_TimeToDisable;
 
     protected const float k_StartDelay = 0.5f;
-	
-	void OnEnable()
+
+    private void Awake()
+    {
+	    gameObject.SetActive(false);
+    }
+
+    void OnEnable()
 	{
 		m_Source = GetComponent<AudioSource>();
 		m_TimeToDisable = m_Source.clip.length;
