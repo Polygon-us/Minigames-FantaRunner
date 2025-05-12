@@ -18,7 +18,7 @@ namespace UI
 
         public void CopyCode()
         {
-            GUIUtility.systemCopyBuffer = code;
+            WebGLCopyAndPaste.WebGLCopyAndPasteAPI.CopyToClipboard(code);
         }
     }
 }
