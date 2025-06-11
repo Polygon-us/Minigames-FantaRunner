@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e99f482c6b9d64f9881569dce6d9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: FANTA500ML2
+  code: FANTA500CC
   codeTxt: {fileID: 8015013479879380833}
   copyBtn: {fileID: 635223598876170201}
 --- !u!1 &7373757996618770798
