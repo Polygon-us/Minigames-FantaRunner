@@ -149,8 +149,8 @@ public class GameState : AState
 
         currentModifier.OnRunStart(this);
 
-        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
-        m_IsTutorial = userInfoDto.tutorial;
+        // SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        m_IsTutorial = false;
         trackManager.isTutorial = m_IsTutorial;
         
         pauseButton.gameObject.SetActive(!m_IsTutorial);
