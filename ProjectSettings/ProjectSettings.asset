@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.2.4
+  bundleVersion: 1.2.5
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 99842a2b313762c4e981905363d4b0f1, type: 3}
   metroInputSource: 0
@@ -632,6 +632,7 @@ PlayerSettings:
   - serializedVersion: 2
     m_BuildTarget: WebGL
     m_EncodingQuality: 1
+  m_BuildTargetGroupHDRCubemapEncodingQuality: []
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
