@@ -77,7 +77,7 @@ public class LoadoutState : AState
     public override void Enter(AState from)
     {
         SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
-        tutorialBlocker.SetActive(userInfoDto.tutorial);
+        // tutorialBlocker.SetActive(userInfoDto.tutorial);
         tutorialPrompt.SetActive(false);
 
         inventoryCanvas.gameObject.SetActive(true);
@@ -393,15 +393,15 @@ public class LoadoutState : AState
 
     public void StartGame()
     {
-	    SaveUserInfoDto saveUserInfoDto = BaseHandler.SaveUserInfo;
-        if (saveUserInfoDto.tutorial)
-        {
-            if (PlayerData.instance.ftueLevel == 1)
-            {
-                PlayerData.instance.ftueLevel = 2;
-                PlayerData.instance.Save();
-            }
-        }
+		// SaveUserInfoDto saveUserInfoDto = BaseHandler.SaveUserInfo;
+		// if (saveUserInfoDto.tutorial)
+		// {
+		// 	if (PlayerData.instance.ftueLevel == 1)
+		// 	{
+		// 		PlayerData.instance.ftueLevel = 2;
+		// 		PlayerData.instance.Save(); 
+		// 	}
+		// }
 
         runButton.interactable = false;
 
