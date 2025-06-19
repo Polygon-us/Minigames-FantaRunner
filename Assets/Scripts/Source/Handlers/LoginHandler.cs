@@ -1,8 +1,9 @@
+using Source.DTOs.Response;
+using Source.DTOs.Request;
+using Source.Globals;
+using Source.DTOs;
 using UnityREST;
 using System;
-using Source.DTOs;
-using Source.DTOs.Request;
-using Source.DTOs.Response;
 
 namespace Source.Handlers
 {
@@ -10,7 +11,7 @@ namespace Source.Handlers
     {
         public static void Login(LoginDto loginDto, Action<WebResult<ResponseDto<LoginResponseDto>>> onLogin = null)
         {
-            RestApiManager.Instance.PostRequest("login", loginDto, onLogin);
+            RestApiManager.Instance.PostRequest(Endpoints.login, loginDto, onLogin);
         }
     }
 }

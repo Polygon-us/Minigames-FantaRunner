@@ -1,7 +1,8 @@
-using System;
 using Newtonsoft.Json;
+using Source.Globals;
 using UnityEngine;
 using UnityREST;
+using System;
 
 [DefaultExecutionOrder(-200)]
 public class RestApiManager : APIManager
@@ -46,19 +47,19 @@ public class RestApiManager : APIManager
         SetAuth(token);
     }
 
-    public void GetRequest<T>(string endpoint, Action<WebResult<T>> callback = null, (string, string)[] args = null)
+    public void GetRequest<T>(Endpoints endpoint, Action<WebResult<T>> callback = null, (string, string)[] args = null)
     {
-        StartRequest(endpoint, path => Transport.GET(path, args, callback));
+        StartRequest(endpoint.ToString(), path => Transport.GET(path, args, callback));
     }
 
-    public void PostRequest<T>(string endpoint, object data, Action<WebResult<T>> callback = null, string[] args = null)
+    public void PostRequest<T>(Endpoints endpoint, object data, Action<WebResult<T>> callback = null, string[] args = null)
     {
-        StartRequest(endpoint, path => Transport.POST(path, JsonConvert.SerializeObject(data), callback, args));
+        StartRequest(endpoint.ToString(), path => Transport.POST(path, JsonConvert.SerializeObject(data), callback, args));
     }
 
-    public void PatchRequest<T>(string endpoint, object data, Action<WebResult<T>> callback, string[] args = null)
+    public void PatchRequest<T>(Endpoints endpoint, object data, Action<WebResult<T>> callback, string[] args = null)
     {
-        StartRequest(endpoint, path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback, args));
+        StartRequest(endpoint.ToString(), path => Transport.PATCH(path, JsonConvert.SerializeObject(data), callback, args));
     }
 
     public static string GetErrorResponse(string json)

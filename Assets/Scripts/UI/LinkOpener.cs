@@ -4,12 +4,10 @@ namespace UI
 {
     public class LinkOpener : MonoBehaviour
     {
-        [SerializeField, TextArea] private string link;
-        [SerializeField] private CodeView codeView;
+        [SerializeField, TextArea] protected string link;
         
-        public void OpenLink()
+        public virtual void OpenLink()
         {
-            codeView.CopyCode();
             Application.OpenURL(link);
         }
     }

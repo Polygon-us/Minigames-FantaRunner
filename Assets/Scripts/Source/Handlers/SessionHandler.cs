@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Source.DTOs.Response;
 using Source.DTOs.Request;
+using Source.Globals;
 using UnityREST;
 using System;
 
@@ -12,14 +13,14 @@ namespace Source.Handlers
         {
             string[] args = Args($"gameType={GameType}");
 
-            RestApiManager.Instance.PostRequest("startRun", null, result, args);
+            RestApiManager.Instance.PostRequest(Endpoints.startRun, null, result, args);
         }
          
         public static void SendCheckpoints(CheckpointTimeline checkpointTimeline)
         {
             string[] args = Args($"gameType={GameType}");
 
-            RestApiManager.Instance.PostRequest<object>("endRun", checkpointTimeline, args: args);
+            RestApiManager.Instance.PostRequest<object>(Endpoints.endRun, checkpointTimeline, args: args);
         }
     }
 
