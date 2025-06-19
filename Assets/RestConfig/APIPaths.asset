@@ -27,3 +27,5 @@ MonoBehaviour:
     path: session/start
   - name: endRun
     path: session/finish
+  - name: clickCode
+    path: metrics/url-click
