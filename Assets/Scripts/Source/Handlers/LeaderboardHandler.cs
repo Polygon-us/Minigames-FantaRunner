@@ -1,5 +1,6 @@
 using Source.DTOs.Response;
 using Source.DTOs.Request;
+using Source.Globals;
 using Source.DTOs;
 using UnityREST;
 using System;
@@ -21,14 +22,14 @@ namespace Source.Handlers
                 ("username", SaveUserInfo.username)
             };
 
-            RestApiManager.Instance.GetRequest("listLeaderboard", onRanking, args);
+            RestApiManager.Instance.GetRequest(Endpoints.listLeaderboard, onRanking, args);
         }
 
         public void PostRanking(RankingDto rankingDto, Action<WebResult<object>> onRanking = null)
         {
             string[] args = Args($"gameType={GameType}");
             
-            RestApiManager.Instance.PatchRequest("updateLeaderboard", rankingDto, onRanking, args);
+            RestApiManager.Instance.PatchRequest(Endpoints.updateLeaderboard, rankingDto, onRanking, args);
         }
     }
 }
