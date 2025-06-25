@@ -426,22 +426,27 @@ public class GameState : AState
     
     private void TrySendLeaderboard()
     {
-        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
-        
-        // Don't send if not record
-        if (trackManager.score < userInfoDto.score)
-            return;
-        
         RankingDto rankingDto = new RankingDto
         {
             score = trackManager.score,
             distance = (int)trackManager.worldDistance
         };
-
-        _leaderboardHandler.PostRanking(rankingDto, _ =>
+        
+        SaveUserInfoDto userInfoDto = BaseHandler.SaveUserInfo;
+        
+        // if new high-score, send ranking, then checkpoints 
+        if (trackManager.score > userInfoDto.score)
+        {
+            _leaderboardHandler.PostRanking(rankingDto, _ =>
+            {
+                SessionHandler.SendCheckpoints(trackManager.CheckpointTimeline);
+            });
+        }
+        // else send only checkpoints
+        else
         {
             SessionHandler.SendCheckpoints(trackManager.CheckpointTimeline);
-        });
+        }
     }
 
     protected void ClearPowerup()
